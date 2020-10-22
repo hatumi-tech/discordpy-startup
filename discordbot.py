@@ -17,14 +17,10 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-    
-@bot.command()
-async def zaku(ctx):
-    await ctx.send('悪くはない')
 
 @bot.command()
 async def roll(dice : str):
-    """サイコロを振ります。サイコロはNdNの形式でお願いします"""
+    """サイコロはNdNの形式でお願いします"""
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:
@@ -37,18 +33,18 @@ async def roll(dice : str):
 @bot.command()
 async def gacha(ctx):
     """オーナーズリーグ2010のガチャ結果を返します"""
-    OLver=random.randint(1, 4)
-    if OLver=1:
-        CARDno=random.randint(1, 240)
-        elif OLver=2:
-            CARDno=random.randint(1, 144)
-            elif OLver=3:
-                CARDno=random.randint(1, 186)
-                else:
-                    CARDno=random.randint(1, 144)
+    OLver = random.randint(1,4)
+    
+    if OLver == 1:
+        CARDno=random.randint(1,240)
+    elif OLver == 2:
+        CARDno=random.randint(1,144)
+    elif OLver == 3:
+        CARDno=random.randint(1,186)
+    elif OLver == 4:
+        CARDno=random.randint(1,144)
                     
-    gachakekka=( 'OL0%d,%d' % (OLver, CARDno) )
-                    
+    gachakekka=( 'OL0%d,%d' % (OLver,CARDno) )                
     await ctx.send(gachakekka)
     
 bot.run(token)
