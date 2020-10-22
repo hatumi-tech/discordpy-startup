@@ -24,11 +24,11 @@ async def roll(dice : str):
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:
-        await bot.say('サイコロはNdNの形式でお願いします')
+        await ctx.send('サイコロはNdNの形式でお願いします')
         return
 
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
-    await bot.say(result)
+    await ctx.send(result)
     
 @bot.command()
 async def gacha(ctx):
