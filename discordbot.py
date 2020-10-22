@@ -3,10 +3,28 @@ from discord.ext import commands
 import os
 import traceback
 import random
+import gspread
+import json
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
+secretkey = os.environ['GOOGLE_SECRET_KEY']
 
+from oauth2client.service_account import ServiceAccountCredentials
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+#認証情報設定
+#ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）
+credentials = ServiceAccountCredentials.from_json_keyfile_name(secretkey, scope)
+
+#OAuth2の資格情報を使用してGoogle APIにログインします。
+gc = gspread.authorize(credentials)
+
+#共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
+SPREADSHEET_KEY = '1cRNckSIqC3N9R7M3auoC9Uq_SCBXssgv7FaCU-xwFuY'
+
+#共有設定したスプレッドシートのシート1を開く
+worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -15,13 +33,22 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+async def psc(ctx,arg1,arg2):
+    """すばやさの種族値を比較します"""
+    cell1 = worksheet.find(arg1)
+    speed1 = worksheet.cell(cell1, 8).value
+    cell2 = worksheet.find(arg2)
+    speed2 = worksheet.cell(cell2, 8).value
     
-@bot.command()
-async def speaka(ctx):
-    await ctx.send('ホットサンドメーカー買いました')
-
+    if speed1 > speed2:
+        kekka =( '%d,%dで%fが速いです。' % (speed1,speed2,arg1) ) 
+    elif speed1 < speed2:
+        kekka =( '%d,%dで%fが速いです。' % (speed1,speed2,arg2) ) 
+    elif speed1 == speed2:
+        kekka =( 'どちらも%dで同速です。' % (speed1) ) 
+        
+    await ctx.send(kekka)
+    
 @bot.command()
 async def gacha(ctx):
     """オーナーズリーグ2010のガチャ結果を返します"""
@@ -38,5 +65,10 @@ async def gacha(ctx):
                     
     gachakekka=( 'OL0%d,%d' % (OLver,CARDno) )                
     await ctx.send(gachakekka)
+    
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+
     
 bot.run(token)
