@@ -1,2 +1,2 @@
 discord.py[voice]>=1.4.1
-gspread=3.6.0
+gspread==3.6.0
