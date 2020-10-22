@@ -15,7 +15,7 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 
 #認証情報設定
 #ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）
-credential = {
+credentials = {
                 "type": "service_account",
                 "project_id": os.environ['SHEET_PROJECT_ID'],
                 "private_key_id": os.environ['SHEET_PRIVATE_KEY_ID'],
