@@ -19,7 +19,7 @@ credential = {
                 "type": "service_account",
                 "project_id": os.environ['SHEET_PROJECT_ID'],
                 "private_key_id": os.environ['SHEET_PRIVATE_KEY_ID'],
-                "private_key": os.environ.get('SHEET_PRIVATE_KEY').replace('\\n', '\n'),
+                "private_key": os.environ.get('SHEET_PRIVATE_KEY').replace(/\\n/g, '\n'),
                 "client_email": os.environ['SHEET_CLIENT_EMAIL'],
                 "client_id": os.environ['SHEET_CLIENT_ID'],
                 "auth_uri": "https://accounts.google.com/o/oauth2/auth",
