@@ -17,19 +17,11 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-
-@bot.command()
-async def roll(dice : str):
-    """サイコロはNdNの形式でお願いします"""
-    try:
-        rolls, limit = map(int, dice.split('d'))
-    except Exception:
-        await ctx.send('サイコロはNdNの形式でお願いします')
-        return
-
-    result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
-    await ctx.send(result)
     
+@bot.command()
+async def speaka(ctx):
+    await ctx.send('ホットサンドメーカー買いました')
+
 @bot.command()
 async def gacha(ctx):
     """オーナーズリーグ2010のガチャ結果を返します"""
