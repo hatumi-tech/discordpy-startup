@@ -48,6 +48,22 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
+    
+    if arg1:
+    else:
+        await ctx.send("ポケモンがいないよ")
+        return
+      
+    if arg2:
+    else:
+        await ctx.send("ポケモンがいないよ")
+        return
+      
+    if arg3:
+    else:
+        await ctx.send("技の威力がないよ")
+        return
+      
     try:
         cell = worksheet.find(arg1)
     except gspread.exceptions.CellNotFound:
@@ -65,10 +81,6 @@ async def tae(ctx,arg1,arg2,arg3):
         
     def1 = worksheet.cell(cell.row,5).value
     spdef1 = worksheet.cell(cell.row,7).value
-    
-    if arg3 == ""
-        await ctx.send("技の威力がないよ")
-        return
     
     def1 = int(def1)
     spdef1 = int(spdef1)
