@@ -59,20 +59,20 @@ async def psc(ctx,arg1,arg2):
             ctx.send("いないポケモンだよ")
             return
         else:
-        speed2 = worksheet.cell(cell.row,8).value
+            speed2 = worksheet.cell(cell.row,8).value
     
-        speed1 = int(speed1)
-        speed2 = int(speed2)
+            speed1 = int(speed1)
+            speed2 = int(speed2)
     
-        speed1MAX = int((speed1+52)*1.1)
-        speed2MAX = int((speed2+52)*1.1)
-        saisoku1 = str(speed1MAX)
-        saisoku2 = str(speed2MAX)
+            speed1MAX = int((speed1+52)*1.1)
+            speed2MAX = int((speed2+52)*1.1)
+            saisoku1 = str(speed1MAX)
+            saisoku2 = str(speed2MAX)
     
-        text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
-        result = text.format(arg1,speed1,saisoku1,arg2,speed2,saisoku2)
+            text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
+            result = text.format(arg1,speed1,saisoku1,arg2,speed2,saisoku2)
         
-        await ctx.send(result)
+            await ctx.send(result)
     
 @bot.command()
 async def ps(ctx,arg):
