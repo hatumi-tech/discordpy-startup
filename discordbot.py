@@ -80,7 +80,8 @@ async def psc(ctx,arg1,arg2):
 @bot.command()
 async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
-    cell = worksheet.find(arg)
+    try:
+        cell = worksheet.find(arg)
     except gspread.exceptions.CellNotFound:
            ctx.send("いないポケモンだよ")
            return
