@@ -51,7 +51,7 @@ async def psc(ctx,arg1,arg2):
     try:
         cell = worksheet.find(arg1)
     except gspread.exceptions.CellNotFound:
-           ctx.send("いないポケモンだよ")
+           await ctx.send("いないポケモンだよ")
            return
         
     speed1 = worksheet.cell(cell.row,8).value
@@ -59,7 +59,7 @@ async def psc(ctx,arg1,arg2):
     try:
         cell = worksheet.find(arg2)
     except gspread.exceptions.CellNotFound:
-           ctx.send("いないポケモンだよ")
+           await ctx.send("いないポケモンだよ")
            return
         
     speed2 = worksheet.cell(cell.row,8).value
@@ -83,7 +83,7 @@ async def ps(ctx,arg):
     try:
         cell = worksheet.find(arg)
     except gspread.exceptions.CellNotFound:
-           ctx.send("いないポケモンだよ")
+           await ctx.send("いないポケモンだよ")
            return
         
     speed1 = worksheet.cell(cell.row,8).value
