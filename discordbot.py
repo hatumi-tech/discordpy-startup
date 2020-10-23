@@ -44,6 +44,46 @@ async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
+    
+@bot.command()
+async def tae(ctx,arg1,arg2,arg3):
+    """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
+    try:
+        cell = worksheet.find(arg1)
+    except gspread.exceptions.CellNotFound:
+            await ctx.send("いないポケモンだよ")
+            return
+    
+    def1 = worksheet.cell(cell.row,5).value
+    spdef1 = worksheet.cell(cell.row,7).value
+    
+    try:
+        cell = worksheet.find(arg2)
+    except gspread.exceptions.CellNotFound:
+            await ctx.send("いないポケモンだよ")
+            return
+        
+    atk2 = worksheet.cell(cell.row,4).value
+    spatk2 = worksheet.cell(cell.row,6).value
+    
+    def1 = int(def1)
+    spdef1 = int(spdef1)
+    atk2 = int(atk2)
+    spatk2 = int(spatk2)
+    arg3 = int(arg3)
+    waza = int(arg3/50)
+
+    butsuri = (22*(waza))*((atk2)/(def1))
+    butsuri = int((int(butsuri)+2)*1.5)
+    butsuri = str(butsuri)
+    tokushu = (22*(waza))*((spatk2)/(spdef1))
+    tokushu = int((int(tokushu)+2)*1.5)
+    tokushu = str(tokushu)
+    
+    text = "{}の威力{}の技が{}に与える物理ダメージはだいたい{}です。特殊ダメージはだいたい{}です。タイプ一致技は1.5倍してください。"
+    result = text.format(arg1,arg3,arg2,butsuri,tokushu)
+    
+    await ctx.send(result)
 
 @bot.command()
 async def psc(ctx,arg1,arg2):
