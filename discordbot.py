@@ -5,6 +5,7 @@ import traceback
 import random
 import gspread
 import json
+import sys
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -49,19 +50,19 @@ async def on_command_error(ctx, error):
 async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
     
-    if arg1 == "":
+    if len(arg1) == 0:
       await ctx.send("ポケモンがいないよ")
       return
     else:
       pass
     
-    if arg2 == "":
+    if len(arg2) == 0:
       await ctx.send("ポケモンがいないよ")
       return
     else:
       pass
       
-    if arg3 == "":
+    if len(arg3) == 0:
       await ctx.send("技の威力がないよ")
       return
     else:
