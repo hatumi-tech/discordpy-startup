@@ -49,10 +49,10 @@ async def on_command_error(ctx, error):
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
     cell = worksheet.find(arg1)
-    if cell == ""
+    if cell == "":
         ctx.send("いないポケモンだよ")
         return
-    elif
+    elif cell <> "":
         speed1 = worksheet.cell(cell.row,8).value
         cell = worksheet.find(arg2)
         if cell == ""
@@ -61,38 +61,38 @@ async def psc(ctx,arg1,arg2):
         else
         speed2 = worksheet.cell(cell.row,8).value
     
-    speed1 = int(speed1)
-    speed2 = int(speed2)
+        speed1 = int(speed1)
+        speed2 = int(speed2)
     
-    speed1MAX = int((speed1+52)*1.1)
-    speed2MAX = int((speed2+52)*1.1)
-    saisoku1 = str(speed1MAX)
-    saisoku2 = str(speed2MAX)
+        speed1MAX = int((speed1+52)*1.1)
+        speed2MAX = int((speed2+52)*1.1)
+        saisoku1 = str(speed1MAX)
+        saisoku2 = str(speed2MAX)
     
-    text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg1,speed1,saisoku1,arg2,speed2,saisoku2)
+        text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
+        result = text.format(arg1,speed1,saisoku1,arg2,speed2,saisoku2)
         
-    await ctx.send(result)
+        await ctx.send(result)
     
 @bot.command()
 async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
     cell = worksheet.find(arg1)
-    if cell == ""
+    if cell == "":
         ctx.send("いないポケモンだよ")
         return
-    else
+    else:
         speed1 = worksheet.cell(cell.row,8).value
     
-    speed1 = int(speed1)
+        speed1 = int(speed1)
     
-    speed1MAX = int((speed1+52)*1.1)
-    saisoku1 = str(speed1MAX)
+        speed1MAX = int((speed1+52)*1.1)
+        saisoku1 = str(speed1MAX)
     
-    text = "{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg,speed1,saisoku1)
+        text = "{}のすばやさは{}、最速実数値{}"
+        result = text.format(arg,speed1,saisoku1)
         
-    await ctx.send(result)
+        await ctx.send(result)
     
 @bot.command()
 async def gacha(ctx):
