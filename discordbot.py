@@ -78,7 +78,7 @@ async def ps(ctx,arg):
     saisoku1 = str(speed1MAX)
     
     text = "{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg1,speed1,saisoku1)
+    result = text.format(arg,speed1,saisoku1)
         
     await ctx.send(result)
     
