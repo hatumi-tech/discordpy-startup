@@ -70,9 +70,10 @@ async def ps(ctx,arg):
     speed1 = worksheet.cell(cell.row,8).value
     
     speed1MAX = int((speed1+52)*1.1)
+    saisoku1 = str(speed1MAX)
     
     text = "{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg1,speed1,speed1MAX)
+    result = text.format(arg1,speed1,saisoku1)
         
     await ctx.send(result)
     
