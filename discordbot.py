@@ -53,8 +53,8 @@ async def psc(ctx,*args):
     cell = worksheet.find(arg2)
     speed2 = worksheet.cell(cell.row,8).value
     
-    speed1MAX =(speed1+52)*1.1
-    speed2MAX =(speed2+52)*1.1
+    speed1MAX = int((speed1+52)*1.1)
+    speed2MAX = int((speed2+52)*1.1)
     
     text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
     result = text.format(arg1,speed1,speed1MAX,arg2,speed2,speed2MAX)
