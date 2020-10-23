@@ -45,6 +45,7 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
+@bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
     cell = worksheet.find(arg1)
