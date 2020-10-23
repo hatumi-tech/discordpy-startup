@@ -48,10 +48,10 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
-    cell1 = worksheet.find(arg1)
-    speed1 = worksheet.cell(cell1, 8).value
-    cell2 = worksheet.find(arg2)
-    speed2 = worksheet.cell(cell2, 8).value
+    pokemon1 = worksheet.find(arg1)
+    speed1 = worksheet.cell(pokemon1.row, 8).value
+    pokemon2 = worksheet.find(arg2)
+    speed2 = worksheet.cell(pokemon2.row, 8).value
     
     if speed1 > speed2:
         kekka =( '%d,%dで%fが速いです。' % (speed1,speed2,arg1) ) 
@@ -81,6 +81,7 @@ async def gacha(ctx):
     
 @bot.command()
 async def ping(ctx):
+    """ぴんぽん"""
     await ctx.send('pong')
 
 bot.run(token)
