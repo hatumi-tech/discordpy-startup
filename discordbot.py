@@ -52,7 +52,7 @@ async def psc(ctx,arg1,arg2):
     if cell == "":
         ctx.send("いないポケモンだよ")
         return
-    elif cell <> "":
+    elif cell != "":
         speed1 = worksheet.cell(cell.row,8).value
         cell = worksheet.find(arg2)
         if cell == ""
