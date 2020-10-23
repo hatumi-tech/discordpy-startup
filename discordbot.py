@@ -55,9 +55,11 @@ async def psc(ctx,arg1,arg2):
     
     speed1MAX = int((speed1+52)*1.1)
     speed2MAX = int((speed2+52)*1.1)
+    saisoku1 = str(speed1MAX)
+    saisoku2 = str(spead2MAX)
     
     text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg1,speed1,speed1MAX,arg2,speed2,speed2MAX)
+    result = text.format(arg1,speed1,saisoku1,arg2,speed2,saisoku2)
         
     await ctx.send(result)
     
