@@ -66,6 +66,10 @@ async def tae(ctx,arg1,arg2,arg3):
     def1 = worksheet.cell(cell.row,5).value
     spdef1 = worksheet.cell(cell.row,7).value
     
+    if arg3 == ""
+        await ctx.send("技の威力がないよ")
+        return
+    
     def1 = int(def1)
     spdef1 = int(spdef1)
     atk2 = int(atk2)
