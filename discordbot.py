@@ -54,8 +54,8 @@ async def tae(ctx,arg1,arg2,arg3):
             await ctx.send("いないポケモンだよ")
             return
     
-    def1 = worksheet.cell(cell.row,5).value
-    spdef1 = worksheet.cell(cell.row,7).value
+    atk2 = worksheet.cell(cell.row,4).value
+    spatk2 = worksheet.cell(cell.row,6).value
     
     try:
         cell = worksheet.find(arg2)
@@ -63,8 +63,8 @@ async def tae(ctx,arg1,arg2,arg3):
             await ctx.send("いないポケモンだよ")
             return
         
-    atk2 = worksheet.cell(cell.row,4).value
-    spatk2 = worksheet.cell(cell.row,6).value
+    def1 = worksheet.cell(cell.row,5).value
+    spdef1 = worksheet.cell(cell.row,7).value
     
     def1 = int(def1)
     spdef1 = int(spdef1)
