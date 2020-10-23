@@ -56,8 +56,8 @@ async def psc(ctx,arg1,arg2):
     speed1 = int(speed1)
     speed2 = int(speed2)
     
-    speed1MAX = ((speed1+52)*1.1)
-    speed2MAX = ((speed2+52)*1.1)
+    speed1MAX = int((speed1+52)*1.1)
+    speed2MAX = int((speed2+52)*1.1)
     saisoku1 = str(speed1MAX)
     saisoku2 = str(speed2MAX)
     
@@ -74,7 +74,7 @@ async def ps(ctx,arg):
     
     speed1 = int(speed1)
     
-    speed1MAX = ((speed1+52)*1.1)
+    speed1MAX = int((speed1+52)*1.1)
     saisoku1 = str(speed1MAX)
     
     text = "{}のすばやさは{}、最速実数値{}"
