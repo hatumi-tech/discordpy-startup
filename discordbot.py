@@ -45,7 +45,6 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
-@bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
     cell = worksheet.find(arg1)
@@ -54,13 +53,16 @@ async def psc(ctx,arg1,arg2):
     speed2 = worksheet.cell(cell.row, 8).value
     
     if speed1 > speed2:
-        kekka =( '%f,%fで%fが速いです。' % (speed1,speed2,arg1) ) 
+        text = "{}、{}で{}が速いです。"
+        result = text.format(speed1, speed2, arg1)
     elif speed1 < speed2:
-        kekka =( '%f,%fで%fが速いです。' % (speed1,speed2,arg2) ) 
+        text = "{}、{}で{}が速いです。"
+        result = text.format(speed1, speed2, arg2)
     elif speed1 == speed2:
-        kekka =( 'どちらも%fで同速です。' % (speed1) ) 
+        text = "{}、{}で{}が速いです。"
+        result = text.format(speed1, speed2, arg1)
         
-    await ctx.send(kekka)
+    await ctx.send(result)
     
 @bot.command()
 async def gacha(ctx):
