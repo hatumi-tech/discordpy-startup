@@ -50,19 +50,19 @@ async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
     
     if arg1:
-      continue
+      pass
     else:
       await ctx.send("ポケモンがいないよ")
       return
       
     if arg2:
-      continue
+      pass
     else:
       await ctx.send("ポケモンがいないよ")
       return
       
     if arg3:
-      continue
+      pass
     else:
       await ctx.send("技の威力がないよ")
       return
