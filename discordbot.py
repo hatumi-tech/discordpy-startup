@@ -54,9 +54,9 @@ async def psc(ctx,arg1,arg2):
     speed2 = worksheet.cell(pokemon2.row, 8).value
     
     if speed1 > speed2:
-        kekka =( '%d,%dで%fが速いです。' % (speed1,speed2,arg1) ) 
+        kekka =( '%f,%fで%fが速いです。' % (speed1,speed2,arg1) ) 
     elif speed1 < speed2:
-        kekka =( '%d,%dで%fが速いです。' % (speed1,speed2,arg2) ) 
+        kekka =( '%f,%fで%fが速いです。' % (speed1,speed2,arg2) ) 
     elif speed1 == speed2:
         kekka =( 'どちらも%dで同速です。' % (speed1) ) 
         
