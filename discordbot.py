@@ -49,19 +49,19 @@ async def on_command_error(ctx, error):
 async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
     
-    if arg1:
+    if (arg1 != ""):
       pass
     else:
       await ctx.send("ポケモンがいないよ")
       return
       
-    if arg2:
+    if (arg2 != ""):
       pass
     else:
       await ctx.send("ポケモンがいないよ")
       return
       
-    if arg3:
+    if (arg3 != ""):
       pass
     else:
       await ctx.send("技の威力がないよ")
