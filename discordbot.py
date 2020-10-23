@@ -46,15 +46,18 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
 
 @bot.command()
-async def psc(ctx,arg1,arg2):
+async def psc(ctx,*args):
     """すばやさの種族値を比較します"""
     cell = worksheet.find(arg1)
     speed1 = worksheet.cell(cell.row,8).value
     cell = worksheet.find(arg2)
     speed2 = worksheet.cell(cell.row,8).value
     
-    text = "{}のすばやさは{}、{}のすばやさは{}"
-    result = text.format(arg1,speed1,arg2,speed2)
+    speed1MAX =(speed1+52)*1.1
+    speed2MAX =(speed2+52)*1.1
+    
+    text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
+    result = text.format(arg1,speed1,speed1MAX,arg2,speed2,speed2MAX)
         
     await ctx.send(result)
     
