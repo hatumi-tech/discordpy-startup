@@ -77,7 +77,7 @@ async def psc(ctx,arg1,arg2):
 @bot.command()
 async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
-    cell = worksheet.find(arg1)
+    cell = worksheet.find(arg)
     if cell == "":
         ctx.send("いないポケモンだよ")
         return
