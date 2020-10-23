@@ -48,10 +48,10 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
-    pokemon1 = worksheet.find(arg1)
-    speed1 = worksheet.cell(pokemon1.row, 8).value
-    pokemon2 = worksheet.find(arg2)
-    speed2 = worksheet.cell(pokemon2.row, 8).value
+    cell = worksheet.find(arg1)
+    speed1 = worksheet.cell(cell.row, 8).value
+    cell = worksheet.find(arg2)
+    speed2 = worksheet.cell(cell.row, 8).value
     
     if speed1 > speed2:
         kekka =( '%f,%fで%fが速いです。' % (speed1,speed2,arg1) ) 
