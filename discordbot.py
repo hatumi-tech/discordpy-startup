@@ -50,20 +50,23 @@ async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
     
     if arg1:
+      continue
     else:
-        await ctx.send("ポケモンがいないよ")
-        return
+      await ctx.send("ポケモンがいないよ")
+      return
       
     if arg2:
+      continue
     else:
-        await ctx.send("ポケモンがいないよ")
-        return
+      await ctx.send("ポケモンがいないよ")
+      return
       
     if arg3:
+      continue
     else:
-        await ctx.send("技の威力がないよ")
-        return
-      
+      await ctx.send("技の威力がないよ")
+      return
+    
     try:
         cell = worksheet.find(arg1)
     except gspread.exceptions.CellNotFound:
