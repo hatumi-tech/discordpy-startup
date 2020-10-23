@@ -58,7 +58,7 @@ async def psc(ctx,arg1,arg2):
     elif speed1 < speed2:
         kekka =( '%f,%fで%fが速いです。' % (speed1,speed2,arg2) ) 
     elif speed1 == speed2:
-        kekka =( 'どちらも%dで同速です。' % (speed1) ) 
+        kekka =( 'どちらも%fで同速です。' % (speed1) ) 
         
     await ctx.send(kekka)
     
