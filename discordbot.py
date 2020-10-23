@@ -49,9 +49,17 @@ async def on_command_error(ctx, error):
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
     cell = worksheet.find(arg1)
-    speed1 = worksheet.cell(cell.row,8).value
-    cell = worksheet.find(arg2)
-    speed2 = worksheet.cell(cell.row,8).value
+    if cell == ""
+        ctx.send("いないポケモンだよ")
+        return
+    elif
+        speed1 = worksheet.cell(cell.row,8).value
+        cell = worksheet.find(arg2)
+        if cell == ""
+            ctx.send("いないポケモンだよ")
+            return
+        else
+        speed2 = worksheet.cell(cell.row,8).value
     
     speed1 = int(speed1)
     speed2 = int(speed2)
@@ -69,8 +77,12 @@ async def psc(ctx,arg1,arg2):
 @bot.command()
 async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
-    cell = worksheet.find(arg)
-    speed1 = worksheet.cell(cell.row,8).value
+    cell = worksheet.find(arg1)
+    if cell == ""
+        ctx.send("いないポケモンだよ")
+        return
+    else
+        speed1 = worksheet.cell(cell.row,8).value
     
     speed1 = int(speed1)
     
