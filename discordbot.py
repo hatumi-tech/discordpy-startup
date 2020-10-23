@@ -56,10 +56,10 @@ async def psc(ctx,*args):
     
     if speed1 > speed2:
         text = "{}、{}で{}が速いです。"
-        result = text.format(speed1, speed2, y)
+        result = text.format(speed1, speed2, x)
     elif speed1 < speed2:
         text = "{}、{}で{}が速いです。"
-        result = text.format(speed1, speed2, x)
+        result = text.format(speed2, speed1, y)
     elif speed1 == speed2:
         text = "{}で同速です。"
         result = text.format(speed1)
