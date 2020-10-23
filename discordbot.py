@@ -48,14 +48,16 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
-    cell = worksheet.find(arg1)
+    try:
+        cell = worksheet.find(arg1)
     except gspread.exceptions.CellNotFound:
            ctx.send("いないポケモンだよ")
            return
         
     speed1 = worksheet.cell(cell.row,8).value
     
-    cell = worksheet.find(arg2)
+    try:
+        cell = worksheet.find(arg2)
     except gspread.exceptions.CellNotFound:
            ctx.send("いないポケモンだよ")
            return
