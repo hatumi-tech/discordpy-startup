@@ -53,6 +53,9 @@ async def psc(ctx,arg1,arg2):
     cell = worksheet.find(arg2)
     speed2 = worksheet.cell(cell.row,8).value
     
+    speed1 = int(speed1)
+    speed2 = int(speed2)
+    
     speed1MAX = ((speed1+52)*1.1)
     speed2MAX = ((speed2+52)*1.1)
     saisoku1 = str(speed1MAX)
@@ -68,6 +71,8 @@ async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
     cell = worksheet.find(arg)
     speed1 = worksheet.cell(cell.row,8).value
+    
+    speed1 = int(speed1)
     
     speed1MAX = ((speed1+52)*1.1)
     saisoku1 = str(speed1MAX)
