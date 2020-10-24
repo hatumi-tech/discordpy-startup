@@ -177,6 +177,12 @@ async def tokusei(ctx,arg):
         
     tokusei1info = worksheet.cell(cell.row,2).value
     
+    if (tokusei2 in "*"):
+        tokusei2 = tokusei2.strip("*")
+        yumetokusei = tokusei2
+    else:
+        pass
+    
     try:
         cell = worksheet.find(tokusei2)
     except gspread.exceptions.CellNotFound:
@@ -184,22 +190,18 @@ async def tokusei(ctx,arg):
         
     tokusei2info = worksheet.cell(cell.row,2).value
     
-    if (tokusei2 in "*")
-        yumetokusei = tokusei2
-    else
+    if (tokusei3 in "*"):
+        tokusei3 = tokusei3.strip("*")
+        yumetokusei = tokusei3
+    else:
         pass
-    
+      
     try:
         cell = worksheet.find(tokusei3)
     except gspread.exceptions.CellNotFound:
            pass
         
     tokusei3info = worksheet.cell(cell.row,2).value
-    
-    if (tokusei3 in "*")
-        yumetokusei = tokusei3
-    else
-        pass
     
     text = "{}のとくせいは\n{}:{}\n{}:{}\n{}:{}\n夢特性は{}"
     result = text.format(arg,tokusei1,tokusei1info,tokusei2,tokusei2info,tokusei3,tokusei3info,yumetokusei)
