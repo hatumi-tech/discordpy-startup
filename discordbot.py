@@ -160,6 +160,8 @@ async def tokusei(ctx,arg):
            await ctx.send("ないとくせいだよ")
            return
         
+    yumetokusei = ""
+        
     tokusei1 = worksheet.cell(cell.row,3).value
     tokusei2 = worksheet.cell(cell.row,4).value
     tokusei3 = worksheet.cell(cell.row,5).value
