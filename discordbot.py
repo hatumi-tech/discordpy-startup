@@ -203,6 +203,11 @@ async def tokusei(ctx,arg):
         
     tokusei3info = worksheet.cell(cell.row,2).value
     
+    if yumetokusei = "":
+       yumetokusei = "なし"
+        
+    yumetokusei = str(yumetokusei)
+    
     text = "{}のとくせいは\n{}:{}\n{}:{}\n{}:{}\n夢特性は{}"
     result = text.format(arg,tokusei1,tokusei1info,tokusei2,tokusei2info,tokusei3,tokusei3info,yumetokusei)
         
