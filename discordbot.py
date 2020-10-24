@@ -37,8 +37,8 @@ gc = gspread.authorize(credentials)
 #共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
 SPREADSHEET_KEY = '1cRNckSIqC3N9R7M3auoC9Uq_SCBXssgv7FaCU-xwFuY'
 
-#共有設定したスプレッドシートのシート1を開く
-worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+#共有設定したスプレッドシートを開く
+worksheet = gc.open_by_key(SPREADSHEET_KEY)
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -53,7 +53,7 @@ async def on_command_error(ctx, error):
 async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
     
-    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+    worksheet = workbook.sheet1
     
     try:
         cell = worksheet.find(arg1)
@@ -95,7 +95,7 @@ async def tae(ctx,arg1,arg2,arg3):
 @bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
-    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+    worksheet = workbook.sheet1
     
     try:
         cell = worksheet.find(arg1)
@@ -129,7 +129,7 @@ async def psc(ctx,arg1,arg2):
 @bot.command()
 async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
-    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+    worksheet = workbook.sheet1
 
     try:
         cell = worksheet.find(arg)
@@ -152,7 +152,7 @@ async def ps(ctx,arg):
 @bot.command()
 async def waza(ctx,arg):
     """わざについて表示します"""
-    worksheet = gc.open_by_key(SPREADSHEET_KEY).worksheet2
+    worksheet = orkbook.get_worksheet(1)
 
     try:
         cell = worksheet.find(arg)
