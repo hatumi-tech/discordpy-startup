@@ -53,6 +53,8 @@ async def on_command_error(ctx, error):
 async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
     
+    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+    
     try:
         cell = worksheet.find(arg1)
     except gspread.exceptions.CellNotFound:
@@ -93,6 +95,8 @@ async def tae(ctx,arg1,arg2,arg3):
 @bot.command()
 async def psc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
+    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+    
     try:
         cell = worksheet.find(arg1)
     except gspread.exceptions.CellNotFound:
@@ -125,6 +129,8 @@ async def psc(ctx,arg1,arg2):
 @bot.command()
 async def ps(ctx,arg):
     """すばやさの種族値を表示します"""
+    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
+
     try:
         cell = worksheet.find(arg)
     except gspread.exceptions.CellNotFound:
@@ -140,6 +146,34 @@ async def ps(ctx,arg):
     
     text = "{}のすばやさは{}、最速実数値{}"
     result = text.format(arg,speed1,saisoku1)
+        
+    await ctx.send(result)
+    
+@bot.command()
+async def waza(ctx,arg):
+    """わざについて表示します"""
+    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet2
+
+    try:
+        cell = worksheet.find(arg)
+    except gspread.exceptions.CellNotFound:
+           await ctx.send("第８世代に存在しないわざだよ")
+           return
+        
+    wazatype = worksheet.cell(cell.row,2).value
+    wazapower = worksheet.cell(cell.row,3).value
+    wazaaccu = worksheet.cell(cell.row,4).value
+    wazapp = worksheet.cell(cell.row,5).value
+    wazaclass = worksheet.cell(cell.row,6).value
+    
+    wazatype = str(wazatype)
+    wazapower = str(wazapower)
+    wazaaccu = str(wazaaccu)
+    wazapp = str(wazapp)
+    wazaclass = str(wazaclass)
+    
+    text = "{}はタイプ：{}、いりょく{}、めいちゅう{}、PP{}の{}技。"
+    result = text.format(arg,wazatype,wazapower,wazaaccu,wazapp,wazaclass)
         
     await ctx.send(result)
     
