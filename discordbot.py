@@ -152,7 +152,7 @@ async def ps(ctx,arg):
 @bot.command()
 async def waza(ctx,arg):
     """わざについて表示します"""
-    worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet2
+    worksheet = gc.open_by_key(SPREADSHEET_KEY).worksheet2
 
     try:
         cell = worksheet.find(arg)
