@@ -93,7 +93,7 @@ async def tae(ctx,arg1,arg2,arg3):
     await ctx.send(result)
 
 @bot.command()
-async def psc(ctx,arg1,arg2):
+async def spc(ctx,arg1,arg2):
     """すばやさの種族値を比較します"""
     worksheet = workbook.sheet1
     
@@ -127,7 +127,7 @@ async def psc(ctx,arg1,arg2):
     await ctx.send(result)
     
 @bot.command()
-async def ps(ctx,arg):
+async def sp(ctx,arg):
     """すばやさの種族値を表示します"""
     worksheet = workbook.sheet1
 
@@ -146,6 +146,63 @@ async def ps(ctx,arg):
     
     text = "{}のすばやさは{}、最速実数値{}"
     result = text.format(arg,speed1,saisoku1)
+        
+    await ctx.send(result)
+    
+@bot.command()
+async def tokusei(ctx,arg):
+    """ポケモンを指定するとそのとくせいを表示します"""
+    worksheet = workbook.get_worksheet(2)
+
+    try:
+        cell = worksheet.find(arg)
+    except gspread.exceptions.CellNotFound:
+           await ctx.send("ないとくせいだよ")
+           return
+        
+    tokusei1 = worksheet.cell(cell.row,3).value
+    tokusei2 = worksheet.cell(cell.row,4).value
+    tokusei3 = worksheet.cell(cell.row,5).value
+    
+    tokusei1 = str(tokusei1)
+    tokusei2 = str(tokusei2)
+    tokusei3 = str(tokusei3)
+    
+    worksheet = workbook.get_worksheet(3)
+    
+    try:
+        cell = worksheet.find(tokusei1)
+    except gspread.exceptions.CellNotFound:
+           pass
+        
+    tokusei1info = worksheet.cell(cell.row,2).value
+    
+    try:
+        cell = worksheet.find(tokusei2)
+    except gspread.exceptions.CellNotFound:
+           pass
+        
+    tokusei2info = worksheet.cell(cell.row,2).value
+    
+    if (tokusei2 in *)
+        yumetokusei = tokusei2
+    else
+        pass
+    
+    try:
+        cell = worksheet.find(tokusei3)
+    except gspread.exceptions.CellNotFound:
+           pass
+        
+    tokusei3info = worksheet.cell(cell.row,2).value
+    
+    if (tokusei3 in *)
+        yumetokusei = tokusei3
+    else
+        pass
+    
+    text = "{}のとくせいは\n{}:{}\n{}:{}\n{}:{}\n夢特性は{}"
+    result = text.format(arg,tokusei1,tokusei1info,tokusei2,tokusei2info,tokusei3,tokusei3info,yumetokusei)
         
     await ctx.send(result)
     
@@ -178,7 +235,7 @@ async def waza(ctx,arg):
     await ctx.send(result)
     
 @bot.command()
-async def gacha(ctx):
+async def olgacha(ctx):
     """オーナーズリーグ2010のガチャ結果を返します"""
     OLver = random.randint(1,4)
     
