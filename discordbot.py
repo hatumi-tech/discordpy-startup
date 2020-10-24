@@ -43,11 +43,11 @@ worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error,commands.MissingRequiredArgument):
-        await ctx.send('ホットサンドメーカー買いました（引数がないエラーです）')
+       await ctx.send('ホットサンドメーカー買いました（引数がないエラーです）')
     else
-        orig_error = getattr(error, "original", error)
-        error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-        await ctx.send(error_msg)
+       orig_error = getattr(error, "original", error)
+       error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+       await ctx.send(error_msg)
             
 @bot.command()
 async def tae(ctx,arg1,arg2,arg3):
