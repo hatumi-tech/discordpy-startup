@@ -44,7 +44,7 @@ worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
 async def on_command_error(ctx, error):
     if isinstance(error,commands.MissingRequiredArgument):
        await ctx.send('ホットサンドメーカー買いました（引数がないエラーです）')
-    else
+    else:
        orig_error = getattr(error, "original", error)
        error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
        await ctx.send(error_msg)
