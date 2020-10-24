@@ -42,31 +42,16 @@ worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
 
 @bot.event
 async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
-    
+    if isinstance(error,commands.MissingRequiredArgument):
+        await ctx.send('ホットサンドメーカー買いました（引数がないエラーです）')
+    else
+        orig_error = getattr(error, "original", error)
+        error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+        await ctx.send(error_msg)
+            
 @bot.command()
 async def tae(ctx,arg1,arg2,arg3):
     """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
-    
-    if len(arg1) == 0:
-      await ctx.send("ポケモンがいないよ")
-      return
-    else:
-      pass
-    
-    if len(arg2) == 0:
-      await ctx.send("ポケモンがいないよ")
-      return
-    else:
-      pass
-      
-    if len(arg3) == 0:
-      await ctx.send("技の威力がないよ")
-      return
-    else:
-      pass
     
     try:
         cell = worksheet.find(arg1)
