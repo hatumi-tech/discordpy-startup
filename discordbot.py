@@ -152,7 +152,7 @@ async def ps(ctx,arg):
 @bot.command()
 async def waza(ctx,arg):
     """わざについて表示します"""
-    worksheet = orkbook.get_worksheet(1)
+    worksheet = workbook.get_worksheet(1)
 
     try:
         cell = worksheet.find(arg)
