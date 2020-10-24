@@ -179,7 +179,6 @@ async def tokusei(ctx,arg):
     
     if (tokusei2 in "*"):
         tokusei2 = tokusei2.strip("*")
-        yumetokusei = tokusei2
     else:
         pass
     
@@ -192,7 +191,6 @@ async def tokusei(ctx,arg):
     
     if (tokusei3 in "*"):
         tokusei3 = tokusei3.strip("*")
-        yumetokusei = tokusei3
     else:
         pass
       
@@ -203,8 +201,8 @@ async def tokusei(ctx,arg):
         
     tokusei3info = worksheet.cell(cell.row,2).value
     
-    text = "{}のとくせいは\n{}:{}\n{}:{}\n{}:{}\n夢特性は{}"
-    result = text.format(arg,tokusei1,tokusei1info,tokusei2,tokusei2info,tokusei3,tokusei3info,yumetokusei)
+    text = "{}のとくせいは\n{}:{}\n{}:{}\n{}:{}"
+    result = text.format(arg,tokusei1,tokusei1info,tokusei2,tokusei2info,tokusei3,tokusei3info)
         
     await ctx.send(result)
     
