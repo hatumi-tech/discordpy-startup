@@ -177,7 +177,7 @@ async def tokusei(ctx,arg):
         
     tokusei1info = worksheet.cell(cell.row,2).value
     
-    if  tokusei2 in "*":
+    if "*" in tokusei2:
         tokusei2 = tokusei2[1:]
     else:
         pass
@@ -189,7 +189,7 @@ async def tokusei(ctx,arg):
         
     tokusei2info = worksheet.cell(cell.row,2).value
     
-    if  tokusei3 in "*":
+    if "*" in tokusei3:
         tokusei3 = tokusei3[1:]
     else:
         pass
