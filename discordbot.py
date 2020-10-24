@@ -37,8 +37,8 @@ gc = gspread.authorize(credentials)
 #共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
 SPREADSHEET_KEY = '1cRNckSIqC3N9R7M3auoC9Uq_SCBXssgv7FaCU-xwFuY'
 
-#共有設定したスプレッドシートを開く
-worksheet = gc.open_by_key(SPREADSHEET_KEY)
+#共有設定したワークブックを開く
+workbook = gc.open_by_key(SPREADSHEET_KEY)
 
 @bot.event
 async def on_command_error(ctx, error):
