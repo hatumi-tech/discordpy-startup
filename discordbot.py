@@ -203,7 +203,7 @@ async def tokusei(ctx,arg):
         
     tokusei3info = worksheet.cell(cell.row,2).value
     
-    if yumetokusei = "":
+    if yumetokusei == "":
        yumetokusei = "なし"
         
     yumetokusei = str(yumetokusei)
