@@ -66,13 +66,13 @@ async def on_message(message):
     if message.content == 'ちーちくの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n128"
     
-    # 「図鑑」で始まるか調べる
-    elif re.match('.+の図鑑$', message.content):
+    # 「種族値」で始まるか調べる
+    elif re.match('.+の種族値$', message.content):
       
          message_send = "```"
         
          worksheet = workbook.sheet1
-         m = message.content[0:len(message.content)-3]
+         m = message.content[0:len(message.content)-4]
     
          try:
              cell = worksheet.find(m)
