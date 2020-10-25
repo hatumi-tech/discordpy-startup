@@ -77,7 +77,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await ctx.send("いないポケモンだよ")
+             await message.channel.send("いないポケモンだよ")
              return
         
          hp1 = worksheet.cell(cell.row,3).value
@@ -171,7 +171,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await ctx.send("いないポケモンだよ")
+             await message.channel.send("いないポケモンだよ")
              return
         
          speed1 = worksheet.cell(cell.row,8).value
