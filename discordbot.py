@@ -175,9 +175,12 @@ async def on_message(message):
         
         yumetokusei = str(yumetokusei)
        
-        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei+  " \n"+ "ごきげんよう。……次があるかは分かりませんが"
+        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei"
         message_send = message_send + tokuseimessage
         message_send = message_send + "```"
+        chiyo = " \n"+ "ごきげんよう。……次があるかは分かりませんが"
+        
+        message_send = message_send + chiyo
        
     elif re.match('.+のすばやさ$', message.content):
       
@@ -200,9 +203,12 @@ async def on_message(message):
          saisoku1 = str(speed1MAX)
          saiti1 = str(speed1MIN)
     
-         text = "{}のすばやさは{}、最速実数値{}、最遅実数値{}。お嬢さまに感謝してください。"
+         text = "{}のすばやさは{}、最速実数値{}、最遅実数値{}"
          message_send = message_send + text.format(m,speed1,saisoku1,saiti1)
          message_send = message_send + "```"
+          
+         chiyo = " \n"+ "お嬢さまに感謝してください。"
+         message_send = message_send + chiyo
 
     await message.channel.send(message_send)
             
