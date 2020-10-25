@@ -160,7 +160,6 @@ async def ping(ctx):
     """ぴんぽん"""
     await ctx.send('pong')
 
-
 @bot.event
 async def on_message(message):
     # 送り主がBotだった場合反応したくないので
@@ -254,5 +253,6 @@ async def on_message(message):
        message_send = message_send + "```"
       
     await message.channel.send(message_send)
+    await bot.process_commands(message)
             
 bot.run(token)
