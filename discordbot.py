@@ -78,9 +78,69 @@ async def on_message(message):
         message_send = message_send + m + " \n"  + '  HP   攻撃   防御   特攻   特防   素早   合計\n'
         del row_list[0:2]
         row_list = str(row_list)
-        message_send = message_send + row_list
-        message_send = message_send + "```"
+        message_send = message_send + row_list + " \n" 
+        
+        worksheet = workbook.get_worksheet(2)
 
+        try:
+          cell = worksheet.find(m)
+        except gspread.exceptions.CellNotFound:
+          await ctx.send("ないとくせいだよ")
+          return
+        
+        yumetokusei = ""
+        
+        tokusei1 = worksheet.cell(cell.row,3).value
+        tokusei2 = worksheet.cell(cell.row,4).value
+        tokusei3 = worksheet.cell(cell.row,5).value
+    
+        tokusei1 = str(tokusei1)
+        tokusei2 = str(tokusei2)
+        tokusei3 = str(tokusei3)
+    
+        worksheet = workbook.get_worksheet(3)
+    
+        try:
+          cell = worksheet.find(tokusei1)
+        except gspread.exceptions.CellNotFound:
+          pass
+        
+        tokusei1info = worksheet.cell(cell.row,2).value
+    
+        if "*" in tokusei2:
+          tokusei2 = tokusei2[1:]
+          yumetokusei = tokusei2
+        else:
+          pass
+    
+        try:
+          cell = worksheet.find(tokusei2)
+        except gspread.exceptions.CellNotFound:
+          pass
+        
+        tokusei2info = worksheet.cell(cell.row,2).value
+    
+        if "*" in tokusei3:
+          tokusei3 = tokusei3[1:]
+          yumetokusei = tokusei3
+        else:
+          pass
+      
+        try:
+          cell = worksheet.find(tokusei3)
+        except gspread.exceptions.CellNotFound:
+          pass
+        
+        tokusei3info = worksheet.cell(cell.row,2).value
+    
+       if yumetokusei == "":
+          yumetokusei = "なし"
+        
+       yumetokusei = str(yumetokusei)
+       
+       tokuseimessage = "とくせいは" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
+       message_send = message_send + tokuseimessage
+       message_send = message_send + "```"
     await message.channel.send(message_send)
             
 @bot.command()
@@ -161,95 +221,6 @@ async def spc(ctx,arg1,arg2):
     await ctx.send(result)
     
 @bot.command()
-async def sp(ctx,arg):
-    """すばやさの種族値を表示します"""
-    worksheet = workbook.sheet1
-
-    try:
-        cell = worksheet.find(arg)
-    except gspread.exceptions.CellNotFound:
-           await ctx.send("いないポケモンだよ")
-           return
-        
-    speed1 = worksheet.cell(cell.row,8).value
-    
-    speed1 = int(speed1)
-    
-    speed1MAX = int((speed1+52)*1.1)
-    saisoku1 = str(speed1MAX)
-    
-    text = "{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg,speed1,saisoku1)
-        
-    await ctx.send(result)
-    
-@bot.command()
-async def tokusei(ctx,arg):
-    """ポケモンを指定するとそのとくせいを表示します"""
-    worksheet = workbook.get_worksheet(2)
-
-    try:
-        cell = worksheet.find(arg)
-    except gspread.exceptions.CellNotFound:
-           await ctx.send("ないとくせいだよ")
-           return
-        
-    yumetokusei = ""
-        
-    tokusei1 = worksheet.cell(cell.row,3).value
-    tokusei2 = worksheet.cell(cell.row,4).value
-    tokusei3 = worksheet.cell(cell.row,5).value
-    
-    tokusei1 = str(tokusei1)
-    tokusei2 = str(tokusei2)
-    tokusei3 = str(tokusei3)
-    
-    worksheet = workbook.get_worksheet(3)
-    
-    try:
-        cell = worksheet.find(tokusei1)
-    except gspread.exceptions.CellNotFound:
-           pass
-        
-    tokusei1info = worksheet.cell(cell.row,2).value
-    
-    if "*" in tokusei2:
-        tokusei2 = tokusei2[1:]
-        yumetokusei = tokusei2
-    else:
-        pass
-    
-    try:
-        cell = worksheet.find(tokusei2)
-    except gspread.exceptions.CellNotFound:
-           pass
-        
-    tokusei2info = worksheet.cell(cell.row,2).value
-    
-    if "*" in tokusei3:
-        tokusei3 = tokusei3[1:]
-        yumetokusei = tokusei3
-    else:
-        pass
-      
-    try:
-        cell = worksheet.find(tokusei3)
-    except gspread.exceptions.CellNotFound:
-           pass
-        
-    tokusei3info = worksheet.cell(cell.row,2).value
-    
-    if yumetokusei == "":
-       yumetokusei = "なし"
-        
-    yumetokusei = str(yumetokusei)
-    
-    text = "{}のとくせいは\n{}:{}\n{}:{}\n{}:{}\n夢特性は{}"
-    result = text.format(arg,tokusei1,tokusei1info,tokusei2,tokusei2info,tokusei3,tokusei3info,yumetokusei)
-        
-    await ctx.send(result)
-    
-@bot.command()
 async def waza(ctx,arg):
     """わざについて表示します"""
     worksheet = workbook.get_worksheet(1)
@@ -276,24 +247,7 @@ async def waza(ctx,arg):
     result = text.format(arg,wazatype,wazapower,wazaaccu,wazapp,wazaclass)
         
     await ctx.send(result)
-    
-@bot.command()
-async def olgacha(ctx):
-    """オーナーズリーグ2010のガチャ結果を返します"""
-    OLver = random.randint(1,4)
-    
-    if OLver == 1:
-        CARDno=random.randint(1,240)
-    elif OLver == 2:
-        CARDno=random.randint(1,144)
-    elif OLver == 3:
-        CARDno=random.randint(1,186)
-    elif OLver == 4:
-        CARDno=random.randint(1,144)
-                    
-    gachakekka=( 'OL0%d,%d' % (OLver,CARDno) )                
-    await ctx.send(gachakekka)
-    
+
 @bot.command()
 async def ping(ctx):
     """ぴんぽん"""
