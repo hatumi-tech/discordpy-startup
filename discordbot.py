@@ -63,6 +63,8 @@ async def on_message(message):
     # 「図鑑」で始まるか調べる
     elif re.match('.+の図鑑$', message.content):
       
+        message_send = "```"
+      
         worksheet = workbook.sheet1
         m = message.content[0:len(message.content)-3]
     
@@ -73,7 +75,6 @@ async def on_message(message):
         return
  
         # メッセージが送られてきたチャンネルへメッセージを送ります
-        message_send = "```"
         row_list = worksheet.row_values(cell.row)
         del row_list[0:2]
         row_list = str(row_list)
