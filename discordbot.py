@@ -58,7 +58,7 @@ async def on_message(message):
         return
     
     # 「図鑑」で始まるか調べる
-    if re.match('.+の図鑑$', message.content):
+    elif re.match('.+の図鑑$', message.content):
       
         worksheet = workbook.sheet1
         m = message.content[0:len(message.content)-3]
