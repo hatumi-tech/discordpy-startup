@@ -77,6 +77,7 @@ async def on_message(message):
         row_list = worksheet.row_values(cell.row)
         message_send = message_send + m + " \n"  + ' HP 攻撃 防御 特攻 特防 素早 合計\n'
         row_list = str(row_list)
+        del row_list[1:2]
         message_send = message_send + row_list
         message_send = message_send + "```"
 
