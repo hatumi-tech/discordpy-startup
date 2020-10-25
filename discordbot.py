@@ -59,6 +59,8 @@ async def on_message(message):
     
     # 「図鑑」で始まるか調べる
     if re.match('.+の図鑑$', message.content):
+      
+        await message.channel.send("ここまで")
          
         worksheet = workbook.sheet1
         m = message.content[0:len(message.content)-3]
