@@ -56,6 +56,9 @@ async def on_message(message):
     # 送り主がBotだった場合反応したくないので
     if message.author.bot:
         return
+      
+    if message.content == 'はつみの図鑑':
+        message_send = "このbotの作成者"
     
     # 「図鑑」で始まるか調べる
     elif re.match('.+の図鑑$', message.content):
