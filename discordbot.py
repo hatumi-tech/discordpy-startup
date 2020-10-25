@@ -252,7 +252,7 @@ async def on_message(message):
        message_send = message_send + tokuseimessage
        message_send = message_send + "```"
       
-    await message.channel.send(message_send)
+    message.channel.send(message_send)
     await bot.process_commands(message)
             
 bot.run(token)
