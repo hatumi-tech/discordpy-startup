@@ -133,14 +133,15 @@ async def on_message(message):
         
         tokusei3info = worksheet.cell(cell.row,2).value
     
-       if yumetokusei == "":
-          yumetokusei = "なし"
+        if yumetokusei == "":
+           yumetokusei = "なし"
         
-       yumetokusei = str(yumetokusei)
+        yumetokusei = str(yumetokusei)
        
-       tokuseimessage = "とくせいは" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
-       message_send = message_send + tokuseimessage
-       message_send = message_send + "```"
+        tokuseimessage = "とくせいは" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
+        message_send = message_send + tokuseimessage
+        message_send = message_send + "```"
+        
     await message.channel.send(message_send)
             
 @bot.command()
