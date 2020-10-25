@@ -60,27 +60,19 @@ async def on_message(message):
     # 「図鑑」で始まるか調べる
     if message.content == 'はつみの図鑑':
        get_url_info = requests.get('https://yakkun.com/swsh/zukan/n763')
-       message_send = "```"
-       message_send = message_send + (get_url_info.url)
-       message_send = message_send + "```"
+       message_send = (get_url_info.url)
         
     elif message.content == 'スピーカの図鑑':
          get_url_info = requests.get('https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC')
-         message_send = "```"
-         message_send = message_send + (get_url_info.url)
-         message_send = message_send + "```"
+         message_send = (get_url_info.url)
     
     elif message.content == 'ちーちくの図鑑':
          get_url_info = requests.get('https://yakkun.com/swsh/zukan/n128')
-         message_send = "```"
-         message_send = message_send + (get_url_info.url)
-         message_send = message_send + "```"
+         message_send = (get_url_info.url)
           
     elif message.content == 'こにしの図鑑':
          get_url_info = requests.get('https://yakkun.com/swsh/zukan/n701')
-         message_send = "```"
-         message_send = message_send + (get_url_info.url)
-         message_send = message_send + "```"
+         message_send = (get_url_info.url)
           
     elif re.match('.+の図鑑$', message.content):
          
