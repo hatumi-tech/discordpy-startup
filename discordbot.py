@@ -133,6 +133,8 @@ async def on_message(message):
     
         if yumetokusei == "":
             yumetokusei = "なし"
+        else:
+            pass
         
         yumetokusei = str(yumetokusei)
        
