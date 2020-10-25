@@ -175,7 +175,7 @@ async def on_message(message):
         
         yumetokusei = str(yumetokusei)
        
-        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei"
+        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
         message_send = message_send + tokuseimessage
         message_send = message_send + "```"
         chiyo = " \n"+ "ごきげんよう。……次があるかは分かりませんが"
