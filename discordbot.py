@@ -82,7 +82,7 @@ async def on_message(message):
          speed1 = worksheet.cell(cell.row,8).value
          all1 = worksheet.cell(cell.row,9).value
         
-         text = "{}の種族値はH{}A{}B{}C{}D{}S{}ALL{}"
+         text = "{}の種族値はH{}-A{}-B{}-C{}-D{}-S{}--ALL{}"
          message_send = message_send + text.format(m,hp1,atk1,def1,spatk1,spdef1,speed1,all1)
          message_send = message_send + "```"
     
