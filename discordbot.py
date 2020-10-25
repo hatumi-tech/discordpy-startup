@@ -61,18 +61,22 @@ async def on_message(message):
     if message.content == 'はつみの図鑑':
         get_url_info = requests.get('https://yakkun.com/swsh/zukan/n763')
         message_send = (get_url_info.url)
+        await message.channel.send(message_send)
         
     elif message.content == 'スピーカの図鑑':
          get_url_info = requests.get('https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC')
          message_send = (get_url_info.url)
+         await message.channel.send(message_send)
     
     elif message.content == 'ちーちくの図鑑':
          get_url_info = requests.get('https://yakkun.com/swsh/zukan/n128')
          message_send = (get_url_info.url)
+         await message.channel.send(message_send)
           
     elif message.content == 'こにしの図鑑':
          get_url_info = requests.get('https://yakkun.com/swsh/zukan/n701')
          message_send = (get_url_info.url)
+         await message.channel.send(message_send)
           
     elif re.match('.+の図鑑$', message.content):
          
@@ -155,6 +159,7 @@ async def on_message(message):
          tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
          message_send = message_send + tokuseimessage
          message_send = message_send + "```"
+         await message.channel.send(message_send)
       
     elif re.match('.+のすばやさ$', message.content):
       
@@ -178,7 +183,6 @@ async def on_message(message):
          text = "{}のすばやさは{}、最速実数値{}"
          message_send = message_send + text.format(m,speed1,saisoku1)
          message_send = message_send + "```"
-        
-    await message.channel.send(message_send)
+         await message.channel.send(message_send)
             
 bot.run(token)
