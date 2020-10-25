@@ -65,6 +65,24 @@ async def on_message(message):
         
     if message.content == 'ちーちくの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n128"
+        
+    elif re.match('.+の図鑑$', message.content):
+      
+         message_send = ""
+        
+         worksheet = workbook.sheet1
+         m = message.content[0:len(message.content)-3]
+    
+         try:
+             cell = worksheet.find(m)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("いないポケモンだよ")
+             return
+         
+         tetsuurl = "https://yakkun.com/swsh/zukan/"
+         id1 = worksheet.cell(cell.row,10).value
+         id1 = str(id1)
+         message_send = tetsuurl + id1
     
     # 「種族値」で始まるか調べる
     elif re.match('.+の種族値$', message.content):
