@@ -159,6 +159,7 @@ async def on_message(message):
          tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
          message_send = message_send + tokuseimessage
          message_send = message_send + "```"
+        
          await message.channel.send(message_send)
       
     elif re.match('.+のすばやさ$', message.content):
