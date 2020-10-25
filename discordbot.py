@@ -76,7 +76,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモンだよ")
+             await message.channel.send("いないポケモン。私に価値はありません。ここにあるのは無です")
              return
          
          tetsuurl = "https://yakkun.com/swsh/zukan/"
@@ -95,7 +95,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモンだよ")
+             await message.channel.send("いないポケモン。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
              return
         
          hp1 = worksheet.cell(cell.row,3).value
@@ -120,7 +120,7 @@ async def on_message(message):
         try:
             cell = worksheet.find(m)
         except gspread.exceptions.CellNotFound:
-            await message.channel.send("ないとくせいだよ")
+            await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
             return
           
         yumetokusei = ""
@@ -175,7 +175,7 @@ async def on_message(message):
         
         yumetokusei = str(yumetokusei)
        
-        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
+        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei+  " \n"+ "ごきげんよう。……次があるかは分かりませんが"
         message_send = message_send + tokuseimessage
         message_send = message_send + "```"
        
@@ -189,7 +189,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモンだよ")
+             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
         
          speed1 = worksheet.cell(cell.row,8).value
@@ -198,7 +198,7 @@ async def on_message(message):
     
          saisoku1 = str(speed1MAX)
     
-         text = "{}のすばやさは{}、最速実数値{}"
+         text = "{}のすばやさは{}、最速実数値{}。お嬢さまに感謝してください。"
          message_send = message_send + text.format(m,speed1,saisoku1)
          message_send = message_send + "```"
 
