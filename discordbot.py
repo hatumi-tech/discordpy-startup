@@ -48,6 +48,37 @@ async def on_command_error(ctx, error):
        orig_error = getattr(error, "original", error)
        error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
        await ctx.send(error_msg)
+        
+async def on_message(message):
+    # 送り主がBotだった場合反応したくないので
+    if message.author.bot:
+        return
+    
+    # 「図鑑」で始まるか調べる
+    if message.content == 'はつみの図鑑':
+       message_send = "このbotの作成者"
+
+    elif re.match('.+の図鑑$', message.content):
+         
+        worksheet = workbook.sheet1
+        m = message.content[0:len(message.content)-3]
+    
+        try:
+          cell = worksheet.find(m)
+        except gspread.exceptions.CellNotFound:
+          await ctx.send("いないポケモンだよ")
+          return
+ 
+        # メッセージが送られてきたチャンネルへメッセージを送ります
+        if m in cell:
+            message_send = message_send + "```"
+            
+            row_list = worksheet.row_values(cell,row)
+            message_send = message_send + m + " \n"  + ' HP 攻撃 防御 特攻 特防 素早 合計\n'
+            message_send = message_send + row_list
+            message_send = message_send + "```"
+
+    await message.channel.send(message_send)
             
 @bot.command()
 async def tae(ctx,arg1,arg2,arg3):
