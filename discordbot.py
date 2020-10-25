@@ -195,7 +195,7 @@ async def on_message(message):
          speed1 = worksheet.cell(cell.row,8).value
          speed1 = int(speed1)
          speed1MAX = int((speed1+52)*1.1)
-         speed1MIN = int((speed1+20)*0.9)
+         speed1MIN = int((speed1+5)*0.9)
     
          saisoku1 = str(speed1MAX)
          saiti1 = str(speed1MIN)
