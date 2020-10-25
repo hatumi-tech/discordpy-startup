@@ -58,7 +58,16 @@ async def on_message(message):
         return
       
     if message.content == 'はつみの図鑑':
-        message_send = "このbotの作成者"
+        message_send = "https://yakkun.com/swsh/zukan/n763"
+        
+    if message.content == 'スピーカの図鑑':
+        message_send = "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC"
+        
+    if message.content == 'こにしの図鑑':
+        message_send = "https://yakkun.com/swsh/zukan/n701"
+        
+    if message.content == 'ちーちくの図鑑':
+        message_send = "https://yakkun.com/swsh/zukan/n128"
     
     # 「図鑑」で始まるか調べる
     elif re.match('.+の図鑑$', message.content):
@@ -82,7 +91,7 @@ async def on_message(message):
          speed1 = worksheet.cell(cell.row,8).value
          all1 = worksheet.cell(cell.row,9).value
         
-         text = "{}の種族値はH{}-A{}-B{}-C{}-D{}-S{}--ALL{}"
+         text = "{}の種族値はH{}-A{}-B{}-C{}-D{}-S{}-ALL{}"
          message_send = message_send + text.format(m,hp1,atk1,def1,spatk1,spdef1,speed1,all1)
          message_send = message_send + "```"
     
