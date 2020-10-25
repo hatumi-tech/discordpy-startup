@@ -195,11 +195,13 @@ async def on_message(message):
          speed1 = worksheet.cell(cell.row,8).value
          speed1 = int(speed1)
          speed1MAX = int((speed1+52)*1.1)
+         speed1MIN = int((speed1)*0.9)
     
          saisoku1 = str(speed1MAX)
+         saiti1 = str(speed1MIN)
     
-         text = "{}のすばやさは{}、最速実数値{}。お嬢さまに感謝してください。"
-         message_send = message_send + text.format(m,speed1,saisoku1)
+         text = "{}のすばやさは{}、最速実数値{}、最遅実数値{}。お嬢さまに感謝してください。"
+         message_send = message_send + text.format(m,speed1,saisoku1,saiti1)
          message_send = message_send + "```"
 
     await message.channel.send(message_send)
