@@ -7,6 +7,7 @@ import gspread
 import json
 import sys
 import re
+import requests
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -49,116 +50,6 @@ async def on_command_error(ctx, error):
        orig_error = getattr(error, "original", error)
        error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
        await ctx.send(error_msg)
-        
-@bot.command()
-async def tae(ctx,arg1,arg2,arg3):
-    """耐えるかな？ツールです。AのポケモンがBにCの威力の技を打った時のダメージを計算します。"""
-    
-    worksheet = workbook.sheet1
-    
-    try:
-        cell = worksheet.find(arg1)
-    except gspread.exceptions.CellNotFound:
-            await ctx.send("いないポケモンだよ")
-            return
-    
-    atk2 = worksheet.cell(cell.row,4).value
-    spatk2 = worksheet.cell(cell.row,6).value
-    
-    try:
-        cell = worksheet.find(arg2)
-    except gspread.exceptions.CellNotFound:
-            await ctx.send("いないポケモンだよ")
-            return
-        
-    def1 = worksheet.cell(cell.row,5).value
-    spdef1 = worksheet.cell(cell.row,7).value
-    
-    def1 = int(def1)
-    spdef1 = int(spdef1)
-    atk2 = int(atk2)
-    spatk2 = int(spatk2)
-    arg3 = int(arg3)
-    waza = int(arg3/50)
-
-    butsuri = (22*(waza))*((atk2)/(def1))
-    butsuri = int((int(butsuri)+2)*1.5)
-    butsuri = str(butsuri)
-    tokushu = (22*(waza))*((spatk2)/(spdef1))
-    tokushu = int((int(tokushu)+2)*1.5)
-    tokushu = str(tokushu)
-    
-    text = "{}の威力{}の技が{}に与える物理ダメージはだいたい{}です。特殊ダメージはだいたい{}です。タイプ一致技は1.5倍してください。"
-    result = text.format(arg1,arg3,arg2,butsuri,tokushu)
-    
-    await ctx.send(result)
-
-@bot.command()
-async def spc(ctx,arg1,arg2):
-    """すばやさの種族値を比較します"""
-    worksheet = workbook.sheet1
-    
-    try:
-        cell = worksheet.find(arg1)
-    except gspread.exceptions.CellNotFound:
-           await ctx.send("いないポケモンだよ")
-           return
-        
-    speed1 = worksheet.cell(cell.row,8).value
-    
-    try:
-        cell = worksheet.find(arg2)
-    except gspread.exceptions.CellNotFound:
-           await ctx.send("いないポケモンだよ")
-           return
-        
-    speed2 = worksheet.cell(cell.row,8).value
-    
-    speed1 = int(speed1)
-    speed2 = int(speed2)
-    
-    speed1MAX = int((speed1+52)*1.1)
-    speed2MAX = int((speed2+52)*1.1)
-    saisoku1 = str(speed1MAX)
-    saisoku2 = str(speed2MAX)
-    
-    text = "{}のすばやさは{}、最速実数値{}\n{}のすばやさは{}、最速実数値{}"
-    result = text.format(arg1,speed1,saisoku1,arg2,speed2,saisoku2)
-        
-    await ctx.send(result)
-    
-@bot.command()
-async def waza(ctx,arg):
-    """わざについて表示します"""
-    worksheet = workbook.get_worksheet(1)
-
-    try:
-        cell = worksheet.find(arg)
-    except gspread.exceptions.CellNotFound:
-           await ctx.send("第８世代に存在しないわざだよ")
-           return
-        
-    wazatype = worksheet.cell(cell.row,2).value
-    wazapower = worksheet.cell(cell.row,3).value
-    wazaaccu = worksheet.cell(cell.row,4).value
-    wazapp = worksheet.cell(cell.row,5).value
-    wazaclass = worksheet.cell(cell.row,6).value
-    
-    wazatype = str(wazatype)
-    wazapower = str(wazapower)
-    wazaaccu = str(wazaaccu)
-    wazapp = str(wazapp)
-    wazaclass = str(wazaclass)
-    
-    text = "{}はタイプ：{}、いりょく{}、めいちゅう{}、PP{}の{}技。"
-    result = text.format(arg,wazatype,wazapower,wazaaccu,wazapp,wazaclass)
-        
-    await ctx.send(result)
-
-@bot.command()
-async def ping(ctx):
-    """ぴんぽん"""
-    await ctx.send('pong')
 
 @bot.event
 async def on_message(message):
@@ -168,8 +59,29 @@ async def on_message(message):
     
     # 「図鑑」で始まるか調べる
     if message.content == 'はつみの図鑑':
-       message_send = "このbotの作成者"
-
+       get_url_info = requests.get('https://yakkun.com/swsh/zukan/n763')
+       message_send = "```"
+       message_send = message_send + (get_url_info.url)
+       message_send = message_send + "```"
+        
+    elif message.content == 'スピーカの図鑑':
+         get_url_info = requests.get('https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC')
+         message_send = "```"
+         message_send = message_send + (get_url_info.url)
+         message_send = message_send + "```"
+    
+    elif message.content == 'ちーちくの図鑑':
+         get_url_info = requests.get('https://yakkun.com/swsh/zukan/n128')
+         message_send = "```"
+         message_send = message_send + (get_url_info.url)
+         message_send = message_send + "```"
+          
+    elif message.content == 'こにしの図鑑':
+         get_url_info = requests.get('https://yakkun.com/swsh/zukan/n701')
+         message_send = "```"
+         message_send = message_send + (get_url_info.url)
+         message_send = message_send + "```"
+          
     elif re.match('.+の図鑑$', message.content):
          
        worksheet = workbook.sheet1
@@ -252,7 +164,29 @@ async def on_message(message):
        message_send = message_send + tokuseimessage
        message_send = message_send + "```"
       
-    message.channel.send(message_send)
-    await bot.process_commands(message)
+    elif re.match('.+のすばやさ$', message.content):
+      
+       message_send = "```"
+        
+       worksheet = workbook.sheet1
+       m = message.content[0:len(message.content)-5]
+    
+       try:
+         cell = worksheet.find(m)
+       except gspread.exceptions.CellNotFound:
+         await ctx.send("いないポケモンだよ")
+         return
+        
+       speed1 = worksheet.cell(cell.row,8).value
+       speed1 = int(speed1)
+       speed1MAX = int((speed1+52)*1.1)
+    
+       saisoku1 = str(speed1MAX)
+    
+       text = "{}のすばやさは{}、最速実数値{}"
+       message_send = message_send + text.format(m,speed1,saisoku1)
+       message_send = message_send + "```"
+        
+    await message.channel.send(result)
             
 bot.run(token)
