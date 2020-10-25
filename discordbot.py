@@ -142,7 +142,7 @@ async def on_message(message):
         message_send = message_send + tokuseimessage
         message_send = message_send + "```"
         
-    await message.channel.send(message_send)
+await message.channel.send(message_send)
             
 @bot.command()
 async def tae(ctx,arg1,arg2,arg3):
