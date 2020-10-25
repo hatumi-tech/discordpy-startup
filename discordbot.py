@@ -85,6 +85,10 @@ async def on_message(message):
         except gspread.exceptions.CellNotFound:
             await message.channel.send("ないとくせいだよ")
             return
+          
+        
+        await message.channel.send("ここまで")
+    
         
         yumetokusei = ""
         
@@ -105,8 +109,6 @@ async def on_message(message):
         
         tokusei1info = worksheet.cell(cell.row,2).value
         
-        await message.channel.send("ここまで")
-    
         if "*" in tokusei2:
             tokusei2 = tokusei2[1:]
             yumetokusei = tokusei2
