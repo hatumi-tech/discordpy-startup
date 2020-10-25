@@ -71,12 +71,13 @@ async def on_message(message):
  
         # メッセージが送られてきたチャンネルへメッセージを送ります
         message_send = "```"
-            
         row_list = worksheet.row_values(cell.row)
         message_send = message_send + m + " \n"  + '  HP   攻撃   防御   特攻   特防   素早   合計\n'
         del row_list[0:2]
         row_list = str(row_list)
-        message_send = message_send + row_list 
+        message_send = message_send + row_list
+    
+        await message.channel.send(message_send)
         
     elif re.match('.+のとくせい$', message.content):
       
@@ -91,10 +92,6 @@ async def on_message(message):
             await message.channel.send("ないとくせいだよ")
             return
           
-        
-        await message.channel.send("ここまで")
-    
-        
         yumetokusei = ""
         
         tokusei1 = worksheet.cell(cell.row,3).value
