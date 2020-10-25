@@ -76,9 +76,14 @@ async def on_message(message):
         message_send = message_send + m + " \n"  + '  HP   攻撃   防御   特攻   特防   素早   合計\n'
         del row_list[0:2]
         row_list = str(row_list)
-        message_send = message_send + row_list + " \n" 
+        message_send = message_send + row_list 
         
+    elif re.match('.+のとくせい$', message.content):
+      
+        message_send = "```"
+      
         worksheet = workbook.get_worksheet(2)
+        m = message.content[0:len(message.content)-5]
 
         try:
             cell = worksheet.find(m)
@@ -145,9 +150,7 @@ async def on_message(message):
         tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
         message_send = message_send + tokuseimessage
         message_send = message_send + "```"
-        
-        await message.channel.send(message_send)
-         
+       
     elif re.match('.+のすばやさ$', message.content):
       
          message_send = "```"
@@ -171,6 +174,6 @@ async def on_message(message):
          message_send = message_send + text.format(m,speed1,saisoku1)
          message_send = message_send + "```"
 
-         await message.channel.send(message_send)
+    await message.channel.send(message_send)
             
 bot.run(token)
