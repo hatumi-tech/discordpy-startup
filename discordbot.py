@@ -62,87 +62,87 @@ async def on_message(message):
 
     elif re.match('.+の図鑑$', message.content):
          
-        worksheet = workbook.sheet1
-        m = message.content[0:len(message.content)-3]
+       worksheet = workbook.sheet1
+       m = message.content[0:len(message.content)-3]
     
-        try:
-          cell = worksheet.find(m)
-        except gspread.exceptions.CellNotFound:
-          await ctx.send("いないポケモンだよ")
-          return
+       try:
+         cell = worksheet.find(m)
+       except gspread.exceptions.CellNotFound:
+         await ctx.send("いないポケモンだよ")
+         return
  
         # メッセージが送られてきたチャンネルへメッセージを送ります
-        message_send = "```"
+       message_send = "```"
             
-        row_list = worksheet.row_values(cell.row)
-        message_send = message_send + m + " \n"  + '  HP   攻撃   防御   特攻   特防   素早   合計\n'
-        del row_list[0:2]
-        row_list = str(row_list)
-        message_send = message_send + row_list + " \n" 
+       row_list = worksheet.row_values(cell.row)
+       message_send = message_send + m + " \n"  + '  HP   攻撃   防御   特攻   特防   素早   合計\n'
+       del row_list[0:2]
+       row_list = str(row_list)
+       message_send = message_send + row_list + " \n" 
         
-        worksheet = workbook.get_worksheet(2)
+       worksheet = workbook.get_worksheet(2)
 
-        try:
-          cell = worksheet.find(m)
-        except gspread.exceptions.CellNotFound:
-          await ctx.send("ないとくせいだよ")
-          return
+       try:
+         cell = worksheet.find(m)
+       except gspread.exceptions.CellNotFound:
+         await message.channel.send("ないとくせいだよ")
+         return
         
-        yumetokusei = ""
+       yumetokusei = ""
         
-        tokusei1 = worksheet.cell(cell.row,3).value
-        tokusei2 = worksheet.cell(cell.row,4).value
-        tokusei3 = worksheet.cell(cell.row,5).value
+       tokusei1 = worksheet.cell(cell.row,3).value
+       tokusei2 = worksheet.cell(cell.row,4).value
+       tokusei3 = worksheet.cell(cell.row,5).value
     
-        tokusei1 = str(tokusei1)
-        tokusei2 = str(tokusei2)
-        tokusei3 = str(tokusei3)
+       tokusei1 = str(tokusei1)
+       tokusei2 = str(tokusei2)
+       tokusei3 = str(tokusei3)
     
-        worksheet = workbook.get_worksheet(3)
+       worksheet = workbook.get_worksheet(3)
     
-        try:
-          cell = worksheet.find(tokusei1)
-        except gspread.exceptions.CellNotFound:
-          pass
+       try:
+         cell = worksheet.find(tokusei1)
+       except gspread.exceptions.CellNotFound:
+         pass
         
-        tokusei1info = worksheet.cell(cell.row,2).value
+       tokusei1info = worksheet.cell(cell.row,2).value
     
-        if "*" in tokusei2:
-          tokusei2 = tokusei2[1:]
-          yumetokusei = tokusei2
-        else:
-          pass
+       if "*" in tokusei2:
+         tokusei2 = tokusei2[1:]
+         yumetokusei = tokusei2
+       else:
+         pass
     
-        try:
-          cell = worksheet.find(tokusei2)
-        except gspread.exceptions.CellNotFound:
-          pass
+       try:
+         cell = worksheet.find(tokusei2)
+       except gspread.exceptions.CellNotFound:
+         pass
         
-        tokusei2info = worksheet.cell(cell.row,2).value
+       tokusei2info = worksheet.cell(cell.row,2).value
     
-        if "*" in tokusei3:
-          tokusei3 = tokusei3[1:]
-          yumetokusei = tokusei3
-        else:
-          pass
+       if "*" in tokusei3:
+         tokusei3 = tokusei3[1:]
+         yumetokusei = tokusei3
+       else:
+         pass
       
-        try:
-          cell = worksheet.find(tokusei3)
-        except gspread.exceptions.CellNotFound:
-          pass
+       try:
+         cell = worksheet.find(tokusei3)
+       except gspread.exceptions.CellNotFound:
+         pass
         
-        tokusei3info = worksheet.cell(cell.row,2).value
+       tokusei3info = worksheet.cell(cell.row,2).value
     
-        if yumetokusei == "":
-           yumetokusei = "なし"
+       if yumetokusei == "":
+          yumetokusei = "なし"
         
-        yumetokusei = str(yumetokusei)
+       yumetokusei = str(yumetokusei)
        
-        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
-        message_send = message_send + tokuseimessage
-        message_send = message_send + "```"
-        
-await message.channel.send(message_send)
+       tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
+       message_send = message_send + tokuseimessage
+       message_send = message_send + "```"
+      
+    await message.channel.send(message_send)
             
 @bot.command()
 async def tae(ctx,arg1,arg2,arg3):
