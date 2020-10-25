@@ -6,6 +6,7 @@ import random
 import gspread
 import json
 import sys
+import re
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
