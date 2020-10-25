@@ -60,8 +60,6 @@ async def on_message(message):
     # 「図鑑」で始まるか調べる
     if re.match('.+の図鑑$', message.content):
       
-        await message.channel.send("ここまで")
-         
         worksheet = workbook.sheet1
         m = message.content[0:len(message.content)-3]
     
@@ -106,6 +104,8 @@ async def on_message(message):
             pass
         
         tokusei1info = worksheet.cell(cell.row,2).value
+        
+        await message.channel.send("ここまで")
     
         if "*" in tokusei2:
             tokusei2 = tokusei2[1:]
