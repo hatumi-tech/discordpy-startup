@@ -63,24 +63,28 @@ async def on_message(message):
     # 「図鑑」で始まるか調べる
     elif re.match('.+の図鑑$', message.content):
       
-        message_send = "```"
-      
-        worksheet = workbook.sheet1
-        m = message.content[0:len(message.content)-3]
+         message_send = "```"
+        
+         worksheet = workbook.sheet1
+         m = message.content[0:len(message.content)-3]
     
-        try:
-            cell = worksheet.find(m)
-        except gspread.exceptions.CellNotFound:
-            await message.channel.send("いないポケモンだよ")
-        return
- 
-        # メッセージが送られてきたチャンネルへメッセージを送ります
-        row_list = worksheet.row_values(cell.row)
-        del row_list[0:2]
-        row_list = str(row_list)
-        message_send = message_send + m + " \n"  + '  HP   攻撃   防御   特攻   特防   素早   合計\n'
-        message_send = message_send + row_list
-        message_send = message_send + "```"
+         try:
+             cell = worksheet.find(m)
+         except gspread.exceptions.CellNotFound:
+             await ctx.send("いないポケモンだよ")
+             return
+        
+         hp1 = worksheet.cell(cell.row,3).value
+         atk1 = worksheet.cell(cell.row,4).value
+         def1 = worksheet.cell(cell.row,5).value
+         spatk1 = worksheet.cell(cell.row,6).value
+         spdef1 = worksheet.cell(cell.row,7).value
+         speed1 = worksheet.cell(cell.row,8).value
+         all1 = worksheet.cell(cell.row,9).value
+        
+         text = "{}の種族値はH{}A{}B{}C{}D{}S{}ALL{}"
+         message_send = message_send + text.format(m,hp1,atk1,def1,spatk1,spdef1,speed1,all1)
+         message_send = message_send + "```"
     
     elif re.match('.+のとくせい$', message.content):
       
