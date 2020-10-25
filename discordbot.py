@@ -51,14 +51,17 @@ async def on_message(message):
     if message.content == 'はつみの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n763"
         await message.channel.send(message_send)
+        return
         
     if message.content == 'スピーカの図鑑':
         message_send = "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC"
         await message.channel.send(message_send)
+        return
         
     if message.content == 'こにしの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n701"
         await message.channel.send(message_send)
+        return
         
     if message.content == 'ちーちくの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n128"
