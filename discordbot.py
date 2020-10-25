@@ -68,7 +68,7 @@ async def on_message(message):
        try:
          cell = worksheet.find(m)
        except gspread.exceptions.CellNotFound:
-         await ctx.send("いないポケモンだよ")
+         await message.channel.send("いないポケモンだよ")
          return
  
         # メッセージが送られてきたチャンネルへメッセージを送ります
