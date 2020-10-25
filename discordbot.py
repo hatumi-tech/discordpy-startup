@@ -156,7 +156,7 @@ async def on_message(message):
          message_send = message_send + tokuseimessage
          message_send = message_send + "```"
         
-    await message.channel.send(message_send)
+         await message.channel.send(message_send)
          
     elif re.match('.+のすばやさ$', message.content):
       
@@ -181,6 +181,6 @@ async def on_message(message):
          message_send = message_send + text.format(m,speed1,saisoku1)
          message_send = message_send + "```"
 
-    await message.channel.send(message_send)
+         await message.channel.send(message_send)
             
 bot.run(token)
