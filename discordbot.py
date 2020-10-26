@@ -8,6 +8,7 @@ import json
 import sys
 import re
 import requests
+import discord
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
