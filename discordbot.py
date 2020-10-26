@@ -584,11 +584,11 @@ async def on_message(message):
          steel = float(steel)
          fairy = float(fairy)
                     
-         text = "{}のダメージ倍率"+" \n"+"ノーマル:{}倍、ほのお:{}倍、でんき:{}倍、くさ:{}倍"+" \n"+"こおり:{}倍、かくとう:{}倍、どく:{}倍、じめん:{}倍"+" \n"
-         text2 = "ひこう:{}倍、エスパー:{}倍、むし:{}倍、いわ:{}倍"+" \n"+"ゴースト:{}倍、ドラゴン:{}倍、あく:{}倍、はがね:{}倍"+" \n"+"フェアリー:{}倍"                
+         text = "{}のダメージ倍率"+" \n"+"ノーマル:{}倍、ほのお:{}倍、みず:{}倍、でんき:{}倍"+" \n"+"くさ:{}倍、こおり:{}倍、かくとう:{}倍、どく:{}倍"+" \n"
+         text2 = "じめん:{}倍、ひこう:{}倍、エスパー:{}倍、むし:{}倍"+" \n"+"いわ:{}倍""ゴースト:{}倍、ドラゴン:{}倍、あく:{}倍"+" \n"+"はがね:{}倍""フェアリー:{}倍"                
          
-         message_send = message_send + text.format(m,normal,fire,electric,grass,ice,fighting,poison,ground)
-         message_send = message_send + text2.format(flying,psychic,bug,rock,ghost,dragon,dark,steel,fairy)
+         message_send = message_send + text.format(m,normal,fire,,water,electric,grass,ice,fighting,poison)
+         message_send = message_send + text2.format(ground,flying,psychic,bug,rock,ghost,dragon,dark,steel,fairy)
          message_send = message_send + "```"
           
          chiyo = " \n"+ "お嬢さまに感謝してください。"
