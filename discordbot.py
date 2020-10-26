@@ -564,6 +564,25 @@ async def on_message(message):
               
          else:
           pass
+        
+         normal = int(normal)
+         fire = int(fire)
+         water = int(water)
+         grass = int(grass)
+         electric = int(electric)
+         ice = int(ice)
+         fighting = int(fighting)
+         poison = int(poison)
+         ground = int(ground)
+         flying = int(flying)
+         psychic = int(psychic)
+         bug = int(bug)
+         rock = int(rock)
+         ghost = int(ghost)
+         dragon = int(dragon)
+         dark = int(dark)
+         steel = int(steel)
+         fairy = int(fairy)
                     
          text = "{}のダメージ倍率"+" \n"+"ノーマル:{}倍、ほのお:{}倍、でんき:{}倍、くさ:{}倍"+" \n"+"こおり:{}倍、かくとう:{}倍、どく:{}倍、じめん:{}倍"+" \n"
          text2 = "ひこう:{}倍、エスパー:{}倍、むし:{}倍、いわ:{}倍"+" \n"+"ゴースト:{}倍、ドラゴン:{}倍、あく:{}倍、はがね:{}倍、フェアリー:{}倍"                
