@@ -559,12 +559,11 @@ async def on_message(message):
              dark = dark*0.5
              dragon = dragon*0
                     
-         print(normal,fire,water,grass)
-         print(electric,ice,fighting,poison)
-         print(ground,flying,psychic,bug)
-         print(rock,ghost,dragon,dark,steel,fairy)
-                
-         
+       print(normal,fire,water,grass)
+       print(electric,ice,fighting,poison)
+       print(ground,flying,psychic,bug)
+       print(rock,ghost,dragon,dark,steel,fairy)
+                  
     await message.channel.send(message_send)
             
 bot.run(token)
