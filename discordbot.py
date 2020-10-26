@@ -75,7 +75,7 @@ async def on_message(message):
         embed.add_field(name="（ポケモン名）のすばやさ", value="すばやさ、最速実数値、最遅実数値を表示します。",inline=False)
         embed.add_field(name="（ポケモン名）のとくせい", value="とくせいを表示します。夢特性もわかります。",inline=False)
         embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
-        await channel.send(embed=embed)
+        await message.channel.send(embed=embed)
         return
         
     elif re.match('.+の図鑑$', message.content):
