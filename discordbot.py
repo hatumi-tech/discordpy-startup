@@ -402,6 +402,9 @@ async def on_message(message):
              bug = bug*0.5
              dark = dark*0.5
              dragon = dragon*0
+              
+         else:
+          pass
              
          if type2 == "ノーマル":
              fighting = fighting*2
@@ -558,11 +561,16 @@ async def on_message(message):
              bug = bug*0.5
              dark = dark*0.5
              dragon = dragon*0
+              
+         else:
+          pass
                     
-       print(normal,fire,water,grass)
-       print(electric,ice,fighting,poison)
-       print(ground,flying,psychic,bug)
-       print(rock,ghost,dragon,dark,steel,fairy)
+         text = "{}のダメージ倍率はnormal{}"
+         message_send = message_send + text.format(m,normal)
+         message_send = message_send + "```"
+          
+         chiyo = " \n"+ "お嬢さまに感謝してください。"
+         message_send = message_send + chiyo
                   
     await message.channel.send(message_send)
             
