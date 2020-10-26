@@ -66,6 +66,9 @@ async def on_message(message):
     if message.content == 'ちーちくの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n128"
         
+    if message.content == '教えてチヨチャン':
+        help_syoukan(ctx.message.channel)
+        
     elif re.match('.+の図鑑$', message.content):
       
          message_send = ""
@@ -593,7 +596,45 @@ async def on_message(message):
           
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
+          
+    elif re.match('.+のすばやさ$', message.content):
+      
+         message_send = "```"
+        
+         worksheet = workbook.sheet1
+         m = message.content[0:len(message.content)-5]
+    
+         try:
+             cell = worksheet.find(m)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             return
+        
+         speed1 = worksheet.cell(cell.row,8).value
+         speed1 = int(speed1)
+         speed1MAX = int((speed1+52)*1.1)
+         speed1MIN = int((speed1+5)*0.9)
+    
+         saisoku1 = str(speed1MAX)
+         saiti1 = str(speed1MIN)
+    
+         text = "{}のすばやさは{}、最速実数値{}、最遅実数値{}"
+         message_send = message_send + text.format(m,speed1,saisoku1,saiti1)
+         message_send = message_send + "```"
+          
+         chiyo = " \n"+ "お嬢さまに感謝してください。"
+         message_send = message_send + chiyo
                   
     await message.channel.send(message_send)
-            
+    
+async def help_syoukan(channel):
+    embed = discord.Embed(title="チヨチャンのヘルプ", description="コマンドリストです。",color=0xff0000)
+    embed.add_field(name="教えてチヨチャン", value="このヘルプを表示します。",inline=False)
+    embed.add_field(name="（ポケモン名）の図鑑", value="ポケモン徹底攻略へのリンクを表示します。",inline=False)
+    embed.add_field(name="（ポケモン名）の種族値", value="種族値を表示します。",inline=False)
+    embed.add_field(name="（ポケモン名）のすばやさ", value="すばやさ、最速実数値、最遅実数値を表示します。",inline=False)
+    embed.add_field(name="（ポケモン名）のとくせい", value="とくせいを表示します。夢特性もわかります。",inline=False)
+    embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
+    await channel.send(embed=embed)
+
 bot.run(token)
