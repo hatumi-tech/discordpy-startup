@@ -247,11 +247,11 @@ async def on_message(message):
          steel = 1
          fairy = 1
                 
-         if type1 = "ノーマル"
+         if type1 == "ノーマル":
              fighting = fighting*2
              ghost = ghost*0
                     
-         elif type1 = "ほのお"
+         elif type1 == "ほのお":
              water = water*2
              ground = ground*2
              rock = rock*2
@@ -262,7 +262,7 @@ async def on_message(message):
              steel = steel*0.5
              fairy = fairy*0.5
                     
-         elif type1 = "みず"
+         elif type1 == "みず":
              electric = electric*2
              grass = grass*2
              fire = fire*0.5
@@ -270,13 +270,13 @@ async def on_message(message):
              ice = ice*0.5
              steel = steel*0.5
                     
-         elif type1 = "でんき"
+         elif type1 == "でんき":
              ground = ground*2
              electric = electric*0.5
              flying = flying*0.5
              steel = steel*0.5
                     
-         elif type1 = "くさ"
+         elif type1 == "くさ":
              fire = fire*2
              ice = ice*2
              poison = poison*2
@@ -287,14 +287,14 @@ async def on_message(message):
              grass = grass*0.5
              ground = ground*0.5
                     
-         elif type1 = "こおり"
+         elif type1 == "こおり":
              fire = fire*2
              fighting = fighting*2
              rock = rock*2
              steel = steel*2
              ice = ice*0.5
                     
-         elif type1 = "かくとう"
+         elif type1 == "かくとう":
              flying = flying*2
              psychic = psychic*2
              fairy = fairy*2
@@ -302,7 +302,7 @@ async def on_message(message):
              rock = rock*0.5
              dark = dark*0.5
                     
-         elif type1 = "どく"
+         elif type1 == "どく":
              ground = ground*2
              psychic = psychic*2
              grass = grass*0.5
@@ -311,7 +311,7 @@ async def on_message(message):
              bug = bug*0.5
              fairy = fairy*0.5
                     
-         elif type1 = "じめん"
+         elif type1 == "じめん":
              water = water*2
              grass = grass*2
              ice = ice*2
@@ -319,7 +319,7 @@ async def on_message(message):
              rock = rock*0.5
              electric = electric*0
                     
-         elif type1 = "ひこう"
+         elif type1 == "ひこう":
              electric = electric*2
              ice = ice*2
              rock = rock*2
@@ -328,14 +328,14 @@ async def on_message(message):
              bug = bug*0.5
              ground = ground*0
                     
-         elif type1 = "エスパー"
+         elif type1 == "エスパー":
              bug = bug*2
              ghost = ghost*2
              dark = dark*2
              fighting = fighting*0.5
              psychic = psychic*0.5
                     
-         elif type1 = "むし"
+         elif type1 == "むし":
              fire = fire*2
              flying = flying*2
              rock = rock*2
@@ -343,7 +343,7 @@ async def on_message(message):
              fighting = fighting*0.5
              ground = ground*0.5
                     
-         elif type1 = "いわ"
+         elif type1 == "いわ":
              water = water*2
              grass = grass*2
              fighting = fighting*2
@@ -354,7 +354,7 @@ async def on_message(message):
              poison = poison*0.5
              flying = flying*0.5
                     
-         elif type1 = "ゴースト"
+         elif type1 == "ゴースト":
              ghost = ghost*2
              dark = dark*2
              poison = poison*0.5
@@ -362,7 +362,7 @@ async def on_message(message):
              normal = normal*0
              fighting = fighting*0
                     
-         elif type1 = "ドラゴン"
+         elif type1 == "ドラゴン":
              ice = ice*2
              dragon = dragon*2
              fairy = fairy*2
@@ -371,7 +371,7 @@ async def on_message(message):
              electric = electric*0.5
              grass = grass*0.5
                     
-         elif type1 = "あく"
+         elif type1 == "あく":
              fighting = fighting*2
              bug = bug*2
              fairy = fairy*2
@@ -379,7 +379,7 @@ async def on_message(message):
              dark = dark*0.5
              psychic = psychic*0
                     
-         elif type1 = "はがね"
+         elif type1 == "はがね":
              fire = fire*2
              fighting = fighting*2
              ground = ground*2
@@ -395,7 +395,7 @@ async def on_message(message):
              fairy = fairy*0.5
              poison = poison*0
                     
-         elif type1 = "フェアリー"
+         elif type1 == "フェアリー":
              poison = poison*2
              steel = steel*2
              fighting = fighting*0.5
@@ -403,11 +403,11 @@ async def on_message(message):
              dark = dark*0.5
              dragon = dragon*0
              
-         if type2 = "ノーマル"
+         if type2 == "ノーマル":
              fighting = fighting*2
              ghost = ghost*0
                     
-         elif type2 = "ほのお"
+         elif type2 == "ほのお":
              water = water*2
              ground = ground*2
              rock = rock*2
@@ -418,7 +418,7 @@ async def on_message(message):
              steel = steel*0.5
              fairy = fairy*0.5
                     
-         elif type2 = "みず"
+         elif type2 == "みず":
              electric = electric*2
              grass = grass*2
              fire = fire*0.5
@@ -426,13 +426,13 @@ async def on_message(message):
              ice = ice*0.5
              steel = steel*0.5
                     
-         elif type2 = "でんき"
+         elif type2 == "でんき":
              ground = ground*2
              electric = electric*0.5
              flying = flying*0.5
              steel = steel*0.5
                     
-         elif type2 = "くさ"
+         elif type2 == "くさ":
              fire = fire*2
              ice = ice*2
              poison = poison*2
@@ -443,14 +443,14 @@ async def on_message(message):
              grass = grass*0.5
              ground = ground*0.5
                     
-         elif type2 = "こおり"
+         elif type2 == "こおり":
              fire = fire*2
              fighting = fighting*2
              rock = rock*2
              steel = steel*2
              ice = ice*0.5
                     
-         elif type2 = "かくとう"
+         elif type2 == "かくとう":
              flying = flying*2
              psychic = psychic*2
              fairy = fairy*2
@@ -458,7 +458,7 @@ async def on_message(message):
              rock = rock*0.5
              dark = dark*0.5
                     
-         elif type2 = "どく"
+         elif type2 == "どく":
              ground = ground*2
              psychic = psychic*2
              grass = grass*0.5
@@ -467,7 +467,7 @@ async def on_message(message):
              bug = bug*0.5
              fairy = fairy*0.5
                     
-         elif type2 = "じめん"
+         elif type2 == "じめん":
              water = water*2
              grass = grass*2
              ice = ice*2
@@ -475,7 +475,7 @@ async def on_message(message):
              rock = rock*0.5
              electric = electric*0
                     
-         elif type2 = "ひこう"
+         elif type2 == "ひこう":
              electric = electric*2
              ice = ice*2
              rock = rock*2
@@ -484,14 +484,14 @@ async def on_message(message):
              bug = bug*0.5
              ground = ground*0
                     
-         elif type2 = "エスパー"
+         elif type2 == "エスパー":
              bug = bug*2
              ghost = ghost*2
              dark = dark*2
              fighting = fighting*0.5
              psychic = psychic*0.5
                     
-         elif type2 = "むし"
+         elif type2 == "むし":
              fire = fire*2
              flying = flying*2
              rock = rock*2
@@ -499,7 +499,7 @@ async def on_message(message):
              fighting = fighting*0.5
              ground = ground*0.5
                     
-         elif type2 = "いわ"
+         elif type2 == "いわ":
              water = water*2
              grass = grass*2
              fighting = fighting*2
@@ -510,7 +510,7 @@ async def on_message(message):
              poison = poison*0.5
              flying = flying*0.5
                     
-         elif type2 = "ゴースト"
+         elif type2 == "ゴースト":
              ghost = ghost*2
              dark = dark*2
              poison = poison*0.5
@@ -518,7 +518,7 @@ async def on_message(message):
              normal = normal*0
              fighting = fighting*0
                     
-         elif type2 = "ドラゴン"
+         elif type2 == "ドラゴン":
              ice = ice*2
              dragon = dragon*2
              fairy = fairy*2
@@ -527,7 +527,7 @@ async def on_message(message):
              electric = electric*0.5
              grass = grass*0.5
                     
-         elif type2 = "あく"
+         elif type2 == "あく":
              fighting = fighting*2
              bug = bug*2
              fairy = fairy*2
@@ -535,7 +535,7 @@ async def on_message(message):
              dark = dark*0.5
              psychic = psychic*0
                     
-         elif type2 = "はがね"
+         elif type2 == "はがね":
              fire = fire*2
              fighting = fighting*2
              ground = ground*2
@@ -551,7 +551,7 @@ async def on_message(message):
              fairy = fairy*0.5
              poison = poison*0
                     
-         elif type2 = "フェアリー"
+         elif type2 == "フェアリー":
              poison = poison*2
              steel = steel*2
              fighting = fighting*0.5
