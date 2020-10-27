@@ -564,6 +564,7 @@ async def on_message(message):
          
          await message.channel.send("調整先のポケモンを送信してください。")
          m2 = await client.wait_for('message', check=None)
+         m2 = str(m2)
          
          if m2 == "":
              await message.channel.send("何をしようとしているのですか。その行為に意味はありますか")
