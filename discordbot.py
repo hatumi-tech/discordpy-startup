@@ -167,7 +167,7 @@ async def on_message(message):
        
          tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
          
-         text = "{}はタイプ{}、{}/nH{}-A{}-B{}-C{}-D{}-S{}-ALL{}/n"
+         text = "{}はタイプ{}、{}" +  " \n" + "H{}-A{}-B{}-C{}-D{}-S{}-ALL{}" +  " \n"
          
          message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tokuseimessage + " \n"  + tetsuurl + id1
         
