@@ -603,9 +603,9 @@ async def on_message(message):
                  break
                   
          if nukeru == 0:
-             text1 = (f"{m}のすばやさが最速の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
+             text1 = (f"最速{m}のすばやさが最速の{m2}を抜くのは、\n努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text1 = (f"{m}のすばやさは最速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最速{m2}の実数値は{speed2MAX}です。")
+             text1 = (f"最速{m}のすばやさは最速の{m2}を抜くことができません。\n最速{m}の実数値は{speed1MAX}、最速{m2}の実数値は{speed2MAX}です。")
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
@@ -620,9 +620,9 @@ async def on_message(message):
                  break
                   
          if nukeru == 0:
-             text2 = (f"{m}のすばやさが準速の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
+             text2 = (f"最速{m}のすばやさが準速の{m2}を抜くのは、\n努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text2 = (f"{m}のすばやさは準速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、準速{m2}の実数値は{speed2JUN}です。")
+             text2 = (f"最速{m}のすばやさは準速の{m2}を抜くことができません。\n最速{m}の実数値は{speed1MAX}、準速{m2}の実数値は{speed2JUN}です。")
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
@@ -637,9 +637,9 @@ async def on_message(message):
                  break
                   
          if nukeru == 0:
-             text3 = (f"{m}のすばやさが最遅の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
+             text3 = (f"最速{m}のすばやさが最遅の{m2}を抜くのは、\n努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text3 = (f"{m}のすばやさは最遅の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最遅{m2}の実数値は{speed2saiti}です。")
+             text3 = (f"最速{m}のすばやさは最遅の{m2}を抜くことができません。\n最速{m}の実数値は{speed1MAX}、最遅{m2}の実数値は{speed2saiti}です。")
                    
          message_send = text1 + " \n" + text2 + " \n" + text3 
             
