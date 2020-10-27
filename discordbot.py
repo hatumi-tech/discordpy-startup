@@ -77,8 +77,10 @@ async def on_message(message):
         
     if message.content == 'ちーちくの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n128"
+        await message.channel.send(message_send)
+        return
      
-    elif re.match('.+の図鑑$', message.content):
+    if re.match('.+の図鑑$', message.content):
       
          message_send = "```"
         
@@ -712,5 +714,8 @@ async def on_message(message):
          message_send = message_send + chiyo
                   
     await message.channel.send(message_send)
+    
+    else:
+      pass
     
 bot.run(token)
