@@ -545,8 +545,6 @@ async def on_message(message):
         
     if message.content.endswith('のすばやさ調整'):
       
-         message_send = "```"
-        
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-7]
         
@@ -563,7 +561,13 @@ async def on_message(message):
          speed1base = int(speed1base)
          
          await message.channel.send("調整先のポケモンを送信してください。")
-         m2 = await client.wait_for('message', check=None)
+        
+         try:
+             m2 = await client.wait_for('message', timeout=60.0,check=None)
+         except asyncio.TimeoutError:
+             await message.channel.send("時間内にお答えいただきたかったですね。")
+             return
+              
          m2 = m2.content
     
          if m2 == "":
@@ -575,6 +579,7 @@ async def on_message(message):
          except gspread.exceptions.CellNotFound:
              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
+            
          
          speed2base = worksheet.cell(cell.row,8).value
          speed2base = int(speed2base)
@@ -599,10 +604,8 @@ async def on_message(message):
                   
          if nukeru == 0:
              text1 = (f"{m}のすばやさが最速の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
-             message_send = message_send + text1
          else:
              text1 = (f"{m}のすばやさは最速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最速{m2}の実数値は{speed2MAX}です。")
-             message_send = message_send + text1
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
@@ -617,11 +620,9 @@ async def on_message(message):
                  break
                   
          if nukeru == 0:
-             text2 = "{}のすばやさが準速の{}を抜くのは、努力値を{}振った時です。実数値は{}"
-             message_send = message_send + text2.format(m,m2,speedeffort,speed1)
+             text2 = (f"{m}のすばやさが準速の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text2 = "{}のすばやさは準速の{}を抜くことができません。最速{}の実数値は{}、準速{}の実数値は{}です。"
-             message_send = message_send + text2.format(m,m2,m,speed1MAX,m2,speed2JUN)
+             text2 = (f"{m}のすばやさは準速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、準速{m2}の実数値は{speed1JUN}です。")
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
@@ -636,13 +637,12 @@ async def on_message(message):
                  break
                   
          if nukeru == 0:
-             text3 = "{}のすばやさが最遅の{}を抜くのは、努力値を{}振った時です。実数値は{}"
-             message_send = message_send + text3.format(m,m2,speedeffort,speed1)
+             text3 = (f"{m}のすばやさが最遅の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text3 = "{}のすばやさは最遅の{}を抜くことができません。最速{}の実数値は{}、最遅{}の実数値は{}です。"
-             message_send = message_send + text3.format(m,m2,m,speed1MAX,m2,speed2saiti)
+             text3 = (f"{m}のすばやさは最遅の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最遅{m2}の実数値は{speed2saiti}です。"
          
-         message_send = text1 + " \n" + text2 + " \n" + text3 
+         message_send = "```"             
+         message_send = message_send + text1 + " \n" + text2 + " \n" + text3 
          message_send = message_send + "```"
             
          chiyo = " \n"+ "お嬢さまに感謝してください。"
