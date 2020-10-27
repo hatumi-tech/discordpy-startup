@@ -63,10 +63,7 @@ async def on_message(message):
         message_send = "https://yakkun.com/swsh/zukan/n701"
         await message.channel.send(message_send)
         return
-        
-    if message.content == 'ちーちくの図鑑':
-        message_send = "https://yakkun.com/swsh/zukan/n128"
-        
+      
     if message.content == '教えてチヨチャン':
         embed = discord.Embed(title="チヨチャンのヘルプ", description="コマンドリストです。",color=0xff0000)
         embed.add_field(name="教えてチヨチャン", value="このヘルプを表示します。",inline=False)
@@ -78,6 +75,9 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         return
         
+    if message.content == 'ちーちくの図鑑':
+        message_send = "https://yakkun.com/swsh/zukan/n128"
+     
     elif re.match('.+の図鑑$', message.content):
       
          message_send = "```"
