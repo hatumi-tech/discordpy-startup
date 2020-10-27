@@ -45,8 +45,6 @@ workbook = gc.open_by_key(SPREADSHEET_KEY)
 
 @bot.event
 async def on_message(message):
-    message_send = ""
-    
     # 送り主がBotだった場合反応したくないので
     if message.author.bot:
         return
@@ -733,6 +731,6 @@ async def on_message(message):
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
                   
-    await message.channel.send(message_send)
+         await message.channel.send(message_send)
     
 bot.run(token)
