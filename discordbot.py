@@ -177,6 +177,8 @@ async def on_message(message):
          message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tokuseimessage + " \n"  + tetsuurl + id1
         
          message_send = message_send + "```"
+          
+         await message.channel.send(message_send)
     
     # 「種族値」で始まるか調べる
     elif re.match('.+の種族値$', message.content):
@@ -206,6 +208,8 @@ async def on_message(message):
          text = "{}の種族値はH{}-A{}-B{}-C{}-D{}-S{}-ALL{}"
          message_send = message_send + text.format(m,hp1,atk1,def1,spatk1,spdef1,speed1,all1)
          message_send = message_send + "```"
+          
+         await message.channel.send(message_send)
     
     elif re.match('.+のとくせい$', message.content):
       
@@ -281,6 +285,8 @@ async def on_message(message):
         chiyo = " \n"+ "ごきげんよう。……次があるかは分かりませんが"
         
         message_send = message_send + chiyo
+        
+        await message.channel.send(message_send)
        
     elif re.match('.+のすばやさ$', message.content):
       
@@ -312,6 +318,8 @@ async def on_message(message):
           
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
+          
+         await message.channel.send(message_send)
           
     elif re.match('.+の弱点$', message.content):
       
@@ -699,6 +707,8 @@ async def on_message(message):
           
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
+          
+         await message.channel.send(message_send)
           
     elif re.match('.+のすばやさ$', message.content):
       
