@@ -86,6 +86,9 @@ async def on_message(message):
         
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-3]
+        
+         if m == "":
+            return
     
          try:
              cell = worksheet.find(m)
@@ -182,7 +185,10 @@ async def on_message(message):
         
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-4]
-    
+        
+         if m == "":
+            return
+          
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
@@ -207,6 +213,9 @@ async def on_message(message):
       
         worksheet = workbook.get_worksheet(2)
         m = message.content[0:len(message.content)-5]
+        
+        if m == "":
+            return
 
         try:
             cell = worksheet.find(m)
@@ -279,6 +288,9 @@ async def on_message(message):
         
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-5]
+        
+         if m == "":
+            return
     
          try:
              cell = worksheet.find(m)
@@ -307,6 +319,9 @@ async def on_message(message):
         
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-3]
+        
+         if m == "":
+            return
     
          try:
              cell = worksheet.find(m)
@@ -691,6 +706,9 @@ async def on_message(message):
         
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-5]
+        
+         if m == "":
+            return
     
          try:
              cell = worksheet.find(m)
