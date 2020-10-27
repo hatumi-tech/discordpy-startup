@@ -639,7 +639,7 @@ async def on_message(message):
          if nukeru == 0:
              text3 = (f"{m}のすばやさが最遅の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text3 = (f"{m}のすばやさは最遅の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最遅{m2}の実数値は{speed2saiti}です。"
+             text3 = (f"{m}のすばやさは最遅の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最遅{m2}の実数値は{speed2saiti}です。")
                    
          message_send = text1 + " \n" + text2 + " \n" + text3 
             
