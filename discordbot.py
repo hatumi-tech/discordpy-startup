@@ -47,7 +47,7 @@ client = discord.Client()
 @client.event
 async def on_message(message):
     # 送り主がBotだった場合反応したくないので
-    if message.author.bot:
+    if message.author == client.user:
         return
       
     if message.content == 'はつみの図鑑':
