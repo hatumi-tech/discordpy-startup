@@ -172,10 +172,6 @@ async def on_message(message):
          message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tokuseimessage + " \n"  + tetsuurl + id1
         
          message_send = message_send + "```"
-         
-         chiyo = " \n"+ "ごきげんよう。……次があるかは分かりませんが"
-        
-         message_send = message_send + chiyo
     
     # 「種族値」で始まるか調べる
     elif re.match('.+の種族値$', message.content):
