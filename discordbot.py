@@ -52,17 +52,17 @@ async def on_message(message):
       
     if message.content == 'はつみの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n763"
-        await message.channel.send(message_send)
+        await channel.send(message_send)
         return
         
     if message.content == 'スピーカの図鑑':
         message_send = "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BC"
-        await message.channel.send(message_send)
+        await channel.send(message_send)
         return
         
     if message.content == 'こにしの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n701"
-        await message.channel.send(message_send)
+        await channel.send(message_send)
         return
       
     if message.content == '教えてチヨチャン':
@@ -73,12 +73,12 @@ async def on_message(message):
         embed.add_field(name="（ポケモン名）のすばやさ", value="すばやさ、最速実数値、最遅実数値を表示します。",inline=False)
         embed.add_field(name="（ポケモン名）のとくせい", value="とくせいを表示します。夢特性もわかります。",inline=False)
         embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
-        await message.channel.send(embed=embed)
+        await channel.send(embed=embed)
         return
         
     if message.content == 'ちーちくの図鑑':
         message_send = "https://yakkun.com/swsh/zukan/n128"
-        await message.channel.send(message_send)
+        await channel.send(message_send)
         return
      
     if re.match('.+の図鑑$', message.content):
@@ -94,7 +94,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモン。私に価値はありません。ここにあるのは無です")
+             await channel.send("いないポケモン。私に価値はありません。ここにあるのは無です")
              return
          
          hp1 = worksheet.cell(cell.row,3).value
@@ -116,7 +116,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
+             await channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
              return
           
          yumetokusei = ""
@@ -179,7 +179,7 @@ async def on_message(message):
         
          message_send = message_send + "```"
           
-         await message.channel.send(message_send)
+         await channel.send(message_send)
     
     # 「種族値」で始まるか調べる
     elif re.match('.+の種族値$', message.content):
@@ -210,7 +210,7 @@ async def on_message(message):
          message_send = message_send + text.format(m,hp1,atk1,def1,spatk1,spdef1,speed1,all1)
          message_send = message_send + "```"
           
-         await message.channel.send(message_send)
+         await channel.send(message_send)
     
     elif re.match('.+のとくせい$', message.content):
       
@@ -225,7 +225,7 @@ async def on_message(message):
         try:
             cell = worksheet.find(m)
         except gspread.exceptions.CellNotFound:
-            await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
+            await channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
             return
           
         yumetokusei = ""
@@ -287,7 +287,7 @@ async def on_message(message):
         
         message_send = message_send + chiyo
         
-        await message.channel.send(message_send)
+        await channel.send(message_send)
        
     elif re.match('.+のすばやさ$', message.content):
       
@@ -302,7 +302,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             await channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
         
          speed1 = worksheet.cell(cell.row,8).value
@@ -320,7 +320,7 @@ async def on_message(message):
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
           
-         await message.channel.send(message_send)
+         await channel.send(message_send)
           
     elif re.match('.+の弱点$', message.content):
       
@@ -335,7 +335,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             await channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
         
          type1 = worksheet.cell(cell.row,11).value
@@ -709,7 +709,7 @@ async def on_message(message):
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
           
-         await message.channel.send(message_send)
+         await channel.send(message_send)
           
     elif re.match('.+のすばやさ$', message.content):
       
@@ -724,7 +724,7 @@ async def on_message(message):
          try:
              cell = worksheet.find(m)
          except gspread.exceptions.CellNotFound:
-             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             await channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
         
          speed1 = worksheet.cell(cell.row,8).value
@@ -742,7 +742,7 @@ async def on_message(message):
          chiyo = " \n"+ "お嬢さまに感謝してください。"
          message_send = message_send + chiyo
                   
-         await message.channel.send(message_send)
+         await channel.send(message_send)
         
     elif re.match('.+のすばやさ調整$', message.content):
       
@@ -757,7 +757,7 @@ async def on_message(message):
           try:
               cell = worksheet.find(m)
           except gspread.exceptions.CellNotFound:
-              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+              await channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
               return
          
           speed1base = worksheet.cell(cell.row,8).value
@@ -767,13 +767,13 @@ async def on_message(message):
           m2 = await client.wait_for('message', check=None)
          
           if m2 == "":
-              await message.channel.send("何をしようとしているのですか。その行為に意味はありますか")
+              await channel.send("何をしようとしているのですか。その行為に意味はありますか")
               return
     
           try:
               cell = worksheet.find(m2)
           except gspread.exceptions.CellNotFound:
-              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+              await channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
               return
          
           speed2base = worksheet.cell(cell.row,8).value
@@ -806,6 +806,6 @@ async def on_message(message):
           chiyo = " \n"+ "お嬢さまに感謝してください。"
           message_send = message_send + chiyo
                   
-          await message.channel.send(message_send)
+          await channel.send(message_send)
     
 discord.Client().run(Token)
