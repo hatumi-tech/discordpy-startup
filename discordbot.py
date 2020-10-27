@@ -582,8 +582,7 @@ async def on_message(message):
          speedeffort = 0
          nukeru = 0
         
-         speed1 = 0
-        
+         speed1 = int((speed1base+(31/2)+5)*1.1)
          speed2MAX = int((speed2base+52)*1.1)
           
          while speed1 <= speed2MAX:
