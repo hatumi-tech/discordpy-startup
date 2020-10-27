@@ -622,7 +622,7 @@ async def on_message(message):
          if nukeru == 0:
              text2 = (f"{m}のすばやさが準速の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
          else:
-             text2 = (f"{m}のすばやさは準速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、準速{m2}の実数値は{speed1JUN}です。")
+             text2 = (f"{m}のすばやさは準速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、準速{m2}の実数値は{speed2JUN}です。")
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
