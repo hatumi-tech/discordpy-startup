@@ -541,6 +541,70 @@ async def on_message(message):
          message_send = message_send + chiyo
           
          await message.channel.send(message_send)
+        
+      if message.content.endswith('のすばやさ調整'):
+      
+          message_send = "```"
+        
+          worksheet = workbook.sheet1
+          m = message.content[0:len(message.content)-7]
+        
+          if m == "":
+             return
+    
+          try:
+              cell = worksheet.find(m)
+          except gspread.exceptions.CellNotFound:
+              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+              return
+         
+          speed1base = worksheet.cell(cell.row,8).value
+          speed1base = int(speed1base)
+         
+          await message.channel.send("調整先のポケモンを送信してください。")
+          m2 = await client.wait_for('message', check=None)
+         
+          if m2 == "":
+              await message.channel.send("何をしようとしているのですか。その行為に意味はありますか")
+              return
+    
+          try:
+              cell = worksheet.find(m2)
+          except gspread.exceptions.CellNotFound:
+              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+              return
+         
+          speed2base = worksheet.cell(cell.row,8).value
+          speed2base = int(speed2base)
+       
+          speedeffort = 0
+          nukeru = 0
+        
+          speed1 = 0
+        
+          speed2MAX = int((speed2base+52)*1.1)
+          
+          while speed1 <= speed2MAX:
+              if speedeffort < 252:
+                  speedeffort = speedeffort + 4
+                  speed1 = int((speed1base+(31/2)+(speedeffort/8)+5)*1.1)
+              else:
+                  nukeru = 1
+                  break
+                
+          if nukeru == 0:
+              text = "{}のすばやさが{}を抜くのは、努力値を{}振った時です。実数値は{}"
+              message_send = message_send + text.format(m,m2,speedeffort,speed1)
+          else:
+              text = "{}のすばやさは{}を抜くことができません。"
+              message_send = message_send + text.format(m,m2)
+              
+          message_send = message_send + "```"
+            
+          chiyo = " \n"+ "お嬢さまに感謝してください。"
+          message_send = message_send + chiyo
+                  
+          await message.channel.send(message_send)
     
 
 client.run(Token)
