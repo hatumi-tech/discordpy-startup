@@ -10,7 +10,6 @@ import re
 import requests
 import discord
 
-client = discord.client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
 from oauth2client.service_account import ServiceAccountCredentials
