@@ -592,7 +592,7 @@ async def on_message(message):
          speed2MAX = int((speed2base+52)*1.1)
          speed2JUN = int(speed2base+52)
          speed2MU = int(speed2base+20)
-         speed2saiti = int((speed2base+20)*0.9)
+         speed2saiti = int((speed2base+5)*0.9)
           
          while speed1 <= speed2MAX:
              if speedeffort < 252:
