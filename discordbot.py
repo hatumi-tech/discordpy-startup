@@ -2,6 +2,36 @@ import discord
 import os
 import gspread
 
+from oauth2client.service_account import ServiceAccountCredentials
+
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+#認証情報設定
+#ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）
+credential = {
+                "type": "service_account",
+                "project_id": os.environ['SHEET_PROJECT_ID'],
+                "private_key_id": os.environ['SHEET_PRIVATE_KEY_ID'],
+                "private_key": os.environ.get('SHEET_PRIVATE_KEY').replace('\\n', '\n'),
+                "client_email": os.environ['SHEET_CLIENT_EMAIL'],
+                "client_id": os.environ['SHEET_CLIENT_ID'],
+                "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                "token_uri": "https://oauth2.googleapis.com/token",
+                "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                "client_x509_cert_url":  os.environ['SHEET_CLIENT_X509_CERT_URL']
+             }
+
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(credential, scope)
+
+#OAuth2の資格情報を使用してGoogle APIにログインします。
+gc = gspread.authorize(credentials)
+
+#共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
+SPREADSHEET_KEY = '1cRNckSIqC3N9R7M3auoC9Uq_SCBXssgv7FaCU-xwFuY'
+
+#共有設定したワークブックを開く
+workbook = gc.open_by_key(SPREADSHEET_KEY)
+
 Token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
