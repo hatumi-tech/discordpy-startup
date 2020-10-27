@@ -10,7 +10,7 @@ import re
 import requests
 import discord
 
-bot = commands.Bot(command_prefix='/')
+client = discord.client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
 from oauth2client.service_account import ServiceAccountCredentials
@@ -43,7 +43,7 @@ SPREADSHEET_KEY = '1cRNckSIqC3N9R7M3auoC9Uq_SCBXssgv7FaCU-xwFuY'
 #共有設定したワークブックを開く
 workbook = gc.open_by_key(SPREADSHEET_KEY)
 
-@bot.event
+@client.event
 async def on_message(message):
     # 送り主がBotだった場合反応したくないので
     if message.author.bot:
@@ -807,4 +807,4 @@ async def on_message(message):
                   
           await message.channel.send(message_send)
     
-bot.run(token)
+client.run(token)
