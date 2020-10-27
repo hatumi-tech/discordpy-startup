@@ -180,7 +180,7 @@ async def on_message(message):
          await message.channel.send(message_send)
     
     # 「種族値」で始まるか調べる
-    elif message.content.endswith('の種族値'):
+    if message.content.endswith('の種族値'):
       
          message_send = "```"
         
@@ -287,7 +287,7 @@ async def on_message(message):
         
         await message.channel.send(message_send)
        
-    elif message.content.endswith('のすばやさ'):
+    if message.content.endswith('のすばやさ'):
       
          message_send = "```"
         
@@ -320,7 +320,7 @@ async def on_message(message):
           
          await message.channel.send(message_send)
           
-    elif message.content.endswith('の弱点'):
+    if message.content.endswith('の弱点'):
       
          message_send = "```"
         
@@ -709,7 +709,7 @@ async def on_message(message):
           
          await message.channel.send(message_send)
           
-    elif message.content.endswith('のすばやさ'):
+    if message.content.endswith('のすばやさ'):
       
          message_send = "```"
         
@@ -742,7 +742,7 @@ async def on_message(message):
                   
          await message.channel.send(message_send)
         
-    elif message.content.endswith('のすばやさ調整'):
+    if message.content.endswith('のすばやさ調整'):
       
           message_send = "```"
         
