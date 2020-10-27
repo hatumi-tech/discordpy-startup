@@ -598,11 +598,11 @@ async def on_message(message):
                  break
                   
          if nukeru == 0:
-             text1 = "{}のすばやさが最速の{}を抜くのは、努力値を{}振った時です。実数値は{}"
-             message_send = message_send + text1.format(m,m2,speedeffort,speed1)
+             text1 = (f"{m}のすばやさが最速の{m2}を抜くのは、努力値を{speedeffort}振った時です。実数値は{speed1}")
+             message_send = message_send + text1
          else:
-             text1 = "{}のすばやさは最速の{}を抜くことができません。最速{}の実数値は{}、最速{}の実数値は{}です。"
-             message_send = message_send + text1.format(m,m2,m,speed1MAX,m2,speed2MAX)
+             text1 = (f"{m}のすばやさは最速の{m2}を抜くことができません。最速{m}の実数値は{speed1MAX}、最速{m2}の実数値は{speed2MAX}です。"
+             message_send = message_send + text1
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
