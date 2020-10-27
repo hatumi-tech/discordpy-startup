@@ -583,6 +583,7 @@ async def on_message(message):
          nukeru = 0
         
          speed1 = int((speed1base+(31/2)+5)*1.1)
+         speed1MAX = int((speed1base+52)*1.1)
          speed2MAX = int((speed2base+52)*1.1)
           
          while speed1 <= speed2MAX:
@@ -597,8 +598,8 @@ async def on_message(message):
              text = "{}のすばやさが最速の{}を抜くのは、努力値を{}振った時です。実数値は{}"
              message_send = message_send + text.format(m,m2,speedeffort,speed1)
          else:
-             text = "{}のすばやさは最速の{}を抜くことができません。"
-             message_send = message_send + text.format(m,m2)
+             text = "{}のすばやさは最速の{}を抜くことができません。"+" \n"+"最速{}の実数値は{}、最速{}の実数値は{}です。"
+             message_send = message_send + text.format(m,m2,m,speed1MAX,m2,speed2MAX)
               
          message_send = message_send + "```"
             
