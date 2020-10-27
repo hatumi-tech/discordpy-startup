@@ -587,7 +587,7 @@ async def on_message(message):
          speedeffort = 0
          nukeru = 0
         
-         speed1 = int((speed1base+(31/2)+5)*1.1)
+         speed1 = int((speed1base+int(31/2)+5)*1.1)
          speed1MAX = int((speed1base+52)*1.1)
          speed2MAX = int((speed2base+52)*1.1)
          speed2JUN = int(speed2base+52)
@@ -597,7 +597,7 @@ async def on_message(message):
          while speed1 <= speed2MAX:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((speed1base+(31/2)+(speedeffort/8)+5)*1.1)
+                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
              else:
                  nukeru = 1
                  break
@@ -608,13 +608,13 @@ async def on_message(message):
              text1 = (f"最速{m}のすばやさは最速の{m2}を抜くことができません。\n最速{m}の実数値は{speed1MAX}、最速{m2}の実数値は{speed2MAX}です。")
          
          nukeru = 0
-         speed1 = int((speed1base+(31/2)+5)*1.1)
          speedeffort = 0
+         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
                   
          while speed1 <= speed2JUN:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((speed1base+(31/2)+(speedeffort/8)+5)*1.1)
+                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
              else:
                  nukeru = 1
                  break
@@ -625,13 +625,14 @@ async def on_message(message):
              text2 = (f"最速{m}のすばやさは準速の{m2}を抜くことができません。\n最速{m}の実数値は{speed1MAX}、準速{m2}の実数値は{speed2JUN}です。")
             
          nukeru = 0
-         speed1 = int((speed1base+(31/2)+5)*1.1)
          speedeffort = 0
+         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+         
                   
          while speed1 <= speed2MU:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((speed1base+(31/2)+(speedeffort/8)+5)*1.1)
+                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
              else:
                  nukeru = 1
                  break
@@ -642,13 +643,13 @@ async def on_message(message):
              text3 = (f"最速{m}のすばやさは無振の{m2}を抜くことができません。\n最速{m}の実数値は{speed1MAX}、無振{m2}の実数値は{speed2MU}です。")
          
          nukeru = 0
-         speed1 = int((speed1base+(31/2)+5)*1.1)
          speedeffort = 0
+         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
                   
          while speed1 <= speed2saiti:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((speed1base+(31/2)+(speedeffort/8)+5)*1.1)
+                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
              else:
                  nukeru = 1
                  break
