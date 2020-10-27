@@ -80,7 +80,7 @@ async def on_message(message):
         
     elif re.match('.+の図鑑$', message.content):
       
-         message_send = ""
+         message_send = "```"
         
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-3]
@@ -169,7 +169,9 @@ async def on_message(message):
          
          text = "{}はタイプ{}、{}/nH{}-A{}-B{}-C{}-D{}-S{}-ALL{}/n"
          
-         message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tetsuurl + id1 + " \n" + tokuseimessage
+         message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tokuseimessage + " \n"  + tetsuurl + id1
+        
+         message_send = message_send + "```"
          
          chiyo = " \n"+ "ごきげんよう。……次があるかは分かりませんが"
         
