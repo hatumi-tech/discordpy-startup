@@ -10,7 +10,7 @@ import re
 import requests
 import discord
 
-token = os.environ['DISCORD_BOT_TOKEN']
+Token = os.environ['DISCORD_BOT_TOKEN']
 
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -808,4 +808,4 @@ async def on_message(message):
                   
           await message.channel.send(message_send)
     
-discord.Client().run('Token')
+discord.Client().run(Token)
