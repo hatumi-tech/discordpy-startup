@@ -1,7 +1,8 @@
 import discord
 import os
-Token = os.environ['DISCORD_BOT_TOKEN']
+import gspread
 
+Token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
 @client.event
@@ -25,6 +26,104 @@ async def on_message(message):
         embed.add_field(name="（ポケモン名）のとくせい", value="とくせいを表示します。夢特性もわかります。",inline=False)
         embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
         await message.channel.send(embed=embed)
+        
+    if message.content.endswith('の図鑑'):
+      
+        message_send = "```"
+        
+        worksheet = workbook.sheet1
+        m = message.content[0:len(message.content)-3]
+        
+        if m == "":
+           return
+   
+        try:
+            cell = worksheet.find(m)
+        except gspread.exceptions.CellNotFound:
+            await message.channel.send("いないポケモン。私に価値はありません。ここにあるのは無です")
+            return
+         
+        hp1 = worksheet.cell(cell.row,3).value
+        atk1 = worksheet.cell(cell.row,4).value
+        def1 = worksheet.cell(cell.row,5).value
+        spatk1 = worksheet.cell(cell.row,6).value
+        spdef1 = worksheet.cell(cell.row,7).value
+        speed1 = worksheet.cell(cell.row,8).value
+        all1 = worksheet.cell(cell.row,9).value
+        type1 = worksheet.cell(cell.row,11).value
+        type2 = worksheet.cell(cell.row,12).value
+         
+        tetsuurl = "https://yakkun.com/swsh/zukan/"
+        id1 = worksheet.cell(cell.row,10).value
+        id1 = str(id1)
+         
+        worksheet = workbook.get_worksheet(2)
+        
+        try:
+            cell = worksheet.find(m)
+        except gspread.exceptions.CellNotFound:
+            await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
+            return
+          
+        yumetokusei = ""
+        
+        tokusei1 = worksheet.cell(cell.row,3).value
+        tokusei2 = worksheet.cell(cell.row,4).value
+        tokusei3 = worksheet.cell(cell.row,5).value
+    
+        tokusei1 = str(tokusei1)
+        tokusei2 = str(tokusei2)
+        tokusei3 = str(tokusei3)
+    
+        worksheet = workbook.get_worksheet(3)
+    
+        try:
+            cell = worksheet.find(tokusei1)
+        except gspread.exceptions.CellNotFound:
+            pass
+        
+        tokusei1info = worksheet.cell(cell.row,2).value
+        
+        if "*" in tokusei2:
+            tokusei2 = tokusei2[1:]
+            yumetokusei = tokusei2
+        else:
+            pass
+    
+        try:
+            cell = worksheet.find(tokusei2)
+        except gspread.exceptions.CellNotFound:
+            pass
+        
+        tokusei2info = worksheet.cell(cell.row,2).value
+    
+        if "*" in tokusei3:
+            tokusei3 = tokusei3[1:]
+            yumetokusei = tokusei3
+        else:
+            pass
+      
+        try:
+            cell = worksheet.find(tokusei3)
+        except gspread.exceptions.CellNotFound:
+            pass
+        
+        tokusei3info = worksheet.cell(cell.row,2).value
+    
+        if yumetokusei == "":
+            yumetokusei = "なし"
+        else:
+            pass
+        
+        yumetokusei = str(yumetokusei)
+       
+        tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
+        text = "{}はタイプ{}、{}" +  " \n" + "H{}-A{}-B{}-C{}-D{}-S{}-ALL{}" +  " \n"
+         
+        message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tokuseimessage + " \n"  + tetsuurl + id1
+        message_send = message_send + "```"
+          
+        await message.channel.send(message_send)
         
     
 
