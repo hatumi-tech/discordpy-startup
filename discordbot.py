@@ -601,11 +601,12 @@ async def on_message(message):
              text1 = "{}のすばやさが最速の{}を抜くのは、努力値を{}振った時です。実数値は{}"
              message_send = message_send + text1.format(m,m2,speedeffort,speed1)
          else:
-             text1 = "{}のすばやさは最速の{}を抜くことができません。"+" \n"+"最速{}の実数値は{}、最速{}の実数値は{}です。"
+             text1 = "{}のすばやさは最速の{}を抜くことができません。最速{}の実数値は{}、最速{}の実数値は{}です。"
              message_send = message_send + text1.format(m,m2,m,speed1MAX,m2,speed2MAX)
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
+         speedeffort = 0
                   
          while speed1 <= speed2JUN:
              if speedeffort < 252:
@@ -619,11 +620,12 @@ async def on_message(message):
              text2 = "{}のすばやさが準速の{}を抜くのは、努力値を{}振った時です。実数値は{}"
              message_send = message_send + text2.format(m,m2,speedeffort,speed1)
          else:
-             text2 = "{}のすばやさは準速の{}を抜くことができません。"+" \n"+"最速{}の実数値は{}、準速{}の実数値は{}です。"
+             text2 = "{}のすばやさは準速の{}を抜くことができません。最速{}の実数値は{}、準速{}の実数値は{}です。"
              message_send = message_send + text2.format(m,m2,m,speed1MAX,m2,speed2JUN)
          
          nukeru = 0
          speed1 = int((speed1base+(31/2)+5)*1.1)
+         speedeffort = 0
                   
          while speed1 <= speed2saiti:
              if speedeffort < 252:
@@ -637,7 +639,7 @@ async def on_message(message):
              text3 = "{}のすばやさが最遅の{}を抜くのは、努力値を{}振った時です。実数値は{}"
              message_send = message_send + text3.format(m,m2,speedeffort,speed1)
          else:
-             text3 = "{}のすばやさは最遅の{}を抜くことができません。"+" \n"+"最速{}の実数値は{}、最遅{}の実数値は{}です。"
+             text3 = "{}のすばやさは最遅の{}を抜くことができません。最速{}の実数値は{}、最遅{}の実数値は{}です。"
              message_send = message_send + text3.format(m,m2,m,speed1MAX,m2,speed2saiti)
          
          message_send = text1 + " \n" + text2 + " \n" + text3 
