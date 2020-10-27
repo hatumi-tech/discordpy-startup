@@ -45,8 +45,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith('/ping'):
+        await message.channel.send('ぽん！')
     
     if message.content == '教えてチヨチャン':
         embed = discord.Embed(title="チヨチャンについて", description="チヨチャンにものを聞くときはこうするのです。",color=0xff0000)
