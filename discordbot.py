@@ -733,7 +733,4 @@ async def on_message(message):
                   
     await message.channel.send(message_send)
     
-    else:
-      pass
-    
 bot.run(token)
