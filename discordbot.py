@@ -48,13 +48,11 @@ async def on_message(message):
         await message.channel.send('Hello!')
     
     if message.content == '教えてチヨチャン':
-        embed = discord.Embed(title="チヨチャンのヘルプ", description="コマンドリストです。",color=0xff0000)
+        embed = discord.Embed(title="チヨチャンについて", description="チヨチャンにものを聞くときはこうするのです。",color=0xff0000)
         embed.add_field(name="教えてチヨチャン", value="このヘルプを表示します。",inline=False)
         embed.add_field(name="（ポケモン名）の図鑑", value="ポケモンのタイプ、種族値、特性を表示します。",inline=False)
-        embed.add_field(name="（ポケモン名）の種族値", value="種族値を表示します。",inline=False)
-        embed.add_field(name="（ポケモン名）のすばやさ", value="すばやさ、最速実数値、最遅実数値を表示します。",inline=False)
-        embed.add_field(name="（ポケモン名）のとくせい", value="とくせいを表示します。夢特性もわかります。",inline=False)
         embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
+        embed.add_field(name="（ポケモン名）のすばやさ調整", value="調整先のポケモンを抜くための努力値を計算します。",inline=False)
         await message.channel.send(embed=embed)
         
     if message.content.endswith('の図鑑'):
@@ -155,6 +153,394 @@ async def on_message(message):
           
         await message.channel.send(message_send)
         
+    if message.content.endswith('の弱点'):
+      
+         message_send = "```"
+        
+         worksheet = workbook.sheet1
+         m = message.content[0:len(message.content)-3]
+        
+         if m == "":
+            return
+    
+         try:
+             cell = worksheet.find(m)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             return
+        
+         type1 = worksheet.cell(cell.row,11).value
+         type2 = worksheet.cell(cell.row,12).value
+         
+         ###倍率は最初1倍###
+
+         normal = 1
+         fire = 1
+         water = 1
+         grass = 1
+         electric = 1
+         ice = 1
+         fighting = 1
+         poison = 1
+         ground = 1
+         flying = 1
+         psychic = 1
+         bug = 1
+         rock = 1
+         ghost = 1
+         dragon = 1
+         dark = 1
+         steel = 1
+         fairy = 1
+                
+         if type1 == "ノーマル":
+             fighting = fighting*2
+             ghost = ghost*0
+                    
+         elif type1 == "ほのお":
+             water = water*2
+             ground = ground*2
+             rock = rock*2
+             fire = fire*0.5
+             grass = grass*0.5
+             ice = ice*0.5
+             bug = bug*0.5
+             steel = steel*0.5
+             fairy = fairy*0.5
+                    
+         elif type1 == "みず":
+             electric = electric*2
+             grass = grass*2
+             fire = fire*0.5
+             water = water*0.5
+             ice = ice*0.5
+             steel = steel*0.5
+                    
+         elif type1 == "でんき":
+             ground = ground*2
+             electric = electric*0.5
+             flying = flying*0.5
+             steel = steel*0.5
+                    
+         elif type1 == "くさ":
+             fire = fire*2
+             ice = ice*2
+             poison = poison*2
+             flying = flying*2
+             bug = bug*2
+             water = water*0.5
+             electric = electric*0.5
+             grass = grass*0.5
+             ground = ground*0.5
+                    
+         elif type1 == "こおり":
+             fire = fire*2
+             fighting = fighting*2
+             rock = rock*2
+             steel = steel*2
+             ice = ice*0.5
+                    
+         elif type1 == "かくとう":
+             flying = flying*2
+             psychic = psychic*2
+             fairy = fairy*2
+             bug = bug*0.5
+             rock = rock*0.5
+             dark = dark*0.5
+                    
+         elif type1 == "どく":
+             ground = ground*2
+             psychic = psychic*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             poison = poison*0.5
+             bug = bug*0.5
+             fairy = fairy*0.5
+                    
+         elif type1 == "じめん":
+             water = water*2
+             grass = grass*2
+             ice = ice*2
+             poison = poison*0.5
+             rock = rock*0.5
+             electric = electric*0
+                    
+         elif type1 == "ひこう":
+             electric = electric*2
+             ice = ice*2
+             rock = rock*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             bug = bug*0.5
+             ground = ground*0
+                    
+         elif type1 == "エスパー":
+             bug = bug*2
+             ghost = ghost*2
+             dark = dark*2
+             fighting = fighting*0.5
+             psychic = psychic*0.5
+                    
+         elif type1 == "むし":
+             fire = fire*2
+             flying = flying*2
+             rock = rock*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             ground = ground*0.5
+                    
+         elif type1 == "いわ":
+             water = water*2
+             grass = grass*2
+             fighting = fighting*2
+             ground = ground*2
+             steel = steel*2
+             normal = normal*0.5
+             fire = fire*0.5
+             poison = poison*0.5
+             flying = flying*0.5
+                    
+         elif type1 == "ゴースト":
+             ghost = ghost*2
+             dark = dark*2
+             poison = poison*0.5
+             bug = bug*0.5
+             normal = normal*0
+             fighting = fighting*0
+                    
+         elif type1 == "ドラゴン":
+             ice = ice*2
+             dragon = dragon*2
+             fairy = fairy*2
+             fire = fire*0.5
+             water = water*0.5
+             electric = electric*0.5
+             grass = grass*0.5
+                    
+         elif type1 == "あく":
+             fighting = fighting*2
+             bug = bug*2
+             fairy = fairy*2
+             ghost = ghost*0.5
+             dark = dark*0.5
+             psychic = psychic*0
+                    
+         elif type1 == "はがね":
+             fire = fire*2
+             fighting = fighting*2
+             ground = ground*2
+             normal = normal*0.5
+             grass = grass*0.5
+             ice = ice*0.5
+             flying = flying*0.5
+             psychic = psychic*0.5
+             bug = bug*0.5
+             rock = rock*0.5
+             dragon = dragon*0.5
+             steel = steel*0.5
+             fairy = fairy*0.5
+             poison = poison*0
+                    
+         elif type1 == "フェアリー":
+             poison = poison*2
+             steel = steel*2
+             fighting = fighting*0.5
+             bug = bug*0.5
+             dark = dark*0.5
+             dragon = dragon*0
+              
+         else:
+          pass
+             
+         if type2 == "ノーマル":
+             fighting = fighting*2
+             ghost = ghost*0
+                    
+         elif type2 == "ほのお":
+             water = water*2
+             ground = ground*2
+             rock = rock*2
+             fire = fire*0.5
+             grass = grass*0.5
+             ice = ice*0.5
+             bug = bug*0.5
+             steel = steel*0.5
+             fairy = fairy*0.5
+                    
+         elif type2 == "みず":
+             electric = electric*2
+             grass = grass*2
+             fire = fire*0.5
+             water = water*0.5
+             ice = ice*0.5
+             steel = steel*0.5
+                    
+         elif type2 == "でんき":
+             ground = ground*2
+             electric = electric*0.5
+             flying = flying*0.5
+             steel = steel*0.5
+                    
+         elif type2 == "くさ":
+             fire = fire*2
+             ice = ice*2
+             poison = poison*2
+             flying = flying*2
+             bug = bug*2
+             water = water*0.5
+             electric = electric*0.5
+             grass = grass*0.5
+             ground = ground*0.5
+                    
+         elif type2 == "こおり":
+             fire = fire*2
+             fighting = fighting*2
+             rock = rock*2
+             steel = steel*2
+             ice = ice*0.5
+                    
+         elif type2 == "かくとう":
+             flying = flying*2
+             psychic = psychic*2
+             fairy = fairy*2
+             bug = bug*0.5
+             rock = rock*0.5
+             dark = dark*0.5
+                    
+         elif type2 == "どく":
+             ground = ground*2
+             psychic = psychic*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             poison = poison*0.5
+             bug = bug*0.5
+             fairy = fairy*0.5
+                    
+         elif type2 == "じめん":
+             water = water*2
+             grass = grass*2
+             ice = ice*2
+             poison = poison*0.5
+             rock = rock*0.5
+             electric = electric*0
+                    
+         elif type2 == "ひこう":
+             electric = electric*2
+             ice = ice*2
+             rock = rock*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             bug = bug*0.5
+             ground = ground*0
+                    
+         elif type2 == "エスパー":
+             bug = bug*2
+             ghost = ghost*2
+             dark = dark*2
+             fighting = fighting*0.5
+             psychic = psychic*0.5
+                    
+         elif type2 == "むし":
+             fire = fire*2
+             flying = flying*2
+             rock = rock*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             ground = ground*0.5
+                    
+         elif type2 == "いわ":
+             water = water*2
+             grass = grass*2
+             fighting = fighting*2
+             ground = ground*2
+             steel = steel*2
+             normal = normal*0.5
+             fire = fire*0.5
+             poison = poison*0.5
+             flying = flying*0.5
+                    
+         elif type2 == "ゴースト":
+             ghost = ghost*2
+             dark = dark*2
+             poison = poison*0.5
+             bug = bug*0.5
+             normal = normal*0
+             fighting = fighting*0
+                    
+         elif type2 == "ドラゴン":
+             ice = ice*2
+             dragon = dragon*2
+             fairy = fairy*2
+             fire = fire*0.5
+             water = water*0.5
+             electric = electric*0.5
+             grass = grass*0.5
+                    
+         elif type2 == "あく":
+             fighting = fighting*2
+             bug = bug*2
+             fairy = fairy*2
+             ghost = ghost*0.5
+             dark = dark*0.5
+             psychic = psychic*0
+                    
+         elif type2 == "はがね":
+             fire = fire*2
+             fighting = fighting*2
+             ground = ground*2
+             normal = normal*0.5
+             grass = grass*0.5
+             ice = ice*0.5
+             flying = flying*0.5
+             psychic = psychic*0.5
+             bug = bug*0.5
+             rock = rock*0.5
+             dragon = dragon*0.5
+             steel = steel*0.5
+             fairy = fairy*0.5
+             poison = poison*0
+                    
+         elif type2 == "フェアリー":
+             poison = poison*2
+             steel = steel*2
+             fighting = fighting*0.5
+             bug = bug*0.5
+             dark = dark*0.5
+             dragon = dragon*0
+              
+         else:
+          pass
+        
+         normal = float(normal)
+         fire = float(fire)
+         water = float(water)
+         grass = float(grass)
+         electric = float(electric)
+         ice = float(ice)
+         fighting = float(fighting)
+         poison = float(poison)
+         ground = float(ground)
+         flying = float(flying)
+         psychic = float(psychic)
+         bug = float(bug)
+         rock = float(rock)
+         ghost = float(ghost)
+         dragon = float(dragon)
+         dark = float(dark)
+         steel = float(steel)
+         fairy = float(fairy)
+                    
+         text = "{}のダメージ倍率"+" \n"+"ノーマル:{}倍、ほのお:{}倍、みず:{}倍、でんき:{}倍"+" \n"+"くさ:{}倍、こおり:{}倍、かくとう:{}倍、どく:{}倍"+" \n"
+         text2 = "じめん:{}倍、ひこう:{}倍、エスパー:{}倍、むし:{}倍"+" \n"+"いわ:{}倍、ゴースト:{}倍、ドラゴン:{}倍、あく:{}倍"+" \n"+"はがね:{}倍、フェアリー:{}倍"                
+         
+         message_send = message_send + text.format(m,normal,fire,water,electric,grass,ice,fighting,poison)
+         message_send = message_send + text2.format(ground,flying,psychic,bug,rock,ghost,dragon,dark,steel,fairy)
+         message_send = message_send + "```"
+          
+         chiyo = " \n"+ "お嬢さまに感謝してください。"
+         message_send = message_send + chiyo
+          
+         await message.channel.send(message_send)
     
 
 client.run(Token)
