@@ -807,4 +807,4 @@ async def on_message(message):
                   
           await message.channel.send(message_send)
     
-client.run(token)
+discord.Client().run('Token')
