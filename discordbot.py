@@ -43,6 +43,8 @@ SPREADSHEET_KEY = '1cRNckSIqC3N9R7M3auoC9Uq_SCBXssgv7FaCU-xwFuY'
 #共有設定したワークブックを開く
 workbook = gc.open_by_key(SPREADSHEET_KEY)
 
+message_send = ""
+
 @bot.event
 async def on_message(message):
     # 送り主がBotだった場合反応したくないので
