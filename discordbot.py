@@ -542,76 +542,76 @@ async def on_message(message):
          mukoutext = ""
         
          if tokusei1 == "かんそうはだ":
-             mukoutext = (f"特性{tokusei1}により、みず無効。最大HPの1/4回復。")
+             mukoutext = (f"特性{tokusei1}の場合、みず無効。最大HPの1/4回復。")
             
          elif tokusei1 == "そうしょく":
-             mukoutext = (f"特性{tokusei1}により、くさ無効。攻撃ランク+1。")
+             mukoutext = (f"特性{tokusei1}の場合、くさ無効。攻撃ランク+1。")
             
          elif tokusei1 == "ちくでん":
-             mukoutext = (f"特性{tokusei1}により、でんき無効。最大HPの1/4回復。")
+             mukoutext = (f"特性{tokusei1}の場合、でんき無効。最大HPの1/4回復。")
             
          elif tokusei1 == "ちょすい":
-             mukoutext = (f"特性{tokusei1}により、みず無効。最大HPの1/4回復。")
+             mukoutext = (f"特性{tokusei1}の場合、みず無効。最大HPの1/4回復。")
             
          elif tokusei1 == "でんきエンジン":
-             mukoutext = (f"特性{tokusei1}により、でんき無効。素早さランク+1。")
+             mukoutext = (f"特性{tokusei1}の場合、でんき無効。素早さランク+1。")
             
          elif tokusei1 == "ひらいしん":
-             mukoutext = (f"特性{tokusei1}により、でんき無効。特攻ランク+1。")
+             mukoutext = (f"特性{tokusei1}の場合、でんき無効。特攻ランク+1。")
             
          elif tokusei1 == "もらいび":
-             mukoutext = (f"特性{tokusei1}により、ほのお無効。攻撃・特攻1.5倍。")
+             mukoutext = (f"特性{tokusei1}の場合、ほのお無効。攻撃・特攻1.5倍。")
             
          elif tokusei1 == "よびみず":
-             mukoutext = (f"特性{tokusei2}により、みず無効。特攻ランク+1。")
+             mukoutext = (f"特性{tokusei1}の場合、みず無効。特攻ランク+1。")
             
          if tokusei2 == "かんそうはだ":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、みず無効。最大HPの1/4回復。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、みず無効。最大HPの1/4回復。")
             
          elif tokusei2 == "そうしょく":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、くさ無効。攻撃ランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、くさ無効。攻撃ランク+1。")
             
          elif tokusei2 == "ちくでん":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、でんき無効。最大HPの1/4回復。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、でんき無効。最大HPの1/4回復。")
             
          elif tokusei2 == "ちょすい":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、みず無効。最大HPの1/4回復。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、みず無効。最大HPの1/4回復。")
             
          elif tokusei2 == "でんきエンジン":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、でんき無効。素早さランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、でんき無効。素早さランク+1。")
             
          elif tokusei2 == "ひらいしん":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、でんき無効。特攻ランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、でんき無効。特攻ランク+1。")
             
          elif tokusei2 == "もらいび":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、ほのお無効。攻撃・特攻1.5倍。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、ほのお無効。攻撃・特攻1.5倍。")
             
          elif tokusei2 == "よびみず":
-             mukoutext = mukoutext + (f"特性{tokusei2}により、みず無効。特攻ランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei2}の場合、みず無効。特攻ランク+1。")
         
          if tokusei3 == "かんそうはだ":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、みず無効。最大HPの1/4回復。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、みず無効。最大HPの1/4回復。")
             
          elif tokusei3 == "そうしょく":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、くさ無効。攻撃ランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、くさ無効。攻撃ランク+1。")
             
          elif tokusei3 == "ちくでん":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、でんき無効。最大HPの1/4回復。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、でんき無効。最大HPの1/4回復。")
             
          elif tokusei3 == "ちょすい":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、みず無効。最大HPの1/4回復。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、みず無効。最大HPの1/4回復。")
             
          elif tokusei3 == "でんきエンジン":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、でんき無効。素早さランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、でんき無効。素早さランク+1。")
             
          elif tokusei3 == "ひらいしん":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、でんき無効。特攻ランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、でんき無効。特攻ランク+1。")
             
          elif tokusei3 == "もらいび":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、ほのお無効。攻撃・特攻1.5倍。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、ほのお無効。攻撃・特攻1.5倍。")
             
          elif tokusei3 == "よびみず":
-             mukoutext = mukoutext + (f"特性{tokusei3}により、みず無効。特攻ランク+1。")
+             mukoutext = mukoutext + (f"特性{tokusei3}の場合、みず無効。特攻ランク+1。")
         
          normal = float(normal)
          fire = float(fire)
