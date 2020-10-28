@@ -2,6 +2,7 @@
 import discord
 import os
 import gspread
+import math
 
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -587,17 +588,17 @@ async def on_message(message):
          speedeffort = 0
          nukeru = 0
         
-         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
-         speed1MAX = int((speed1base+52)*1.1)
-         speed2MAX = int((speed2base+52)*1.1)
-         speed2JUN = int(speed2base+52)
-         speed2MU = int(speed2base+20)
-         speed2saiti = int((speed2base+5)*0.9)
+         speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
+         speed1MAX = math.floor(((speed1base * 2 + 31 + 252 / 4) *(50 / 100) + 5) *1.1)
+         speed2MAX = math.floor(((speed1base * 2 + 31 + 252 / 4) *(50 / 100) + 5) *1.1)
+         speed2JUN = math.floor(((speed1base * 2 + 31 + 252 / 4) *(50 / 100) + 5) *1.0)
+         speed2MU = math.floor(((speed1base * 2 + 31 + 0 / 4) *(50 / 100) + 5) *1.0)
+         speed2saiti = math.floor(((speed1base * 2 + 31 + 0 / 4) *(50 / 100) + 5) *0.9)
           
          while speed1 <= speed2MAX:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+                 speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
              else:
                  nukeru = 1
                  break
@@ -609,12 +610,12 @@ async def on_message(message):
          
          nukeru = 0
          speedeffort = 0
-         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+         speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
                   
          while speed1 <= speed2JUN:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+                 speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
              else:
                  nukeru = 1
                  break
@@ -626,13 +627,13 @@ async def on_message(message):
             
          nukeru = 0
          speedeffort = 0
-         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+         speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
          
                   
          while speed1 <= speed2MU:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+                 speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
              else:
                  nukeru = 1
                  break
@@ -644,12 +645,12 @@ async def on_message(message):
          
          nukeru = 0
          speedeffort = 0
-         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+         speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
                   
          while speed1 <= speed2saiti:
              if speedeffort < 252:
                  speedeffort = speedeffort + 4
-                 speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+                 speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
              else:
                  nukeru = 1
                  break
