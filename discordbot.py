@@ -513,6 +513,106 @@ async def on_message(message):
          else:
           pass
         
+         worksheet = workbook.get_worksheet(3)
+        
+         try:
+             cell = worksheet.find(m)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
+             return
+        
+         tokusei1 = worksheet.cell(cell.row,3).value
+         tokusei2 = worksheet.cell(cell.row,4).value
+         tokusei3 = worksheet.cell(cell.row,5).value
+    
+         tokusei1 = str(tokusei1)
+         tokusei2 = str(tokusei2)
+         tokusei3 = str(tokusei3)
+     
+         if "*" in tokusei2:
+             tokusei2 = tokusei2[1:]
+         else:
+             pass
+    
+         if "*" in tokusei3:
+             tokusei3 = tokusei3[1:]
+         else:
+             pass
+        
+         mukoutext = ""
+        
+         if tokusei1 == "かんそうはだ":
+             mukoutext = (f"特性{tokusei1}により、みず無効。最大HPの1/4回復。")
+            
+         elif tokusei1 == "そうしょく":
+             mukoutext = (f"特性{tokusei1}により、くさ無効。攻撃ランク+1。")
+            
+         elif tokusei1 == "ちくでん":
+             mukoutext = (f"特性{tokusei1}により、でんき無効。最大HPの1/4回復。")
+            
+         elif tokusei1 == "ちょすい":
+             mukoutext = (f"特性{tokusei1}により、みず無効。最大HPの1/4回復。")
+            
+         elif tokusei1 == "でんきエンジン":
+             mukoutext = (f"特性{tokusei1}により、でんき無効。素早さランク+1。")
+            
+         elif tokusei1 == "ひらいしん":
+             mukoutext = (f"特性{tokusei1}により、でんき無効。特攻ランク+1。")
+            
+         elif tokusei1 == "もらいび":
+             mukoutext = (f"特性{tokusei1}により、ほのお無効。攻撃・特攻1.5倍。")
+            
+         elif tokusei1 == "よびみず":
+             mukoutext = (f"特性{tokusei2}により、みず無効。特攻ランク+1。")
+            
+         if tokusei2 == "かんそうはだ":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、みず無効。最大HPの1/4回復。")
+            
+         elif tokusei2 == "そうしょく":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、くさ無効。攻撃ランク+1。")
+            
+         elif tokusei2 == "ちくでん":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、でんき無効。最大HPの1/4回復。")
+            
+         elif tokusei2 == "ちょすい":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、みず無効。最大HPの1/4回復。")
+            
+         elif tokusei2 == "でんきエンジン":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、でんき無効。素早さランク+1。")
+            
+         elif tokusei2 == "ひらいしん":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、でんき無効。特攻ランク+1。")
+            
+         elif tokusei2 == "もらいび":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、ほのお無効。攻撃・特攻1.5倍。")
+            
+         elif tokusei2 == "よびみず":
+             mukoutext = mukoutext + (f"特性{tokusei2}により、みず無効。特攻ランク+1。")
+        
+         if tokusei3 == "かんそうはだ":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、みず無効。最大HPの1/4回復。")
+            
+         elif tokusei3 == "そうしょく":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、くさ無効。攻撃ランク+1。")
+            
+         elif tokusei3 == "ちくでん":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、でんき無効。最大HPの1/4回復。")
+            
+         elif tokusei3 == "ちょすい":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、みず無効。最大HPの1/4回復。")
+            
+         elif tokusei3 == "でんきエンジン":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、でんき無効。素早さランク+1。")
+            
+         elif tokusei3 == "ひらいしん":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、でんき無効。特攻ランク+1。")
+            
+         elif tokusei3 == "もらいび":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、ほのお無効。攻撃・特攻1.5倍。")
+            
+         elif tokusei3 == "よびみず":
+             mukoutext = mukoutext + (f"特性{tokusei3}により、みず無効。特攻ランク+1。")
+        
          normal = float(normal)
          fire = float(fire)
          water = float(water)
@@ -537,6 +637,7 @@ async def on_message(message):
          
          message_send = message_send + text.format(m,normal,fire,water,electric,grass,ice,fighting,poison)
          message_send = message_send + text2.format(ground,flying,psychic,bug,rock,ghost,dragon,dark,steel,fairy)
+         message_send = message_send + " \n" + mukoutext
          message_send = message_send + "```"
           
          chiyo = " \n"+ "お嬢さまに感謝してください。"
