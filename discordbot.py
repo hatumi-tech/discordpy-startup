@@ -593,7 +593,7 @@ async def on_message(message):
          speed2MAX = math.floor(((speed1base * 2 + 31 + 252 / 4) *(50 / 100) + 5) *1.1)
          speed2JUN = math.floor(((speed1base * 2 + 31 + 252 / 4) *(50 / 100) + 5) *1.0)
          speed2MU = math.floor(((speed1base * 2 + 31 + 0 / 4) *(50 / 100) + 5) *1.0)
-         speed2saiti = math.floor(((speed1base * 2 + 31 + 0 / 4) *(50 / 100) + 5) *0.9)
+         speed2saiti = math.floor(((speed1base * 2 + 0 + 0 / 4) *(50 / 100) + 5) *0.9)
           
          while speed1 <= speed2MAX:
              if speedeffort < 252:
