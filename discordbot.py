@@ -72,40 +72,32 @@ async def on_message(message):
         except gspread.exceptions.CellNotFound:
             await message.channel.send("いないポケモン。私に価値はありません。ここにあるのは無です")
             return
-         
-        hp1 = worksheet.cell(cell.row,3).value
-        atk1 = worksheet.cell(cell.row,4).value
-        def1 = worksheet.cell(cell.row,5).value
-        spatk1 = worksheet.cell(cell.row,6).value
-        spdef1 = worksheet.cell(cell.row,7).value
-        speed1 = worksheet.cell(cell.row,8).value
-        all1 = worksheet.cell(cell.row,9).value
-        type1 = worksheet.cell(cell.row,11).value
-        type2 = worksheet.cell(cell.row,12).value
-         
-        tetsuurl = "https://yakkun.com/swsh/zukan/"
-        id1 = worksheet.cell(cell.row,10).value
-        id1 = str(id1)
-         
-        worksheet = workbook.get_worksheet(2)
         
-        try:
-            cell = worksheet.find(m)
-        except gspread.exceptions.CellNotFound:
-            await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
-            return
+        type1 = worksheet.cell(cell.row,3).value
+        type2 = worksheet.cell(cell.row,4).value
+        hp1 = worksheet.cell(cell.row,5).value
+        atk1 = worksheet.cell(cell.row,6).value
+        def1 = worksheet.cell(cell.row,7).value
+        spatk1 = worksheet.cell(cell.row,8).value
+        spdef1 = worksheet.cell(cell.row,9).value
+        speed1 = worksheet.cell(cell.row,10).value
+        all1 = worksheet.cell(cell.row,11).value
+        
+        tetsuurl = "https://yakkun.com/swsh/zukan/"
+        id1 = worksheet.cell(cell.row,15).value
+        id1 = str(id1)
           
         yumetokusei = ""
         
-        tokusei1 = worksheet.cell(cell.row,3).value
-        tokusei2 = worksheet.cell(cell.row,4).value
-        tokusei3 = worksheet.cell(cell.row,5).value
+        tokusei1 = worksheet.cell(cell.row,12).value
+        tokusei2 = worksheet.cell(cell.row,13).value
+        tokusei3 = worksheet.cell(cell.row,14).value
     
         tokusei1 = str(tokusei1)
         tokusei2 = str(tokusei2)
         tokusei3 = str(tokusei3)
     
-        worksheet = workbook.get_worksheet(3)
+        worksheet = workbook.get_worksheet(1)
     
         try:
             cell = worksheet.find(tokusei1)
@@ -171,8 +163,8 @@ async def on_message(message):
              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
         
-         type1 = worksheet.cell(cell.row,11).value
-         type2 = worksheet.cell(cell.row,12).value
+         type1 = worksheet.cell(cell.row,3).value
+         type2 = worksheet.cell(cell.row,4).value
          
          ###倍率は最初1倍###
 
@@ -513,17 +505,9 @@ async def on_message(message):
          else:
           pass
         
-         worksheet = workbook.get_worksheet(2)
-        
-         try:
-             cell = worksheet.find(m)
-         except gspread.exceptions.CellNotFound:
-             await message.channel.send("ないとくせい。お前は馬鹿ですね。あるいは…ばーか。お嬢さまならそう言うでしょう")
-             return
-        
-         tokusei1 = worksheet.cell(cell.row,3).value
-         tokusei2 = worksheet.cell(cell.row,4).value
-         tokusei3 = worksheet.cell(cell.row,5).value
+         tokusei1 = worksheet.cell(cell.row,12).value
+         tokusei2 = worksheet.cell(cell.row,13).value
+         tokusei3 = worksheet.cell(cell.row,14).value
     
          tokusei1 = str(tokusei1)
          tokusei2 = str(tokusei2)
@@ -659,7 +643,7 @@ async def on_message(message):
              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
          
-         speed1base = worksheet.cell(cell.row,8).value
+         speed1base = worksheet.cell(cell.row,10).value
          speed1base = int(speed1base)
          
          await message.channel.send("調整先のポケモンを送信してください。")
@@ -682,8 +666,7 @@ async def on_message(message):
              await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
              return
             
-         
-         speed2base = worksheet.cell(cell.row,8).value
+         speed2base = worksheet.cell(cell.row,10).value
          speed2base = int(speed2base)
        
          speedeffort = 0
