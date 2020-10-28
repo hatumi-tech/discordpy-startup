@@ -597,8 +597,8 @@ async def on_message(message):
           
          while speed1 <= speed2MAX:
              if speedeffort < 252:
-                 speedeffort = speedeffort + 4
                  speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
+                 speedeffort = speedeffort + 4
              else:
                  nukeru = 1
                  break
@@ -614,8 +614,8 @@ async def on_message(message):
                   
          while speed1 <= speed2JUN:
              if speedeffort < 252:
-                 speedeffort = speedeffort + 4
                  speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
+                 speedeffort = speedeffort + 4
              else:
                  nukeru = 1
                  break
@@ -632,8 +632,8 @@ async def on_message(message):
                   
          while speed1 <= speed2MU:
              if speedeffort < 252:
-                 speedeffort = speedeffort + 4
                  speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
+                 speedeffort = speedeffort + 4
              else:
                  nukeru = 1
                  break
@@ -649,8 +649,8 @@ async def on_message(message):
                   
          while speed1 <= speed2saiti:
              if speedeffort < 252:
-                 speedeffort = speedeffort + 4
                  speed1 = math.floor(((speed1base * 2 + 31 + speedeffort / 4) *(50 / 100) + 5) *1.1)
+                 speedeffort = speedeffort + 4
              else:
                  nukeru = 1
                  break
