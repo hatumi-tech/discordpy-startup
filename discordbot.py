@@ -588,15 +588,15 @@ async def on_message(message):
          speedeffort = 0
          nukeru = 0
         
-         speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
-         speed1MAX = int((int(speed1base)+int(31/2)+int(252/8)+5)*1.1)
-         speed2MAX = int((int(speed2base)+int(31/2)+int(252/8)+5)*1.1)
-         speed2JUN = int((int(speed2base)+int(31/2)+int(252/8)+5)*1.0)
-         speed2MU = int((int(speed2base)+int(31/2)+int(0/8)+5)*1.0)
-         speed2saiti = int((int(speed2base)+int(0/2)+int(0/8)+5)*0.9)
+         speed1 = int((int((speed1base*2+31+int(speedeffort/4))*50/100)+5)*1.1)
+         speed1MAX = int((speed1base+52)*1.1)
+         speed2MAX = int((speed2base+52)*1.1)
+         speed2JUN = speed2base+52
+         speed2MU = speed2base+20
+         speed2saiti = int(int(speed2base+5)*0.9)
           
          while True:
-             speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+             speed1 = int((int((speed1base*2+31+int(speedeffort/4))*50/100)+5)*1.1)
         
              if speed1 >= speed2MAX+1:
                 break
@@ -616,7 +616,7 @@ async def on_message(message):
          speedeffort = 0
                   
          while True:
-             speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+             speed1 = int((int((speed1base*2+31+int(speedeffort/4))*50/100)+5)*1.1)
         
              if speed1 >= speed2JUN+1:
                 break
@@ -636,7 +636,7 @@ async def on_message(message):
          speedeffort = 0
                   
          while True:
-             speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+             speed1 = int((int((speed1base*2+31+int(speedeffort/4))*50/100)+5)*1.1)
         
              if speed1 >= speed2MU+1:
                 break
@@ -656,7 +656,7 @@ async def on_message(message):
          speedeffort = 0
                  
          while True:
-             speed1 = int((int(speed1base)+int(31/2)+int(speedeffort/8)+5)*1.1)
+             speed1 = int((int((speed1base*2+31+int(speedeffort/4))*50/100)+5)*1.1)
         
              if speed1 >= speed2saiti+1:
                 break
