@@ -869,8 +869,20 @@ async def on_message(message):
              await message.channel.send('送信されたのは変化わざです。')
              return
             
+         typebairitu = 1.0
+            
+         if enemytype1 == wazatype:
+             typebairitu = 1.5
+         
+         if enemytype2 == wazatype:
+             typebairitu = 1.5
+              
          damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
          damageMAX = int(int(22 * wazapower * attack / defence) / 50 + 2)
+          
+         damageMIN = int(damageMIN * typebairitu)
+         damageMAX = int(damageMAX * typebairitu)
+        
          message_send = (f"{wazabunrui}特化の{m2}が{wazaname}で特化の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
         
          await message.channel.send(message_send)
