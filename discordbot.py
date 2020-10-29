@@ -782,6 +782,7 @@ async def on_message(message):
         
          type1 = worksheet.cell(cell.row,3).value
          type2 = worksheet.cell(cell.row,4).value
+         myhpbase = worksheet.cell(cell.row,5).value
          mydefbase = worksheet.cell(cell.row,7).value
          myspdefbase = worksheet.cell(cell.row,9).value
          
@@ -1291,6 +1292,11 @@ async def on_message(message):
          damageMAX = int(damageMAX * itti * typebairitu)
         
          message_send = message_send + "\n" + (f"{wazabunrui}特化の{m2}が{wazaname}で無振の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
+          
+         myhpkyoku = myhpbase + 107
+         myhpmu = myhpbase + 75
+          
+         message_send = message_send + "\n" + (f"{m}のHPは252振りで{myhpkyoku}、無振りで{myhpmu}です。")
         
          await message.channel.send(message_send)
     
