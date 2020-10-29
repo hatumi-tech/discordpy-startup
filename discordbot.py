@@ -854,6 +854,8 @@ async def on_message(message):
          wazatype = worksheet.cell(cell.row,2).value
          wazapower = worksheet.cell(cell.row,3).value
          wazabunrui = worksheet.cell(cell.row,6).value
+        
+         wazapower = int(wazapower)
          
          if wazabunrui == "物理":
              attack = enemyatkkyoku
