@@ -808,6 +808,11 @@ async def on_message(message):
          enemytype2 = worksheet.cell(cell.row,4).value
          enemyatkbase = worksheet.cell(cell.row,6).value
          enemyspatkbase = worksheet.cell(cell.row,8).value
+        
+         mydefbase = int(mydefbase)
+         myspdefbase = int(myspdefbase)
+         enemyatkbase = int(enemyatkbase)
+         enemyspatkbase = int(enemyspatkbase)
          
          enemyatkkyoku = int((enemyatkbase + 52)*1.1)
          enemyspatkkyoku = int((enemyspatkbase + 52)*1.1)
