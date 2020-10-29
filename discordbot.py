@@ -869,19 +869,292 @@ async def on_message(message):
              await message.channel.send('送信されたのは変化わざです。')
              return
             
-         typebairitu = 1.0
+         itti = 1.0
             
          if enemytype1 == wazatype:
-             typebairitu = 1.5
+             itti = 1.5
          
          if enemytype2 == wazatype:
-             typebairitu = 1.5
+             itti = 1.5
               
+         normal = 1
+         fire = 1
+         water = 1
+         grass = 1
+         electric = 1
+         ice = 1
+         fighting = 1
+         poison = 1
+         ground = 1
+         flying = 1
+         psychic = 1
+         bug = 1
+         rock = 1
+         ghost = 1
+         dragon = 1
+         dark = 1
+         steel = 1
+         fairy = 1
+         
+         if wazatype == "ノーマル":
+             fighting = fighting*2
+             ghost = ghost*0
+                    
+         elif wazatype == "ほのお":
+             water = water*2
+             ground = ground*2
+             rock = rock*2
+             fire = fire*0.5
+             grass = grass*0.5
+             ice = ice*0.5
+             bug = bug*0.5
+             steel = steel*0.5
+             fairy = fairy*0.5
+                    
+         elif wazatype == "みず":
+             electric = electric*2
+             grass = grass*2
+             fire = fire*0.5
+             water = water*0.5
+             ice = ice*0.5
+             steel = steel*0.5
+                    
+         elif wazatype == "でんき":
+             ground = ground*2
+             electric = electric*0.5
+             flying = flying*0.5
+             steel = steel*0.5
+                    
+         elif wazatype == "くさ":
+             fire = fire*2
+             ice = ice*2
+             poison = poison*2
+             flying = flying*2
+             bug = bug*2
+             water = water*0.5
+             electric = electric*0.5
+             grass = grass*0.5
+             ground = ground*0.5
+                    
+         elif wazatype == "こおり":
+             fire = fire*2
+             fighting = fighting*2
+             rock = rock*2
+             steel = steel*2
+             ice = ice*0.5
+                    
+         elif wazatype == "かくとう":
+             flying = flying*2
+             psychic = psychic*2
+             fairy = fairy*2
+             bug = bug*0.5
+             rock = rock*0.5
+             dark = dark*0.5
+                    
+         elif wazatype == "どく":
+             ground = ground*2
+             psychic = psychic*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             poison = poison*0.5
+             bug = bug*0.5
+             fairy = fairy*0.5
+                    
+         elif wazatype == "じめん":
+             water = water*2
+             grass = grass*2
+             ice = ice*2
+             poison = poison*0.5
+             rock = rock*0.5
+             electric = electric*0
+                    
+         elif wazatype == "ひこう":
+             electric = electric*2
+             ice = ice*2
+             rock = rock*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             bug = bug*0.5
+             ground = ground*0
+                    
+         elif wazatype == "エスパー":
+             bug = bug*2
+             ghost = ghost*2
+             dark = dark*2
+             fighting = fighting*0.5
+             psychic = psychic*0.5
+                    
+         elif wazatype == "むし":
+             fire = fire*2
+             flying = flying*2
+             rock = rock*2
+             grass = grass*0.5
+             fighting = fighting*0.5
+             ground = ground*0.5
+                    
+         elif wazatype == "いわ":
+             water = water*2
+             grass = grass*2
+             fighting = fighting*2
+             ground = ground*2
+             steel = steel*2
+             normal = normal*0.5
+             fire = fire*0.5
+             poison = poison*0.5
+             flying = flying*0.5
+                    
+         elif wazatype == "ゴースト":
+             ghost = ghost*2
+             dark = dark*2
+             poison = poison*0.5
+             bug = bug*0.5
+             normal = normal*0
+             fighting = fighting*0
+                    
+         elif wazatype == "ドラゴン":
+             ice = ice*2
+             dragon = dragon*2
+             fairy = fairy*2
+             fire = fire*0.5
+             water = water*0.5
+             electric = electric*0.5
+             grass = grass*0.5
+                    
+         elif wazatype == "あく":
+             fighting = fighting*2
+             bug = bug*2
+             fairy = fairy*2
+             ghost = ghost*0.5
+             dark = dark*0.5
+             psychic = psychic*0
+                    
+         elif wazatype == "はがね":
+             fire = fire*2
+             fighting = fighting*2
+             ground = ground*2
+             normal = normal*0.5
+             grass = grass*0.5
+             ice = ice*0.5
+             flying = flying*0.5
+             psychic = psychic*0.5
+             bug = bug*0.5
+             rock = rock*0.5
+             dragon = dragon*0.5
+             steel = steel*0.5
+             fairy = fairy*0.5
+             poison = poison*0
+                    
+         elif wazatype == "フェアリー":
+             poison = poison*2
+             steel = steel*2
+             fighting = fighting*0.5
+             bug = bug*0.5
+             dark = dark*0.5
+             dragon = dragon*0
+              
+         else:
+          pass
+                
+         if type1 = "ノーマル"
+             type1 = normal
+         if type1 = "ほのお"
+             type1 = fire
+         if type1 = "みず"
+             type1 = water
+         if type1 = "くさ"
+             type1 = grass
+         if type1 = "でんき"
+             type1 = electric
+         if type1 = "こおり"
+             type1 = ice
+         if type1 = "かくとう"
+             type1 = fighting
+         if type1 = "どく"
+             type1 = poison
+         if type1 = "じめん"
+             type1 = ground
+         if type1 = "ひこう"
+             type1 = flying
+         if type1 = "エスパー"
+             type1 = psychic
+         if type1 = "むし"
+             type1 = bug
+         if type1 = "いわ"
+             type1 = rock
+         if type1 = "ゴースト"
+             type1 = ghost
+         if type1 = "ドラゴン"
+             type1 = dragon
+         if type1 = "あく"
+             type1 = dark
+         if type1 = "はがね"
+             type1 = steel
+         if type1 = "フェアリー"
+             type1 = fairy
+             
+         if type2 = "ノーマル"
+             type2 = normal
+         if type2 = "ほのお"
+             type2 = fire
+         if type2 = "みず"
+             type2 = water
+         if type2 = "くさ"
+             type2 = grass
+         if type2 = "でんき"
+             type2 = electric
+         if type2 = "こおり"
+             type2 = ice
+         if type2 = "かくとう"
+             type2 = fighting
+         if type2 = "どく"
+             type2 = poison
+         if type2 = "じめん"
+             type2 = ground
+         if type2 = "ひこう"
+             type2 = flying
+         if type2 = "エスパー"
+             type2 = psychic
+         if type2 = "むし"
+             type2 = bug
+         if type2 = "いわ"
+             type2 = rock
+         if type2 = "ゴースト"
+             type2 = ghost
+         if type2 = "ドラゴン"
+             type2 = dragon
+         if type2 = "あく"
+             type2 = dark
+         if type2 = "はがね"
+             type2 = steel
+         if type2 = "フェアリー"
+             type2 = fairy
+             
+         normal = float(normal)
+         fire = float(fire)
+         water = float(water)
+         grass = float(grass)
+         electric = float(electric)
+         ice = float(ice)
+         fighting = float(fighting)
+         poison = float(poison)
+         ground = float(ground)
+         flying = float(flying)
+         psychic = float(psychic)
+         bug = float(bug)
+         rock = float(rock)
+         ghost = float(ghost)
+         dragon = float(dragon)
+         dark = float(dark)
+         steel = float(steel)
+         fairy = float(fairy)
+             
+         typebairitu = type1 * type2
+        
          damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
          damageMAX = int(int(22 * wazapower * attack / defence) / 50 + 2)
           
-         damageMIN = int(damageMIN * typebairitu)
-         damageMAX = int(damageMAX * typebairitu)
+         damageMIN = int(damageMIN * itti * typebairitu)
+         damageMAX = int(damageMAX * itti * typebairitu)
         
          message_send = (f"{wazabunrui}特化の{m2}が{wazaname}で特化の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
         
