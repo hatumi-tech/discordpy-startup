@@ -1281,7 +1281,7 @@ async def on_message(message):
                 
          if wazabunrui == "特殊":
              attack = enemyspatkkyoku
-             defence = myspdefjmu
+             defence = myspdefmu
           
          damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
          damageMAX = int(int(22 * wazapower * attack / defence) / 50 + 2)
