@@ -811,6 +811,7 @@ async def on_message(message):
          enemyatkbase = worksheet.cell(cell.row,6).value
          enemyspatkbase = worksheet.cell(cell.row,8).value
         
+         myhpbase = int(myhpbase)
          mydefbase = int(mydefbase)
          myspdefbase = int(myspdefbase)
          enemyatkbase = int(enemyatkbase)
