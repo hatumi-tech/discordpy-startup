@@ -764,6 +764,109 @@ async def on_message(message):
          message_send = message_send + chiyo
                   
          await message.channel.send(message_send)
+        
+    if message.content.endswith('の耐久調整'):
+
+         worksheet = workbook.sheet1
+         m = message.content[0:len(message.content)-5]
+        
+         if m == "":
+            return
+    
+         try:
+             cell = worksheet.find(m)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             return
+        
+         type1 = worksheet.cell(cell.row,3).value
+         type2 = worksheet.cell(cell.row,4).value
+         mydefbase = worksheet.cell(cell.row,7).value
+         myspdefbase = worksheet.cell(cell.row,9).value
+         
+         await message.channel.send("調整先のポケモンを送信してください。")
+        
+         try:
+             m2 = await client.wait_for('message', timeout=60.0,check=None)
+         except asyncio.TimeoutError:
+             await message.channel.send("時間内にお答えいただきたかったですね。")
+             return
+              
+         m2 = m2.content
+    
+         if m2 == "":
+             await message.channel.send("何をしようとしているのですか。その行為に意味はありますか")
+             return
+    
+         try:
+             cell = worksheet.find(m2)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("いないポケモン。何をしようとしているのですか。その行為に意味はありますか")
+             return
+         
+         enemytype1 = worksheet.cell(cell.row,3).value
+         enemytype2 = worksheet.cell(cell.row,4).value
+         enemyatkbase = worksheet.cell(cell.row,6).value
+         enemyspatkbase = worksheet.cell(cell.row,8).value
+         
+         enemyatkkyoku = int((enemyatkbase + 52)*1.1)
+         enemyspatkkyoku = int((enemyspatkbase + 52)*1.1)
+            
+         mydefkyoku = int((mydefbase + 52)*1.1)
+         myspdefkyoku = int((myspdefbase + 52)*1.1)
+            
+         mydefjun = int(mydefbase + 52)
+         myspdefjun = int(myspdefbase + 52)
+            
+         mydefmu = int(mydefbase + 20)
+         myspdefmu = int(myspdefbase + 20)
+         
+         ###わざについて###
+         
+         await message.channel.send("調整先のポケモンが使うわざ（耐えたいわざ）を送信してください。")
+        
+         try:
+             m3 = await client.wait_for('message', timeout=60.0,check=None)
+         except asyncio.TimeoutError:
+             await message.channel.send("時間内にお答えいただきたかったですね。")
+             return
+              
+         m3 = m3.content
+    
+         if m3 == "":
+             await message.channel.send("何をしようとしているのですか。その行為に意味はありますか")
+             return
+         
+         worksheet = workbook.get_worksheet(2)
+         
+         try:
+             cell = worksheet.find(m3)
+         except gspread.exceptions.CellNotFound:
+             await message.channel.send("ないわざ。何をしようとしているのですか。その行為に意味はありますか")
+             return
+         
+         wazaname = m3
+         wazatype = worksheet.cell(cell.row,2).value
+         wazapower = worksheet.cell(cell.row,3).value
+         wazabunrui = worksheet.cell(cell.row,6).value
+         
+         if wazabunrui == "物理":
+             attack = enemyatkkyoku
+             defence = mydefkyoku
+                
+         if wazabunrui == "特殊":
+             attack = enemyspatkkyoku
+             defence = myspdefkyoku
+                
+         if wazabunrui == "変化":
+             await message.channel.send('送信されたのは変化わざです。')
+             return
+            
+         damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
+         damageMAX = int(int(22 * wazapower * attack / defence) / 50 + 2)
+         message_send = (f"{wazabunrui}特化の{m2}が{wazaname}で特化の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
+        
+         await message.channel.send(message_send)
     
 
 client.run(Token)
