@@ -1258,6 +1258,38 @@ async def on_message(message):
          damageMAX = int(damageMAX * itti * typebairitu)
         
          message_send = (f"{wazabunrui}特化の{m2}が{wazaname}で特化の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
+          
+         if wazabunrui == "物理":
+             attack = enemyatkkyoku
+             defence = mydefjun
+                
+         if wazabunrui == "特殊":
+             attack = enemyspatkkyoku
+             defence = myspdefjun
+          
+         damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
+         damageMAX = int(int(22 * wazapower * attack / defence) / 50 + 2)
+          
+         damageMIN = int(damageMIN * itti * typebairitu)
+         damageMAX = int(damageMAX * itti * typebairitu)
+        
+         message_send = " /n " + (f"{wazabunrui}特化の{m2}が{wazaname}で性格補正なし252振りの{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
+          
+         if wazabunrui == "物理":
+             attack = enemyatkkyoku
+             defence = mydefmu
+                
+         if wazabunrui == "特殊":
+             attack = enemyspatkkyoku
+             defence = myspdefjmu
+          
+         damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
+         damageMAX = int(int(22 * wazapower * attack / defence) / 50 + 2)
+          
+         damageMIN = int(damageMIN * itti * typebairitu)
+         damageMAX = int(damageMAX * itti * typebairitu)
+        
+         message_send = " /n " + (f"{wazabunrui}特化の{m2}が{wazaname}で無振の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
         
          await message.channel.send(message_send)
     
