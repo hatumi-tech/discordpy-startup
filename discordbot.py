@@ -1273,7 +1273,7 @@ async def on_message(message):
          damageMIN = int(damageMIN * itti * typebairitu)
          damageMAX = int(damageMAX * itti * typebairitu)
         
-         message_send = message_send + " /n " + (f"{wazabunrui}特化の{m2}が{wazaname}で性格補正なし252振りの{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
+         message_send = message_send + " \n " + (f"{wazabunrui}特化の{m2}が{wazaname}で性格補正なし252振りの{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
           
          if wazabunrui == "物理":
              attack = enemyatkkyoku
@@ -1289,7 +1289,7 @@ async def on_message(message):
          damageMIN = int(damageMIN * itti * typebairitu)
          damageMAX = int(damageMAX * itti * typebairitu)
         
-         message_send = message_send + " /n " + (f"{wazabunrui}特化の{m2}が{wazaname}で無振の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
+         message_send = message_send + " \n " + (f"{wazabunrui}特化の{m2}が{wazaname}で無振の{m}に与える予想ダメージは{damageMIN}～{damageMAX}です。")
         
          await message.channel.send(message_send)
     
