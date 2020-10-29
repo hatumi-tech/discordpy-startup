@@ -54,6 +54,7 @@ async def on_message(message):
         embed.add_field(name="教えてチヨチャン", value="このヘルプを表示します。",inline=False)
         embed.add_field(name="（ポケモン名）の図鑑", value="ポケモンのタイプ、種族値、特性を表示します。",inline=False)
         embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
+        embed.add_field(name="（ポケモン名）の耐久調整", value="調整先のポケモンとわざを指定すると予想ダメージを計算します。",inline=False)
         embed.add_field(name="（ポケモン名）のすばやさ調整", value="調整先のポケモンを抜くための努力値を計算します。",inline=False)
         await message.channel.send(embed=embed)
         
