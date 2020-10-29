@@ -1055,79 +1055,79 @@ async def on_message(message):
          else:
           pass
                 
-         if type1 = "ノーマル"
+         if type1 == "ノーマル":
              type1 = normal
-         if type1 = "ほのお"
+         if type1 == "ほのお":
              type1 = fire
-         if type1 = "みず"
+         if type1 == "みず":
              type1 = water
-         if type1 = "くさ"
+         if type1 == "くさ":
              type1 = grass
-         if type1 = "でんき"
+         if type1 == "でんき":
              type1 = electric
-         if type1 = "こおり"
+         if type1 == "こおり":
              type1 = ice
-         if type1 = "かくとう"
+         if type1 == "かくとう":
              type1 = fighting
-         if type1 = "どく"
+         if type1 == "どく":
              type1 = poison
-         if type1 = "じめん"
+         if type1 == "じめん":
              type1 = ground
-         if type1 = "ひこう"
+         if type1 == "ひこう":
              type1 = flying
-         if type1 = "エスパー"
+         if type1 == "エスパー":
              type1 = psychic
-         if type1 = "むし"
+         if type1 == "むし":
              type1 = bug
-         if type1 = "いわ"
+         if type1 == "いわ":
              type1 = rock
-         if type1 = "ゴースト"
+         if type1 == "ゴースト":
              type1 = ghost
-         if type1 = "ドラゴン"
+         if type1 == "ドラゴン":
              type1 = dragon
-         if type1 = "あく"
+         if type1 == "あく":
              type1 = dark
-         if type1 = "はがね"
+         if type1 == "はがね":
              type1 = steel
-         if type1 = "フェアリー"
+         if type1 == "フェアリー":
              type1 = fairy
              
-         if type2 = "ノーマル"
+         if type2 == "ノーマル":
              type2 = normal
-         if type2 = "ほのお"
+         if type2 == "ほのお":
              type2 = fire
-         if type2 = "みず"
+         if type2 == "みず":
              type2 = water
-         if type2 = "くさ"
+         if type2 == "くさ":
              type2 = grass
-         if type2 = "でんき"
+         if type2 == "でんき":
              type2 = electric
-         if type2 = "こおり"
+         if type2 == "こおり":
              type2 = ice
-         if type2 = "かくとう"
+         if type2 == "かくとう":
              type2 = fighting
-         if type2 = "どく"
+         if type2 == "どく":
              type2 = poison
-         if type2 = "じめん"
+         if type2 == "じめん":
              type2 = ground
-         if type2 = "ひこう"
+         if type2 == "ひこう":
              type2 = flying
-         if type2 = "エスパー"
+         if type2 == "エスパー":
              type2 = psychic
-         if type2 = "むし"
+         if type2 == "むし":
              type2 = bug
-         if type2 = "いわ"
+         if type2 == "いわ":
              type2 = rock
-         if type2 = "ゴースト"
+         if type2 == "ゴースト":
              type2 = ghost
-         if type2 = "ドラゴン"
+         if type2 == "ドラゴン":
              type2 = dragon
-         if type2 = "あく"
+         if type2 == "あく":
              type2 = dark
-         if type2 = "はがね"
+         if type2 == "はがね":
              type2 = steel
-         if type2 = "フェアリー"
-             type2 = fairy
+         if type2 == "フェアリー":
+             type2 == fairy
              
          normal = float(normal)
          fire = float(fire)
@@ -1147,7 +1147,10 @@ async def on_message(message):
          dark = float(dark)
          steel = float(steel)
          fairy = float(fairy)
-             
+         
+         if type2 == "":
+            type2 = 1.0
+          
          typebairitu = type1 * type2
         
          damageMIN = int(int(int(22 * wazapower * attack / defence) / 50 + 2)*0.85)
