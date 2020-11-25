@@ -142,10 +142,10 @@ async def on_message(message):
         
         tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
         
-        if tokusei2 = "":
+        if tokusei2 == "":
             tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n"+ "夢特性は" + yumetokusei
             
-        if tokusei3 = "":
+        if tokusei3 == "":
             tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n"+ "夢特性は" + yumetokusei
             
         text = "{}はタイプ{}、{}" +  " \n" + "H{}-A{}-B{}-C{}-D{}-S{}-ALL{}" +  " \n"
