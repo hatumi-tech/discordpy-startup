@@ -142,11 +142,11 @@ async def on_message(message):
         
         tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n" + tokusei3 + "：" + tokusei3info +  " \n"+ "夢特性は" + yumetokusei
         
-        if tokusei2 == "":
-            tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n"+ "夢特性は" + yumetokusei
-            
-        if tokusei3 == "":
+        if tokusei2 != "" and tokusei3 == "":
             tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + tokusei2 + "：" + tokusei2info +  " \n"+ "夢特性は" + yumetokusei
+        
+        if tokusei2 == "" and tokusei3 == "":
+            tokuseimessage = "とくせいは" + " \n" + tokusei1 + "：" + tokusei1info +  " \n" + "夢特性は" + yumetokusei
             
         text = "{}はタイプ{}、{}" +  " \n" + "H{}-A{}-B{}-C{}-D{}-S{}-ALL{}" +  " \n"
         message_send = text.format(m,type1,type2,hp1,atk1,def1,spatk1,spdef1,speed1,all1) + tokuseimessage + " \n"  + tetsuurl + id1
