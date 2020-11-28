@@ -156,6 +156,8 @@ async def on_message(message):
         
     if message.content.endswith('の弱点'):
       
+         message_send = ""
+      
          worksheet = workbook.sheet1
          m = message.content[0:len(message.content)-3]
         
