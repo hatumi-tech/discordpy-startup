@@ -170,7 +170,7 @@ async def on_message(message):
             await message.channel.send("ないレースです。")
             return
         
-        row_list=row_values(cell_list)
+        row_list = worksheet.row_values(cell_list)
         
         message_send = message_send + row_list + "```"
         await message.channel.send(message_send)
