@@ -158,7 +158,7 @@ async def on_message(message):
       
         message_send = "```"
         
-        worksheet = workbook.sheet4
+        worksheet = workbook.get_worksheet(3)
         m = message.content[0:len(message.content)-7]
         
         if m == "":
