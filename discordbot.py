@@ -154,6 +154,27 @@ async def on_message(message):
           
         await message.channel.send(message_send)
         
+    if message.content.endswith('のレース教えて'):
+      
+        message_send = "```"
+        
+        worksheet = workbook.sheet4
+        m = message.content[0:len(message.content)-7]
+        
+        if m == "":
+           return
+   
+        try:
+            cell_list = worksheet.findall(m)
+        except gspread.exceptions.CellNotFound:
+            await message.channel.send("ないレースです。")
+            return
+        
+        row_list=row_values(cell_list)
+        
+        message_send = message_send + row_list + "```"
+        await message.channel.send(message_send)
+        
     if message.content.endswith('の弱点'):
       
          message_send = ""
