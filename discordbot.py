@@ -84,7 +84,7 @@ async def on_message(message):
         
         for umanumber in L1:
            uma = worksheet.row_values(umanumber)
-           umamessage = text.format(uma) + " \n"
+           umamessage = uma + " \n"
            message_send = message_send + umamessage
             
         await message.channel.send(message_send)
