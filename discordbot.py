@@ -61,6 +61,8 @@ async def on_message(message):
         
     if message.content.endswith('頭の馬配って'):
       
+        message_send = "```"
+      
         worksheet = workbook.get_worksheet(4)
         m = message.content[0:len(message.content)-6]
         
@@ -79,9 +81,13 @@ async def on_message(message):
            return
         
         L1 = set( random.sample(range(1,1348), m) )
+        
         for umanumber in L1:
            uma = worksheet.row_values(umanumber)
-           print(uma)
+           umamessage = text.format(uma) + " \n"
+           message_send = message_send + umamessage
+            
+        await message.channel.send(message_send)
             
     if message.content.endswith('の図鑑'):
       
