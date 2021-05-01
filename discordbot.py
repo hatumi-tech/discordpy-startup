@@ -79,9 +79,9 @@ async def on_message(message):
            return
         
         L1 = set( random.sample(range(1,1348), m) )
-           for umanumber in L1:
-            uma = worksheet.cell(cell.row,umanumber).value
-            print(uma)
+        for umanumber in L1:
+           uma = worksheet.cell(cell.row,umanumber).value
+           print(uma)
             
     if message.content.endswith('の図鑑'):
       
