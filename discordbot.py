@@ -67,6 +67,10 @@ async def on_message(message):
         if m == "":
            await message.channel.send("1～10の頭数を指定してください。")
            return
+        
+        if m == 0:
+           await message.channel.send("1～10の頭数を指定してください。")
+           return
           
         if m >= 11:
            await message.channel.send("1～10の頭数を指定してください。")
