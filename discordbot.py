@@ -3,6 +3,7 @@ import discord
 import os
 import gspread
 import math
+import random
 
 from oauth2client.service_account import ServiceAccountCredentials
 
