@@ -61,7 +61,7 @@ async def on_message(message):
         
     if message.content.endswith('頭の馬配って'):
       
-        worksheet = workbook.sheet1
+        worksheet = workbook.get_worksheet(4)
         m = message.content[0:len(message.content)-6]
         
         if m == "":
