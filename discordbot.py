@@ -79,8 +79,10 @@ async def on_message(message):
            return
         
         L1 = set( random.sample(range(1,1348), m) )
-        print(L1)
-        
+           for umanumber in L1:
+            uma = worksheet.cell(cell.row,umanumber).value
+            print(uma)
+            
     if message.content.endswith('の図鑑'):
       
         message_send = "```"
