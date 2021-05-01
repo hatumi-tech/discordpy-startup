@@ -84,6 +84,7 @@ async def on_message(message):
         
         for umanumber in L1:
            uma = worksheet.row_values(umanumber)
+           uma = str(uma)
            umamessage = uma + " \n"
            message_send = message_send + umamessage
             
