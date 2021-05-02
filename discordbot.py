@@ -81,7 +81,7 @@ async def on_message(message):
         
         m = m-1
        
-        umapool = worksheet.range('A1:A1348')
+        umapool = worksheet.col_values(1)
         random.shuffle(umapool)
         
         for i in range(len(umapool)):
