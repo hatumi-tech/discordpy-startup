@@ -91,7 +91,7 @@ async def on_message(message):
            print(umapool[i])
            message_send = message_send + text.format(umapool[i]) 
         
-       await message.channel.send(message_send)
+        await message.channel.send(message_send)
             
     if message.content.endswith('の図鑑'):
       
