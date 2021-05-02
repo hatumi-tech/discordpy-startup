@@ -58,6 +58,32 @@ async def on_message(message):
         embed.add_field(name="（ポケモン名）の耐久調整", value="調整先のポケモンとわざを指定すると予想ダメージを計算します。",inline=False)
         embed.add_field(name="（ポケモン名）のすばやさ調整", value="調整先のポケモンを抜くための努力値を計算します。",inline=False)
         await message.channel.send(embed=embed)
+        
+    if message.content.endswith('頭の馬配って'):
+      
+        message_send = ""
+        
+        worksheet = workbook.sheet(4)
+        m = message.content[0:len(message.content)-6]
+        
+        if m == "":
+           return
+       
+        if m >= 11:
+           await message.channel.send("1～10の数値で指定してください。")
+           return
+       
+        if m == 0:
+           await message.channel.send("1～10の数値で指定してください。")
+           return
+       
+        umapool = worksheet.range('A1:A1348')
+        random.shuffle(umapool)
+        
+        for uma in umapool:
+            if len(uma) > m:
+                break
+            print(uma)
             
     if message.content.endswith('の図鑑'):
       
