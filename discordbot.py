@@ -66,6 +66,8 @@ async def on_message(message):
         worksheet = workbook.get_worksheet(4)
         m = message.content[0:len(message.content)-6]
         
+        m = int(m)
+        
         if m == "":
            return
        
