@@ -57,6 +57,7 @@ async def on_message(message):
         embed.add_field(name="（ポケモン名）の弱点", value="技を受ける際のタイプ別のダメージ倍率を表示します。",inline=False)
         embed.add_field(name="（ポケモン名）の耐久調整", value="調整先のポケモンとわざを指定すると予想ダメージを計算します。",inline=False)
         embed.add_field(name="（ポケモン名）のすばやさ調整", value="調整先のポケモンを抜くための努力値を計算します。",inline=False)
+        embed.add_field(name="（1～10）頭の馬配って", value="指定された数の馬を配ります。",inline=False)
         await message.channel.send(embed=embed)
         
     if message.content.endswith('頭の馬配って'):
@@ -88,7 +89,6 @@ async def on_message(message):
            if i > m:
                break
            umapool.remove(umapool[i])
-           print(umapool[i])
            message_send = message_send + umapool[i] + " \n"
         
         await message.channel.send(message_send)
