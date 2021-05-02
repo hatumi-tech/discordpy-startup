@@ -82,10 +82,8 @@ async def on_message(message):
         umapool = worksheet.range('A1:A1348')
         random.shuffle(umapool)
         
-        for uma in umapool:
-            if len(uma) > m:
-                break
-            print(uma)
+        for i in range(m)
+           print(f`{umapool【m】})
             
     if message.content.endswith('の図鑑'):
       
