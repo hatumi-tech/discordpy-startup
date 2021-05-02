@@ -78,6 +78,8 @@ async def on_message(message):
         if m == 0:
            await message.channel.send("1～10の数値で指定してください。")
            return
+        
+        m = m-1
        
         umapool = worksheet.range('A1:A1348')
         random.shuffle(umapool)
@@ -85,7 +87,7 @@ async def on_message(message):
         for i in range(len(umapool)):
            if i > m:
                break
-           print(i, umapool[i])
+           print(umapool[i])
             
     if message.content.endswith('の図鑑'):
       
