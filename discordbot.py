@@ -63,7 +63,7 @@ async def on_message(message):
       
         message_send = ""
         
-        worksheet = workbook.sheet(4)
+        worksheet = workbook.get_worksheet(4)
         m = message.content[0:len(message.content)-6]
         
         if m == "":
