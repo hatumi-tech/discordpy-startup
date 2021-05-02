@@ -89,7 +89,7 @@ async def on_message(message):
                break
            umapool.remove(umapool[i])
            print(umapool[i])
-           message_send = message_send + text.format(umapool[i]) 
+           message_send = message_send + umapool[i] + " \n"
         
         await message.channel.send(message_send)
             
