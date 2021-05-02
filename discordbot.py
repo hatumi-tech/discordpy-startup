@@ -83,7 +83,7 @@ async def on_message(message):
         random.shuffle(umapool)
         
         for i in range(m):
-           print(f`{umapool【m】})
+           print(f`{umapool【m】}`)
             
     if message.content.endswith('の図鑑'):
       
