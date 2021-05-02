@@ -87,6 +87,7 @@ async def on_message(message):
         for i in range(len(umapool)):
            if i > m:
                break
+           umapool.remove(umapool[i])
            print(umapool[i])
             
     if message.content.endswith('の図鑑'):
