@@ -45,9 +45,6 @@ def connect():
         decode_responses=True, # 日本語の文字化け対策のため必須
     )
   
->>> import r
->>> conn = r.connect()
-
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -70,16 +67,6 @@ async def on_message(message):
         embed.add_field(name="（1～10）頭の馬配って", value="指定された数の馬を配ります。",inline=False)
         await message.channel.send(embed=embed)
         
-    if message.content.endswith('頭の馬配って'):
-        
-        for i in range(1, 21):
-           r.rpush('key', 'value-%d' % i)
-        
-        result = r.lrange('key', 0, 10)
-        
-        for r in result:
-           print(r)     
-            
     if message.content.endswith('の図鑑'):
       
         message_send = "```"
