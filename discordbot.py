@@ -4,6 +4,7 @@ import os
 import gspread
 import math
 import random
+import redis
 
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -38,6 +39,15 @@ workbook = gc.open_by_key(SPREADSHEET_KEY)
 Token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
+def connect():
+    return redis.from_url(
+        url=os.environ.get('REDIS_URL'), # 環境変数にあるURLを渡す
+        decode_responses=True, # 日本語の文字化け対策のため必須
+    )
+  
+>>> import r
+>>> conn = r.connect()
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -61,37 +71,14 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         
     if message.content.endswith('頭の馬配って'):
-      
-        message_send = ""
         
-        worksheet = workbook.get_worksheet(4)
-        m = message.content[0:len(message.content)-6]
+        for i in range(1, 21):
+           r.rpush('key', 'value-%d' % i)
         
-        m = int(m)
+        result = r.lrange('key', 0, 10)
         
-        if m == "":
-           return
-       
-        if m >= 11:
-           await message.channel.send("1～10の数値で指定してください。")
-           return
-       
-        if m == 0:
-           await message.channel.send("1～10の数値で指定してください。")
-           return
-        
-        m = m-1
-       
-        umapool = worksheet.col_values(1)
-        random.shuffle(umapool)
-        
-        for i in range(len(umapool)):
-           if i > m:
-               break
-           umapool.remove(umapool[i])
-           message_send = message_send + umapool[i] + " \n"
-        
-        await message.channel.send(message_send)
+        for r in result:
+           print(r)     
             
     if message.content.endswith('の図鑑'):
       
