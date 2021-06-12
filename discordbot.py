@@ -17,4 +17,7 @@ async def on_message(message):
     if message.content.startswith("川崎"):
         await message.channel.send("Hell City 川崎!")
 
+    elif type(message.channel) == discord.DMChannel and client.user == message.channel.me:
+        print(message.content)
+
 client.run(token)
