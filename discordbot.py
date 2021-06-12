@@ -10,7 +10,7 @@ def connect():
         decode_responses=True, # 日本語の文字化け対策のため必須
     )
 
-r = redis()
+r = Redis()
 conn = r.connect() # このconnを通じて操作する
 
 token = os.environ['DISCORD_BOT_TOKEN']
