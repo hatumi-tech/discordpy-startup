@@ -1,8 +1,10 @@
 from discord.ext import commands
-from redis import Redis
 import discord
 import os
 import redis
+import r
+
+conn = r.connect() # このconnを通じて操作する
 
 def connect():
     return redis.from_url(
@@ -10,7 +12,6 @@ def connect():
         decode_responses=True, # 日本語の文字化け対策のため必須
     )
 
-r = Redis()
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
