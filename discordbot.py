@@ -2,16 +2,13 @@ from discord.ext import commands
 import discord
 import os
 import redis
-from redis import Redis
+conn = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 def connect():
     return redis.from_url(
         url=os.environ.get('REDIS_URL'), # 環境変数にあるURLを渡す
         decode_responses=True, # 日本語の文字化け対策のため必須
     )
-
-r = Redis()
-conn = r.connect() # このconnを通じて操作する
 
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
