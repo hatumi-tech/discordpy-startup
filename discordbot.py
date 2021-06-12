@@ -17,7 +17,7 @@ async def on_command_error(ctx, error):
 async def on_message(message):
     if message.author.bot:
         return
-    elif type(message.channel) == discord.DMChannel and client.user == message.channel.me:
+    elif type(message.channel) == discord.DMChannel and discord.ClientUser == message.channel.me:
         print(message.content)
     
 bot.run(token)
