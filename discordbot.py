@@ -16,7 +16,7 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def on_message(message):
     if isinstance(message.channel, discord.DMChannel):
-       print(message)
+       print("受信したよ")
        pass
 
 
