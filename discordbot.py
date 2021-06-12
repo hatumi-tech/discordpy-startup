@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import os
 import redis
+from redis import Redis
 
 def connect():
     return redis.from_url(
@@ -9,7 +10,7 @@ def connect():
         decode_responses=True, # 日本語の文字化け対策のため必須
     )
 
-import r
+r = redis()
 conn = r.connect() # このconnを通じて操作する
 
 token = os.environ['DISCORD_BOT_TOKEN']
