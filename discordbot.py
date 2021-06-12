@@ -2,15 +2,15 @@ from discord.ext import commands
 import discord
 import os
 import redis
-import r
-
-conn = r.connect() # このconnを通じて操作する
 
 def connect():
     return redis.from_url(
         url=os.environ.get('REDIS_URL'), # 環境変数にあるURLを渡す
         decode_responses=True, # 日本語の文字化け対策のため必須
     )
+
+import r
+conn = r.connect() # このconnを通じて操作する
 
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
