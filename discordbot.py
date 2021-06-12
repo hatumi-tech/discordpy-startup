@@ -1,23 +1,20 @@
 from discord.ext import commands
 import discord
 import os
-import traceback
 
-bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
-@bot.event
-async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
+@client.event
+async def on_ready():
+    print(f'We have logged in as {client.user}')
 
-@bot.event
+@client.event
 async def on_message(message):
-    if message.author.bot:
+    if message.author == client.user:
         return
-    elif type(message.channel) == discord.DMChannel and client.user == message.channel.me:
-        print(message.content)
-    
-bot.run(token)
+
+    if message.content.startswith("川崎"):
+        await message.channel.send("Hell City 川崎!")
+
+client.run(token)
