@@ -1,7 +1,16 @@
 from discord.ext import commands
+from redis import Redis
 import discord
 import os
+import redis
 
+def connect():
+    return redis.from_url(
+        url=os.environ.get('REDIS_URL'), # 環境変数にあるURLを渡す
+        decode_responses=True, # 日本語の文字化け対策のため必須
+    )
+
+r = Redis()
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
@@ -15,6 +24,8 @@ async def on_message(message):
         return
 
     elif type(message.channel) == discord.DMChannel and client.user == message.channel.me:
+        result = r.set('タイトル', message.content)
         print(message.content)
+        print(result)
 
 client.run(token)
