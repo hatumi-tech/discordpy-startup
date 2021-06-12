@@ -15,10 +15,9 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def on_message(message):
-  if message.author.bot:
-    return
-  elif type(message.channel) == discord.DMChannel and discord.ClientUser == "どんちよ":
-    print(message.content)
+    if isinstance(message.channel, discord.DMChannel):
+       print(message)
+       pass
 
 
 bot.run(token)
