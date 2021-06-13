@@ -15,6 +15,8 @@ r = redis.StrictRedis(connection_pool=pool)
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
+INITIAL_CUR = 0
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
