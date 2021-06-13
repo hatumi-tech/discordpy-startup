@@ -57,7 +57,8 @@ async def on_message(message):
             if res_scan[1]:
                 res_mget = r.mget(res_scan[1])      # MGET
                 for key, val in zip(res_scan[1], res_mget):
-                    await message.channel.send(utf8(key), utf8(val))
+                    info = (f'{utf8(key)}さんの回答は{utf8(val)}です。')
+                    await message.channel.send(info)
             if next_cur == INITIAL_CUR:
                 break
         pass
