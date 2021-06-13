@@ -1,14 +1,16 @@
 from discord.ext import commands
+from redis import Redis
 import discord
 import os
 import redis
-conn = redis.StrictRedis(host='localhost', port=6379, db=0)
 
-def connect():
-    return redis.from_url(
-        url=os.environ.get('REDIS_URL'), # 環境変数にあるURLを渡す
-        decode_responses=True, # 日本語の文字化け対策のため必須
-    )
+REDIS_URL = os.environ.get('REDIS_URL')
+# データベースの指定
+DATABASE_INDEX = 1  # 0じゃなくあえて1
+# コネクションプールから１つ取得
+pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+# コネクションを利用
+r = redis.StrictRedis(connection_pool=pool)
 
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
