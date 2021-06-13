@@ -44,7 +44,7 @@ async def on_message(message):
         pass
     
     elif message.content.startswith('/flushall'):
-        r.flushall
+        flushall
         info = 'ちよ、すべて忘れました。'
         await message.channel.send(info)
         
