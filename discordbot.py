@@ -24,9 +24,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    elif type(message.channel) == discord.DMChannel and client.user == message.channel.me:
+    elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         result = r.set('タイトル', message.content)
         print(message.content)
         print(result)
+        
+    elif message.content.startswith('/open'):
+        result = r.get("タイトル")
+        await message.channel.send(result)
 
 client.run(token)
