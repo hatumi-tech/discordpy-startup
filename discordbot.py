@@ -25,12 +25,12 @@ async def on_message(message):
         return
 
     elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
-        result = r.set('タイトル', message.content)
+        result = r.set(message.author,message.content)
         print(message.content)
         print(result)
         
     elif message.content.startswith('/open'):
-        result = r.get("タイトル")
+        result = r.get(message.author)
         result = result.decode(encoding = 'utf-8')
         await message.channel.send(result)
 
