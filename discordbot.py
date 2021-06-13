@@ -28,8 +28,9 @@ async def on_message(message):
         name = str(message.author)
         answer = str(message.content)
         result = r.set(name,answer)
-        print(message.content)
-        print(result)
+        
+        info = (f'{name}さんの回答{answer}を、ちよ覚えました。')
+        await message.channel.send(info)
         
     elif message.content.startswith('/open'):
         name = str(message.author)
