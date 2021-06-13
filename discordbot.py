@@ -31,7 +31,7 @@ async def on_message(message):
         
     elif message.content.startswith('/open'):
         result = r.get("タイトル")
-        result = str(result)
+        result = result.decode('unicode-escape')
         await message.channel.send(result)
 
 client.run(token)
