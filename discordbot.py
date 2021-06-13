@@ -17,6 +17,10 @@ client = discord.Client()
 
 INITIAL_CUR = 0
 
+def utf8(byte):
+    if byte:
+        return str(byte, 'utf-8')
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
