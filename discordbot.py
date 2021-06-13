@@ -41,7 +41,17 @@ async def on_message(message):
         await message.channel.send(result)
         
     elif message.content.startswith('/open'):
-        r.keys *
+        next_cur = INITIAL_CUR
+        
+        while True:
+            res_scan = r.scan(next_cur)             # SCAN
+            next_cur = res_scan[0]
+            if res_scan[1]:
+                res_mget = r.mget(res_scan[1])      # MGET
+                for key, val in zip(res_scan[1], res_mget):
+                print(utf8(key), utf8(val))
+            if next_cur == INITIAL_CUR:
+                break
         pass
         
 client.run(token)
