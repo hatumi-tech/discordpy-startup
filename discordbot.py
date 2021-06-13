@@ -40,13 +40,15 @@ async def on_message(message):
         info = (f'{name}さんの回答{answer}を、ちよ覚えました。')
         await message.channel.send(info)
         
-    elif message.content.startswith('/show'):
+    elif message.content.startswith('/show') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         name = str(message.author)
-        result = r.get(name)
-        result = result.decode(encoding = 'utf-8')
-        await message.channel.send(result)
+        answer = r.get(name)
+        answer = answer.decode(encoding = 'utf-8')
         
-    elif message.content.startswith('/open'):
+        info = (f'{name}さんの回答は現在{answer}です。')
+        await message.channel.send(info)
+        
+    elif message.content.startswith('/open') and type(message.channel) != discord.DMChannel:
         next_cur = INITIAL_CUR
         
         while True:
@@ -55,7 +57,7 @@ async def on_message(message):
             if res_scan[1]:
                 res_mget = r.mget(res_scan[1])      # MGET
                 for key, val in zip(res_scan[1], res_mget):
-                    print(utf8(key), utf8(val))
+                    await message.channel.send(utf8(key), utf8(val))
             if next_cur == INITIAL_CUR:
                 break
         pass
