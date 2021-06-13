@@ -34,10 +34,18 @@ async def on_message(message):
         info = (f'{name}さんの回答{answer}を、ちよ覚えました。')
         await message.channel.send(info)
         
-    elif message.content.startswith('/open'):
+    elif message.content.startswith('/show'):
         name = str(message.author)
         result = r.get(name)
         result = result.decode(encoding = 'utf-8')
         await message.channel.send(result)
-
+        
+    elif message.content.startswith('/open'):
+        pass
+    
+    elif message.content.startswith('/flushall'):
+        r.flushall
+        info = 'ちよ、すべて忘れました。'
+        await message.channel.send(info)
+        
 client.run(token)
