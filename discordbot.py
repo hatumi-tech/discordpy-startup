@@ -49,7 +49,7 @@ async def on_message(message):
             if res_scan[1]:
                 res_mget = r.mget(res_scan[1])      # MGET
                 for key, val in zip(res_scan[1], res_mget):
-                print(utf8(key), utf8(val))
+                    print(utf8(key), utf8(val))
             if next_cur == INITIAL_CUR:
                 break
         pass
