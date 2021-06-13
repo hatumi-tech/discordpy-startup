@@ -27,6 +27,8 @@ async def on_message(message):
     elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         name = str(message.author)
         answer = str(message.content)
+        answer = answer.strip("/set")
+        
         result = r.set(name,answer)
         
         info = (f'{name}さんの回答{answer}を、ちよ覚えました。')
