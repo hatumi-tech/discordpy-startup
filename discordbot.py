@@ -41,11 +41,7 @@ async def on_message(message):
         await message.channel.send(result)
         
     elif message.content.startswith('/open'):
+        r.keys *
         pass
-    
-    elif message.content.startswith('/flushall'):
-        r.flushall
-        info = 'ちよ、すべて忘れました。'
-        await message.channel.send(info)
         
 client.run(token)
