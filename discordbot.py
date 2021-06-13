@@ -42,7 +42,7 @@ async def on_message(message):
         embed.add_field(name="/open（DM以外で）", value="全員の回答をオープンします。", inline=False)
         embed.add_field(name="/kawasaki", value="hell city", inline=False)
         embed.set_footer(text="よろしくな")
-        await ctx.send(embed=embed)
+        await message.channel.send(embed=embed)
 
     elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         name = str(message.author)
