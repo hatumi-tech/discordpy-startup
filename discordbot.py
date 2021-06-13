@@ -64,7 +64,7 @@ async def on_message(message):
         pass
     
     elif message.content.startswith('/flushdb') and type(message.channel) != discord.DMChannel:
-        r.flushdb
+        r.flushdb()
         info = ("ちよはすべてを忘れてしまいました・・・。")
         await message.channel.send(info)
         
