@@ -29,6 +29,20 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    
+    elif message.content.startswith('/kawasaki'):
+        info = ("KAWASAKI HELL CITYへようこそ！")
+        await message.channel.send(info)
+    
+    elif message.content.startswith('/help'):
+        embed=discord.Embed(title="ちよのヘルプ", description="生まれ変わったちよちゃんのヘルプです。", color=0xff0000)
+        embed.set_author(name="hatumichan")
+        embed.add_field(name="/set 回答(ちよにDM)", value="ちよちゃんに回答をセットします。最後にセットした回答が有効。", inline=False)
+        embed.add_field(name="/show（ちよにDM）", value="現在セットされている回答を教えてくれます。", inline=False)
+        embed.add_field(name="/open（DM以外で）", value="全員の回答をオープンします。", inline=False)
+        embed.add_field(name="/kawasaki", value="hell city", inline=False)
+        embed.set_footer(text="よろしくな")
+        await ctx.send(embed=embed)
 
     elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         name = str(message.author)
