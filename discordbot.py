@@ -6,13 +6,6 @@ import redis
 import csv
 
 REDIS_URL = os.environ.get('REDIS_URL')
-DATABASE_INDEX = 1
-
-# コネクションプールから１つ取得
-pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
-# コネクションを利用
-r = redis.StrictRedis(connection_pool=pool)
-
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
