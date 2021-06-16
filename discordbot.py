@@ -99,6 +99,7 @@ async def on_message(message):
 
         name = str(message.author)
         horse_num = message.content[0:len(message.content)-4]
+        horse_num = int(horse_num)
 
         if horse_num > 10:
             info = ("ちよは10以上の数字がわかりません・・・。")
