@@ -41,11 +41,6 @@ async def on_message(message):
         embed.add_field(name="/kawasaki", value="hell city", inline=False)
         embed.set_footer(text="よろしくな")
         await message.channel.send(embed=embed)
-        
-    elif message.content.startswith('/flushdb') and type(message.channel) != discord.DMChannel:
-        r.flushdb()
-        info = ("ちよはすべてを忘れてしまいました・・・。")
-        await message.channel.send(info)
 
     elif message.content.startswith('/gamestart') and type(message.channel) != discord.DMChannel:
         r.flushdb()
