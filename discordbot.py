@@ -6,8 +6,8 @@ import redis
 import csv
 
 REDIS_URL = os.environ.get('REDIS_URL')
-# データベースの指定
-DATABASE_INDEX = 1  # 0じゃなくあえて1
+DATABASE_INDEX = 1
+
 # コネクションプールから１つ取得
 pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
 # コネクションを利用
@@ -47,6 +47,11 @@ async def on_message(message):
 
     elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         DATABASE_INDEX = 1
+
+        # コネクションプールから１つ取得
+        pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+        # コネクションを利用
+        r = redis.StrictRedis(connection_pool=pool)
         
         name = str(message.author)
         answer = str(message.content)
@@ -59,6 +64,11 @@ async def on_message(message):
         
     elif message.content.startswith('/show') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
         DATABASE_INDEX = 1
+
+        # コネクションプールから１つ取得
+        pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+        # コネクションを利用
+        r = redis.StrictRedis(connection_pool=pool)
         
         name = str(message.author)
         answer = r.get(name)
@@ -69,6 +79,11 @@ async def on_message(message):
         
     elif message.content.startswith('/open') and type(message.channel) != discord.DMChannel:
         DATABASE_INDEX = 1
+
+        # コネクションプールから１つ取得
+        pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+        # コネクションを利用
+        r = redis.StrictRedis(connection_pool=pool)
         
         next_cur = INITIAL_CUR
         
@@ -93,6 +108,12 @@ async def on_message(message):
 
     elif message.content.startswith('/gamestart') and type(message.channel) != discord.DMChannel:
         DATABASE_INDEX = 2
+
+        # コネクションプールから１つ取得
+        pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+        # コネクションを利用
+        r = redis.StrictRedis(connection_pool=pool)
+        
         r.flushdb()
 
         reader = csv.reader(open("./競走馬リスト.csv"))
@@ -105,6 +126,11 @@ async def on_message(message):
 
     elif message.content.endswith('頭の馬配って'):
         DATABASE_INDEX = 2
+
+        # コネクションプールから１つ取得
+        pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+        # コネクションを利用
+        r = redis.StrictRedis(connection_pool=pool)
 
         name = str(message.author)
         horse_num = message.content[0:len(message.content)-6]
