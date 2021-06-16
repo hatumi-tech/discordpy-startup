@@ -57,7 +57,7 @@ async def on_message(message):
         info = ("ちよは競馬ポーカーの準備を完了しました。")
         await message.channel.send(info)
 
-    elif message.content.endswith('頭の馬配って') and type(message.channel) == discord.DMChannel:
+    elif message.content.endswith('頭の馬配って'):
         name = str(message.author)
         horse_num = message.content[0:len(message.content)-6]
 
