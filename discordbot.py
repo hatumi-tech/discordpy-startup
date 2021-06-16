@@ -101,6 +101,11 @@ async def on_message(message):
     
     elif message.content.startswith('/flushdb') and type(message.channel) != discord.DMChannel:
         DATABASE_INDEX = 1
+
+        # コネクションプールから１つ取得
+        pool = redis.ConnectionPool.from_url(REDIS_URL, db=DATABASE_INDEX)
+        # コネクションを利用
+        r = redis.StrictRedis(connection_pool=pool)
         
         r.flushdb()
         info = ("ちよはすべてを忘れてしまいました・・・。")
