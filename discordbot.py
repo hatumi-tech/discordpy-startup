@@ -58,12 +58,12 @@ async def on_message(message):
         horse_num = int(horse_num)
 
         if horse_num > 10:
-            info = ("ちよは10以上の数字がわかりません・・・。")
+            info = ("ちよは10より上の数字がわかりません・・・。")
             await message.channel.send(info)
             return
 
         elif horse_num < 0:
-            info = ("ちよは0以下の数字がわかりません・・・。")
+            info = ("ちよは0より下の数字がわかりません・・・。")
             await message.channel.send(info)
             return
 
