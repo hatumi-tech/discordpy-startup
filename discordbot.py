@@ -88,6 +88,7 @@ async def on_message(message):
         r.flushdb()
 
         reader = csv.reader(open("./競走馬リスト.csv"))
+        
         for row in reader:
             r.sadd("horse_name_all",str(row))
 
@@ -113,7 +114,7 @@ async def on_message(message):
 
         else:
             for i in range(horse_num):
-                info = r.spop(horse_name_all)
+                info = r.spop horse_name_all
                 await message.channel.send(info)
         
 client.run(token)
