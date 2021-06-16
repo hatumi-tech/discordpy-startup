@@ -46,6 +46,8 @@ async def on_message(message):
         await message.channel.send(embed=embed)
 
     elif message.content.startswith('/set') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
+        DATABASE_INDEX = 1
+        
         name = str(message.author)
         answer = str(message.content)
         answer = answer.strip("/set")
@@ -56,6 +58,8 @@ async def on_message(message):
         await message.channel.send(info)
         
     elif message.content.startswith('/show') and type(message.channel) == discord.DMChannel and client.user == message.channel.me:
+        DATABASE_INDEX = 1
+        
         name = str(message.author)
         answer = r.get(name)
         answer = answer.decode(encoding = 'utf-8')
@@ -64,6 +68,8 @@ async def on_message(message):
         await message.channel.send(info)
         
     elif message.content.startswith('/open') and type(message.channel) != discord.DMChannel:
+        DATABASE_INDEX = 1
+        
         next_cur = INITIAL_CUR
         
         while True:
@@ -79,6 +85,8 @@ async def on_message(message):
         pass
     
     elif message.content.startswith('/flushdb') and type(message.channel) != discord.DMChannel:
+        DATABASE_INDEX = 1
+        
         r.flushdb()
         info = ("ちよはすべてを忘れてしまいました・・・。")
         await message.channel.send(info)
