@@ -3,6 +3,7 @@ from redis import Redis
 import discord
 import os
 import redis
+import csv
 
 REDIS_URL = os.environ.get('REDIS_URL')
 # データベースの指定
@@ -81,5 +82,37 @@ async def on_message(message):
         r.flushdb()
         info = ("ちよはすべてを忘れてしまいました・・・。")
         await message.channel.send(info)
+
+    elif message.content.startswith('/gamestart') and type(message.channel) != discord.DMChannel:
+        DATABASE_INDEX = 2
+        r.flushdb()
+
+        reader = csv.reader(open("./競走馬リスト.csv"))
+        for row in reader:
+            r.sadd("horse_name_all",str(row))
+
+        info = ("ちよは競馬ポーカーの準備を完了しました。")
+        await message.channel.send(info)
+
+    elif message.content.endswith('頭の馬配って') and type(message.channel) == discord.DMChannel:
+        DATABASE_INDEX = 2
+
+        name = str(message.author)
+        horse_num = message.content[0:len(message.content)-6]
+
+        if horse_num > 10:
+            info = ("ちよは10以上の数字がわかりません・・・。")
+            await message.channel.send(info)
+            return
+
+        elif horse_num < 0:
+            info = ("ちよは0以下の数字がわかりません・・・。")
+            await message.channel.send(info)
+            return
+
+        else:
+            for i in range(horse_num):
+                info = r.spop(horse_name_all)
+                await message.channel.send(info)
         
 client.run(token)
