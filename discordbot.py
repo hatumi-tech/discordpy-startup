@@ -115,6 +115,7 @@ async def on_message(message):
         else:
             for i in range(horse_num):
                 info = r.spop("horse_name_all")
+                info = utf8(info)
                 await message.channel.send(info)
         
 client.run(token)
