@@ -74,6 +74,8 @@ async def on_message(message):
                 info = info.strip("[")
                 info = info.strip("]")
                 info = info.strip("'")
-                await message.channel.send(info)
+                infoall.append(info)
+            
+            await message.channel.send(infoall)
         
 client.run(token)
