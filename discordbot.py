@@ -94,7 +94,7 @@ async def on_message(message):
         info = ("ちよは競馬ポーカーの準備を完了しました。")
         await message.channel.send(info)
 
-    elif message.content.startswith('頭の馬配って'):
+    elif message.content.endswith('頭の馬配って'):
         DATABASE_INDEX = 2
 
         name = str(message.author)
