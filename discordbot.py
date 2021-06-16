@@ -94,11 +94,11 @@ async def on_message(message):
         info = ("ちよは競馬ポーカーの準備を完了しました。")
         await message.channel.send(info)
 
-    elif message.content.startswith('馬配って') and type(message.channel) == discord.DMChannel:
+    elif message.content.startswith('頭の馬配って'):
         DATABASE_INDEX = 2
 
         name = str(message.author)
-        horse_num = message.content[0:len(message.content)-4]
+        horse_num = message.content[0:len(message.content)-6]
         horse_num = int(horse_num)
 
         if horse_num > 10:
