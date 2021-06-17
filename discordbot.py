@@ -62,7 +62,7 @@ async def on_message(message):
             await message.channel.send(info)
             return
 
-        elif horse_num < 0:
+        elif horse_num <= 0:
             info = ("ちよは0より下の数字がわかりません・・・。")
             await message.channel.send(info)
             return
