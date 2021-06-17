@@ -68,6 +68,8 @@ async def on_message(message):
             return
 
         else:
+            infoall = ""
+            
             for i in range(horse_num):
                 info = r.spop("horse_name_all")
                 info = utf8(info)
