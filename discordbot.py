@@ -69,6 +69,7 @@ async def on_message(message):
 
         else:
             infoall = ""
+            horse_num_info = ""
             
             for i in range(horse_num):
                 info = r.spop("horse_name_all")
