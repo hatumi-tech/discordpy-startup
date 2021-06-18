@@ -79,5 +79,9 @@ async def on_message(message):
                 infoall = infoall + info + "\n"
             
             await message.channel.send(infoall)
-        
+            
+            channel = client.get_channel(768721463997759510)
+            horse_num_info = (f'ちよは{name}さんに{horse_num}頭の馬を配りました。')
+            await channel.send(horse_num_info)
+            
 client.run(token)
